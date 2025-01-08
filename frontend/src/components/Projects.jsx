@@ -41,7 +41,7 @@ const Projects = () => {
     <div className="min-h-screen py-10 px-6 lg:px-40 bg-gray-100 dark:bg-gray-900 dark:text-white">
       {/* Page Title */}
       <motion.h1
-        className="text-4xl font-bold text-center mb-10 text-red-700"
+        className="text-4xl font-bold text-center mb-10 "
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}

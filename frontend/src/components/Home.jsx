@@ -25,7 +25,7 @@ const Home = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Hi!! I am <span className="text-red-700">Viraj</span> Domadia
+          Hi!! I am Viraj<span className="text-red-700"> Domadia</span>
         </motion.h1>
 
         {/* Typing Effect */}
@@ -88,7 +88,7 @@ const Home = () => {
             </button>
           </a>
           <a
-            href="#contact"
+            href="/contacts"
             className="border-2 border-red-700 text-red-700 py-3 px-6 rounded-xl font-semibold w-full lg:w-auto shadow-lg hover:bg-red-700 hover:text-white transition duration-300"
           >
             Contact Me

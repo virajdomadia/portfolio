@@ -171,25 +171,8 @@ const Contact = () => {
                   d="M21 12.79V21l-4.36-2.36c-.84-.47-1.9-.38-2.66.28L11 18.79V5.21l2.98-1.58c.76-.39 1.68-.24 2.36.42L21 12.79z"
                 />
               </svg>
-              <span className="text-xl font-semibold">Phone: +123 456 789</span>
-            </div>
-            <div className="flex items-center gap-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-red-700"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M21 12.79V21l-4.36-2.36c-.84-.47-1.9-.38-2.66.28L11 18.79V5.21l2.98-1.58c.76-.39 1.68-.24 2.36.42L21 12.79z"
-                />
-              </svg>
               <span className="text-xl font-semibold">
-                Email: info@domain.com
+                Phone: +91 88280 91294
               </span>
             </div>
             <div className="flex items-center gap-4">
@@ -208,7 +191,26 @@ const Contact = () => {
                 />
               </svg>
               <span className="text-xl font-semibold">
-                Address: Your City, Country
+                Email: virajdomadia6@gmail.com
+              </span>
+            </div>
+            <div className="flex items-center gap-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 text-red-700"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth="2"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21 12.79V21l-4.36-2.36c-.84-.47-1.9-.38-2.66.28L11 18.79V5.21l2.98-1.58c.76-.39 1.68-.24 2.36.42L21 12.79z"
+                />
+              </svg>
+              <span className="text-xl font-semibold">
+                Address: Mumbai, Maharashtra, India
               </span>
             </div>
           </motion.div>
