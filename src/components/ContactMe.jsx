@@ -26,7 +26,7 @@ const ContactMe = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/contact",
+        "https://portfolio-backend-mmt7.onrender.com/api/contact",
         formData
       );
       if (res.status === 201 || res.status === 200) {
