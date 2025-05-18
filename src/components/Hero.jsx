@@ -69,7 +69,7 @@ const Hero = () => {
               Contact Me
             </a>
             <a
-              href="../../public/Viraj_Domadia_resume.pdf"
+              href="/Viraj_Domadia_Resume.pdf"
               download
               className="border border-black bg-white text-black px-5 py-2 font-semibold transition duration-300 hover:bg-black hover:text-white"
             >
