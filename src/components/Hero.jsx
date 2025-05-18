@@ -63,7 +63,7 @@ const Hero = () => {
             variants={textVariants}
           >
             <a
-              href="#contact"
+              href="#contact-me"
               className="border border-black bg-white text-black px-5 py-2 font-semibold transition duration-300 hover:bg-black hover:text-white"
             >
               Contact Me
