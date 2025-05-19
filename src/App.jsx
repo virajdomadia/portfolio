@@ -6,8 +6,15 @@ import Navbar from "./components/Navbar";
 import Project from "./components/Project";
 
 import { Helmet } from "react-helmet";
+import ReactGA from "react-ga4";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    ReactGA.initialize("G-V8M9C34EY7"); // ✅ Your real Measurement ID
+    ReactGA.send("pageview"); // 👈 This sends a pageview event
+  }, []);
+
   return (
     <>
       <Helmet>
