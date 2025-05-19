@@ -6,13 +6,25 @@ import Navbar from "./components/Navbar";
 import Project from "./components/Project";
 
 import { Helmet } from "react-helmet";
-import ReactGA from "react-ga4";
 import { useEffect } from "react";
 
 function App() {
   useEffect(() => {
-    ReactGA.initialize("G-V8M9C34EY7"); // ✅ Your real Measurement ID
-    ReactGA.send("pageview"); // 👈 This sends a pageview event
+    // Load GA4 script dynamically
+    const script = document.createElement("script");
+    script.src = `https://www.googletagmanager.com/gtag/js?id=G-V8M9C34EY7`;
+    script.async = true;
+    document.head.appendChild(script);
+
+    // Initialize GA4
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      window.dataLayer.push(arguments);
+    }
+    window.gtag = gtag;
+
+    gtag("js", new Date());
+    gtag("config", "G-V8M9C34EY7", { send_page_view: true });
   }, []);
 
   return (
