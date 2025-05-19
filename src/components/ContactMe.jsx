@@ -44,6 +44,7 @@ const ContactMe = () => {
   return (
     <section
       id="contact-me"
+      aria-label="Contact Me"
       className="py-20 px-6 md:px-20 bg-gradient-to-br from-gray-100 to-gray-50 border-t-4 border-black"
     >
       <h2 className="text-5xl font-josefin font-bold mb-12 text-center tracking-wide text-black">

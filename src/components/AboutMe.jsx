@@ -51,7 +51,11 @@ const skills = [
 
 const AboutMe = () => {
   return (
-    <section id="about-me" className="px-6 py-20 border-b-2 border-black">
+    <section
+      id="about-me"
+      aria-label="About Me"
+      className="px-6 py-20 border-b-2 border-black"
+    >
       <motion.div
         className="max-w-7xl mx-auto"
         initial="hidden"

@@ -196,6 +196,7 @@ const Project = () => {
 
       <section
         id="projects"
+        aria-label="Projects"
         className="py-16 px-4 sm:px-10 md:px-20 bg-gray-50 border-b-2 border-black"
       >
         <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-center">
