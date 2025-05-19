@@ -28,7 +28,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center">
-          <img src={logo} alt="Logo" className="h-10" />
+          <img src={logo} alt="Logo" className="h-10" loading="lazy" />
           <div className="flex flex-col ml-2 leading-tight">
             <h1 className="font-bold">Viraj</h1>
             <h1 className="font-bold">Domadia</h1>

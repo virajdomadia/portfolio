@@ -94,6 +94,7 @@ const AboutMe = () => {
               src={illustration}
               alt="Viraj Illustration"
               className="w-full max-w-xs md:max-w-full border-4 border-black object-cover"
+              loading="lazy"
             />
           </motion.div>
         </div>

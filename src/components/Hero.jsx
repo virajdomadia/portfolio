@@ -37,6 +37,7 @@ const Hero = () => {
             src={profile}
             alt="Viraj Domadia"
             className="w-full object-cover border-4 border-black rounded-md"
+            loading="lazy"
           />
         </motion.div>
 
