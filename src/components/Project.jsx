@@ -8,6 +8,23 @@ import ecommerce from "../assets/ecommerce.png";
 
 const projects = [
   {
+    title: "E-Commerce App",
+    description:
+      "A MERN stack e-commerce app with JWT-based authentication. Includes product CRUD (admin only), shopping cart & checkout, and responsive UI built with React and TailwindCSS.",
+    image: "ecommerce", // assuming you will update the image variable accordingly
+    tech: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Express",
+      "Tailwind CSS",
+      "JWT",
+      "bcrypt",
+    ],
+    github: "https://github.com/virajdomadia/E-Commerce.git",
+    live: "https://ecommerce-viraj.vercel.app/",
+  },
+  {
     title: "Task Manager App",
     description:
       "A MERN stack task management app with JWT-based authentication. Includes CRUD, filters, priority sort, and responsive UI.",
