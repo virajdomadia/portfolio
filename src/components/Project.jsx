@@ -13,7 +13,7 @@ const projects = [
     title: "Real-Time Chat App",
     description:
       "A MERN stack chat application with real-time one-on-one messaging using Socket.io. Features include JWT authentication, live WebSocket communication, REST APIs, and a modern responsive UI with TailwindCSS.",
-    image: "chat", // replace with your actual image import/variable
+    image: chat, // replace with your actual image import/variable
     tech: [
       "React",
       "Node.js",
