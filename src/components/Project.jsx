@@ -6,8 +6,27 @@ import url from "../assets/urlshortener.png";
 import expense from "../assets/expensetracker.png";
 import ecommerce from "../assets/ecommerce.png";
 import mernEcomm from "../assets/e-commerce-MERN.png";
+import chat from "../assets/ChatApp.png";
 
 const projects = [
+  {
+    title: "Real-Time Chat App",
+    description:
+      "A MERN stack chat application with real-time one-on-one messaging using Socket.io. Features include JWT authentication, live WebSocket communication, REST APIs, and a modern responsive UI with TailwindCSS.",
+    image: "chat", // replace with your actual image import/variable
+    tech: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Express",
+      "Socket.io",
+      "Tailwind CSS",
+      "JWT",
+      "bcrypt",
+    ],
+    github: "https://github.com/virajdomadia/ChatApp.git",
+    live: "https://realtime-chatapp-viraj.vercel.app/",
+  },
   {
     title: "E-Commerce App",
     description:
