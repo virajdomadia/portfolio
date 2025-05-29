@@ -45,10 +45,19 @@ const projects = [
     live: "https://ecommerce-viraj.vercel.app/",
   },
   {
-    title: "Task Manager App",
+    title: "Ecommerce UI",
     description:
-      "A MERN stack task management app with JWT-based authentication. Includes CRUD, filters, priority sort, and responsive UI.",
-    image: taskmanager,
+      "Frontend-only e-commerce UI built with React and Tailwind CSS featuring product listings, details, and cart functionality.",
+    image: ecommerce,
+    tech: ["React", "Tailwind CSS", "JavaScript"],
+    github: "https://github.com/virajdomadia/HypeCart-frontend.git",
+    live: "https://hypecart-viraj.vercel.app/",
+  },
+  {
+    title: "Expense Tracker",
+    description:
+      "A MERN stack expense tracker with JWT authentication and CRUD operations for managing categorized expenses. Features include filtering and a simple dashboard.",
+    image: expense,
     tech: [
       "React",
       "Node.js",
@@ -58,8 +67,34 @@ const projects = [
       "JWT",
       "bcrypt",
     ],
-    github: "https://github.com/virajdomadia/TaskManager.git",
-    live: "https://task-manager-viraj.vercel.app/",
+    github: "https://github.com/virajdomadia/ExpenseTracker.git",
+    live: "https://expense-tracker-viraj.vercel.app/",
+  },
+  {
+    title: "URL Shortener",
+    description:
+      "A minimal MERN-based URL shortener that allows users to generate short links, track clicks, and redirect to the original URL. Includes basic analytics and validation.",
+    image: url,
+    tech: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
+    github: "https://github.com/virajdomadia/URL_Shortener.git",
+    live: "https://urlshortner-viraj.vercel.app/",
+  },
+  {
+    title: "Weather Dashboard",
+    description:
+      "A responsive weather dashboard that uses OpenWeather API to display real-time weather conditions. Supports city-based search, location detection, and temperature details in Celsius/Fahrenheit. Built with MERN stack and Tailwind CSS.",
+    image: weather,
+    tech: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Express",
+      "Tailwind CSS",
+      "OpenWeather API",
+      "Geolocation",
+    ],
+    github: "https://github.com/virajdomadia/WeatherApp.git",
+    live: "https://weatherapp-viraj.vercel.app/",
   },
   {
     title: "Blog App",
@@ -80,36 +115,10 @@ const projects = [
     live: "https://blog-app-viraj.vercel.app/",
   },
   {
-    title: "Weather Dashboard",
+    title: "Task Manager App",
     description:
-      "A responsive weather dashboard that uses OpenWeather API to display real-time weather conditions. Supports city-based search, location detection, and temperature details in Celsius/Fahrenheit. Built with MERN stack and Tailwind CSS.",
-    image: weather,
-    tech: [
-      "React",
-      "Node.js",
-      "MongoDB",
-      "Express",
-      "Tailwind CSS",
-      "OpenWeather API",
-      "Geolocation",
-    ],
-    github: "https://github.com/virajdomadia/WeatherApp.git",
-    live: "https://weatherapp-viraj.vercel.app/",
-  },
-  {
-    title: "URL Shortener",
-    description:
-      "A minimal MERN-based URL shortener that allows users to generate short links, track clicks, and redirect to the original URL. Includes basic analytics and validation.",
-    image: url,
-    tech: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
-    github: "https://github.com/virajdomadia/URL_Shortener.git",
-    live: "https://urlshortner-viraj.vercel.app/",
-  },
-  {
-    title: "Expense Tracker",
-    description:
-      "A MERN stack expense tracker with JWT authentication and CRUD operations for managing categorized expenses. Features include filtering and a simple dashboard.",
-    image: expense,
+      "A MERN stack task management app with JWT-based authentication. Includes CRUD, filters, priority sort, and responsive UI.",
+    image: taskmanager,
     tech: [
       "React",
       "Node.js",
@@ -119,17 +128,8 @@ const projects = [
       "JWT",
       "bcrypt",
     ],
-    github: "https://github.com/virajdomadia/ExpenseTracker.git",
-    live: "https://expense-tracker-viraj.vercel.app/",
-  },
-  {
-    title: "Ecommerce UI",
-    description:
-      "Frontend-only e-commerce UI built with React and Tailwind CSS featuring product listings, details, and cart functionality.",
-    image: ecommerce,
-    tech: ["React", "Tailwind CSS", "JavaScript"],
-    github: "https://github.com/virajdomadia/HypeCart-frontend.git",
-    live: "https://hypecart-viraj.vercel.app/",
+    github: "https://github.com/virajdomadia/TaskManager.git",
+    live: "https://task-manager-viraj.vercel.app/",
   },
 ];
 
