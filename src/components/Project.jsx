@@ -7,13 +7,35 @@ import expense from "../assets/expensetracker.png";
 import ecommerce from "../assets/ecommerce.png";
 import mernEcomm from "../assets/e-commerce-MERN.png";
 import chat from "../assets/ChatApp.png";
+import job from "../assets/JobBoardApp.png";
 
 const projects = [
+  {
+    title: "Smart Job Board App",
+    description:
+      "A full-featured MERN stack Job Board platform connecting job seekers and employers. Includes role-based authentication, job applications with resume uploads, personalized dashboards, and AI-powered job-resume matching.",
+    image: job,
+    tech: [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "JWT",
+      "Cloudinary",
+      "Tailwind CSS",
+      "Axios",
+    ],
+    github: {
+      frontend: "https://github.com/virajdomadia/job-board-frontend",
+      backend: "https://github.com/virajdomadia/job-board-backend",
+    },
+    live: "https://job-board-viraj.vercel.app/",
+  },
   {
     title: "Real-Time Chat App",
     description:
       "A MERN stack chat application with real-time one-on-one messaging using Socket.io. Features include JWT authentication, live WebSocket communication, REST APIs, and a modern responsive UI with TailwindCSS.",
-    image: chat, // replace with your actual image import/variable
+    image: chat,
     tech: [
       "React",
       "Node.js",
@@ -31,7 +53,7 @@ const projects = [
     title: "E-Commerce App",
     description:
       "A MERN stack e-commerce app with JWT-based authentication. Includes product CRUD (admin only), shopping cart & checkout, and responsive UI built with React and TailwindCSS.",
-    image: mernEcomm, // assuming you will update the image variable accordingly
+    image: mernEcomm,
     tech: [
       "React",
       "Node.js",
@@ -161,13 +183,10 @@ const LiveIcon = () => (
 
 const Project = () => {
   const scrollRef = useRef(null);
-
-  // For animation: track which cards are visible
   const [visibleCards, setVisibleCards] = useState([]);
 
   useEffect(() => {
     const cards = document.querySelectorAll(".project-card");
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -178,21 +197,15 @@ const Project = () => {
           }
         });
       },
-      {
-        threshold: 0.3,
-      }
+      { threshold: 0.3 }
     );
-
     cards.forEach((card) => observer.observe(card));
-
-    return () => {
-      cards.forEach((card) => observer.unobserve(card));
-    };
+    return () => cards.forEach((card) => observer.unobserve(card));
   }, []);
 
   const scroll = (dir) => {
     if (scrollRef.current) {
-      const amount = 320; // scroll by card width + margin approx
+      const amount = 320;
       scrollRef.current.scrollBy({
         left: dir === "left" ? -amount : amount,
         behavior: "smooth",
@@ -203,15 +216,13 @@ const Project = () => {
   return (
     <>
       <style>{`
-        /* Hide scrollbar for all browsers */
         .hide-scrollbar {
-          -ms-overflow-style: none;  /* IE and Edge */
-          scrollbar-width: none;  /* Firefox */
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
         .hide-scrollbar::-webkit-scrollbar {
-          display: none;  /* Chrome, Safari, Opera */
+          display: none;
         }
-        /* Animation */
         .project-card {
           opacity: 0;
           transform: translateY(30px) scale(0.95);
@@ -221,7 +232,6 @@ const Project = () => {
           opacity: 1;
           transform: translateY(0) scale(1);
         }
-        /* Hover scale */
         .project-card:hover {
           transform: scale(1.05);
           transition: transform 0.3s ease;
@@ -241,7 +251,6 @@ const Project = () => {
         </h2>
 
         <div className="relative">
-          {/* Scroll buttons */}
           <button
             onClick={() => scroll("left")}
             className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-3 bg-black text-white rounded-full shadow-lg hover:scale-110 transition-transform duration-200"
@@ -257,7 +266,6 @@ const Project = () => {
             &#8594;
           </button>
 
-          {/* Scroll container */}
           <div
             ref={scrollRef}
             className="overflow-x-auto scroll-smooth px-6 hide-scrollbar"
@@ -269,8 +277,9 @@ const Project = () => {
                 <article
                   key={i}
                   data-index={i}
-                  className={`project-card min-w-[280px] sm:min-w-[320px] max-w-[320px] bg-white border border-black rounded-xl shadow p-5 flex-shrink-0 flex flex-col
-                  ${visibleCards.includes(i.toString()) ? "visible" : ""}`}
+                  className={`project-card min-w-[280px] sm:min-w-[320px] max-w-[320px] bg-white border border-black rounded-xl shadow p-5 flex-shrink-0 flex flex-col ${
+                    visibleCards.includes(i.toString()) ? "visible" : ""
+                  }`}
                 >
                   <img
                     src={project.image}
@@ -294,16 +303,39 @@ const Project = () => {
                   <p className="text-sm sm:text-base text-gray-700 mb-4 flex-grow">
                     {project.description}
                   </p>
-                  <div className="flex justify-between mt-auto">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-black hover:text-blue-600 font-medium"
-                    >
-                      <GitHubIcon />
-                      <span className="hidden sm:inline">GitHub</span>
-                    </a>
+                  <div className="flex justify-between flex-wrap mt-auto gap-2">
+                    {typeof project.github === "string" ? (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-black hover:text-blue-600 font-medium"
+                      >
+                        <GitHubIcon />
+                        <span className="hidden sm:inline">GitHub</span>
+                      </a>
+                    ) : (
+                      <>
+                        <a
+                          href={project.github.frontend}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1 text-black hover:text-blue-600 font-medium"
+                        >
+                          <GitHubIcon />
+                          <span className="hidden sm:inline">Frontend</span>
+                        </a>
+                        <a
+                          href={project.github.backend}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1 text-black hover:text-blue-600 font-medium"
+                        >
+                          <GitHubIcon />
+                          <span className="hidden sm:inline">Backend</span>
+                        </a>
+                      </>
+                    )}
                     <a
                       href={project.live}
                       target="_blank"
