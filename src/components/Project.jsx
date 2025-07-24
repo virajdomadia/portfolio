@@ -7,7 +7,7 @@ import expense from "../assets/expensetracker.png";
 import ecommerce from "../assets/ecommerce.png";
 import mernEcomm from "../assets/e-commerce-MERN.png";
 import chat from "../assets/ChatApp.png";
-import job from "../assets/JobBoardApp.png";
+import job from "../assets/JobBoard.png";
 
 const projects = [
   {
