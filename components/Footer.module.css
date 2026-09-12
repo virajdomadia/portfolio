@@ -1,0 +1,4 @@
+.f { padding: 24px 0 8px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; align-items: center; }
+.links { display: flex; gap: 18px; }
+.links a:hover { color: var(--ink); }
+.top { font-family: var(--font-display), sans-serif; font-weight: 800; font-size: 22px; display: inline-block; transform: rotate(calc(var(--sp, 0) * 360deg)); transition: transform .1s linear; color: var(--acc); }

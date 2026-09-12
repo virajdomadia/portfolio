@@ -10,8 +10,11 @@ const body = Instrument_Sans({ subsets: ['latin'], weight: ['400', '500', '600']
 const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-mono', display: 'swap' })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
   title: 'Viraj Domadia — Full-stack developer, Mumbai',
   description: 'Full-stack developer (React, Node, MongoDB, Next.js) in Mumbai. Previously Accenture and Venus Vacations. Open to full-time and freelance.',
+  openGraph: { title: 'Viraj Domadia — Full-stack developer', description: 'React · Node · MongoDB · Next.js. Mumbai. Open to full-time and freelance.', type: 'website' },
+  robots: { index: true, follow: true },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
