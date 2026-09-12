@@ -12,7 +12,7 @@
   --gutter: clamp(18px, 4vw, 48px);
 }
 /* the page inverts at the contact section */
-html.invert { --bg: #1F1B10; --ink: #F7E6A2; }
+html.inverted { --bg: #1F1B10; --ink: #F7E6A2; }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
