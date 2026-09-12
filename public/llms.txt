@@ -1,0 +1,54 @@
+# Viraj Domadia
+
+> Frontend-heavy full-stack developer in Bengaluru, India. Software Engineer at Zapigo (https://zapigo.com). Open to full-time and freelance work, on-site in Bengaluru or remote.
+
+## About
+
+Viraj Domadia is a frontend-heavy full-stack developer based in Bengaluru, originally from Mumbai. He works with React, Next.js, TypeScript, Node.js, Express, FastAPI, PostgreSQL and MongoDB. He is a Software Engineer at Zapigo, where he owns the web frontend and built Personal Invites end to end. In 2024 he moved from IT operations into full-stack development through self-directed upskilling, after roles at Venus Vacations and Accenture. He is completing an online MCA at Amity University (2025–2027) and is open to full-time and freelance work, on-site in Bengaluru or remote.
+
+## Experience
+
+- Software Engineer · Zapigo (2025-10 → present): Own the frontend of zapigo.com: Next.js 16, React 19, TypeScript, Tailwind v4, TanStack Query, Zustand and React Aria, with Vitest + Playwright tests and Sentry monitoring. Built Personal Invites end to end — create and share a digital invitation in under 30 seconds — including its FastAPI + PostgreSQL backend.
+- IT Executive · Venus Vacations Pvt. Ltd (2024-07 → 2025-11): Ran the company’s IT and hardware. Alongside that, built the company website with a custom booking engine end to end — React front, Node/Express API, MongoDB — taken through internal review, not deployed.
+- Application Development Associate · Accenture (2022-12 → 2023-07): Backup and support engineer on an enterprise client account: monitored NetBackup jobs, handled incidents and restores, and worked to SLAs in a large operations team.
+- MCA · Amity University (2025-07 → 2027-06): Online MCA, alongside full-time work. B.Sc. IT · Narsee Monjee College of Commerce and Economics, Mumbai University · 2019–2022 · 8.33 CGPA
+
+## Education
+
+- Master of Computer Applications (online), Amity University, 2025–2027
+- B.Sc. Information Technology, Narsee Monjee College of Commerce and Economics, Mumbai University, 2019–2022 (8.33 CGPA)
+
+## Stack
+
+- Client: React (2 yrs), Next.js (2 yrs), TypeScript (1 yr), JavaScript (2 yrs), Tailwind CSS (2 yrs), HTML5 (2 yrs), CSS3 (2 yrs), TanStack Query (1 yr), Zustand (1 yr), Framer Motion (1 yr)
+- Server: Node.js (2 yrs), Express (2 yrs), FastAPI (1 yr), Socket.io (1 yr), JWT (2 yrs)
+- Data: MongoDB (2 yrs), Mongoose (2 yrs), PostgreSQL (1 yr), Prisma (1 yr), Firebase (1 yr), Cloudinary (1 yr)
+- Tooling: Git (2 yrs), GitHub (2 yrs), Docker (1 yr), Vercel (2 yrs), Postman (2 yrs), Figma (1 yr), Vitest (1 yr), Playwright (1 yr), Sentry (1 yr)
+
+## Projects
+
+Coming soon. Six projects are in the works — each built to prove one production concern, with a live URL, public repo, tests and a case study. Nothing goes here until it’s real. Until then, the code I ship every day is live at https://zapigo.com.
+
+## FAQ
+
+**Is Viraj Domadia available for work?** Yes — open to full-time roles and freelance projects, in Bengaluru or remote. Replies within a day.
+
+**What does Viraj build with?** React and Next.js with TypeScript on the client; Node/Express and FastAPI APIs; PostgreSQL and MongoDB. Currently a Software Engineer at Zapigo, where he owns the web frontend.
+
+**Where is Viraj based?** Bengaluru, India (IST, UTC+5:30); originally from Mumbai. Works with remote teams across time zones.
+
+**How do I contact Viraj?** The form on this page, email virajdomadia6@gmail.com, or call +91 88280 91294.
+
+## Contact
+
+- Email: virajdomadia6@gmail.com
+- Phone: +91 88280 91294
+- GitHub: https://github.com/virajdomadia
+- LinkedIn: https://www.linkedin.com/in/viraj-domadia-6b89751b5
+- Résumé: https://virajdomadia.vercel.app/Viraj-Domadia-Resume.pdf
+- Site: https://virajdomadia.vercel.app
+
+## Pages
+
+- [Home](https://virajdomadia.vercel.app/)
+- [Résumé PDF](https://virajdomadia.vercel.app/Viraj-Domadia-Resume.pdf)

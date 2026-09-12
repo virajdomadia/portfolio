@@ -11,7 +11,10 @@
     "test:watch": "vitest",
     "e2e": "playwright test",
     "lhci": "lhci autorun",
-    "gen:icons": "node scripts/gen-icons.mjs"
+    "gen:icons": "node scripts/gen-icons.mjs",
+    "gen:llms": "node --experimental-strip-types --no-warnings scripts/gen-llms.mjs",
+    "gen:resume": "node --experimental-strip-types --no-warnings scripts/gen-resume.mjs",
+    "prebuild": "pnpm gen:llms"
   },
   "dependencies": {
     "next": "15.5.25",
