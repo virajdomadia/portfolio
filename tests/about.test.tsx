@@ -20,12 +20,22 @@ describe('About', () => {
     vi.useFakeTimers()
     vi.stubGlobal('requestAnimationFrame', (cb: FrameRequestCallback) => setTimeout(() => cb(performance.now()), 16))
     const { container } = render(<Counters />)
-    const n = container.querySelector('[data-count="5"]')!
+    const n = container.querySelector('[data-count="30"]')!
     expect(n.textContent).toBe('0')
     act(() => { (n.closest('[data-reveal]') as any).__reveal?.() })
     act(() => { vi.advanceTimersByTime(1500) })
-    expect(n.textContent).toBe('5')
+    expect(n.textContent).toBe('30')
     vi.unstubAllGlobals()
     vi.useRealTimers()
+  })
+})
+
+describe('About copy', () => {
+  it('shows Zapigo first and the B.Sc. line inside the MCA card', () => {
+    render(<About />)
+    const cards = screen.getAllByRole('article')
+    expect(cards[0]).toHaveTextContent('Software Engineer · Zapigo')
+    expect(cards[3]).toHaveTextContent('8.33 CGPA')
+    expect(screen.getByRole('link', { name: /Zapigo/ })).toHaveAttribute('href', 'https://zapigo.com')
   })
 })

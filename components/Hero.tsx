@@ -11,7 +11,7 @@ export default function Hero() {
   return (
     <div className={s.pin} data-progress="sticky" data-hero>
       <header className={s.hero}>
-        <div className={s.bg}><Image src="/images/hero-desk.jpg" alt="Viraj at a desk with three monitors, building a portfolio site" fill priority sizes="100vw" /></div>
+        <div className={s.bg}><Image src="/images/hero-desk.jpg" alt={hero.bgAlt} fill priority sizes="100vw" /></div>
         <div className={s.veil} />
         <div className={s.frame} aria-hidden="true"><i className={s.tl}>{hero.corners[0]}</i><i className={s.tr}>{hero.corners[1]}</i><i className={s.bl}>{hero.corners[2]}</i><i className={s.br}>{hero.corners[3]}</i></div>
         <div className={`wrap ${s.inner}`}>

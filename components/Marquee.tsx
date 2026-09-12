@@ -10,5 +10,5 @@ function Band({ items, reverse }: { items: string[]; reverse?: boolean }) {
   )
 }
 export default function Marquee() {
-  return <><Band items={content.marquee.stack} /><Band items={content.marquee.projects} reverse /></>
+  return <><Band items={content.marquee.stack} /><Band items={content.marquee.b} reverse /></>
 }

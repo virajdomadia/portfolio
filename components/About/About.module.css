@@ -44,6 +44,9 @@ html:not(:global(.js)) .pic::after { display: none; }
 .yr small { display: block; margin-top: 6px; font: 500 13px var(--font-mono), monospace; color: var(--muted); letter-spacing: .04em; }
 .card b { display: block; font-weight: 600; font-size: 18px; }
 .card p { margin: 6px 0 0; color: var(--muted); font-size: 15px; max-width: 40ch; }
+.card b a { border-bottom: 1.5px solid transparent; transition: border-color .2s; }
+.card b a:hover { border-bottom-color: var(--acc); }
+.card .extra { font: 500 12px var(--font-mono), monospace; letter-spacing: .02em; color: var(--muted); max-width: none; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
 .chips span { font: 500 11px var(--font-mono), monospace; border: 1px solid var(--line); padding: 3px 7px; color: var(--muted); }
 /* counters */
