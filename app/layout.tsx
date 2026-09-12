@@ -3,6 +3,8 @@ import { Anybody, Instrument_Sans, IBM_Plex_Mono } from 'next/font/google'
 import ScrollDriver from '@/components/ScrollDriver'
 import Nav from '@/components/Nav'
 import ProgressBar from '@/components/ProgressBar'
+import { content } from '@/lib/content'
+import { siteUrl } from '@/lib/site'
 import './globals.css'
 
 const display = Anybody({ subsets: ['latin'], axes: ['wdth'], weight: 'variable', variable: '--font-display', display: 'swap' })
@@ -10,12 +12,19 @@ const body = Instrument_Sans({ subsets: ['latin'], weight: ['400', '500', '600']
 // mono only sets small labels, so it is not worth a preload ahead of the LCP text
 const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-mono', display: 'swap', preload: false })
 
+const { seo, person } = content
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
-  title: 'Viraj Domadia — Full-stack developer, Mumbai',
-  description: 'Full-stack developer (React, Node, MongoDB, Next.js) in Mumbai. Previously Accenture and Venus Vacations. Open to full-time and freelance.',
-  openGraph: { title: 'Viraj Domadia — Full-stack developer', description: 'React · Node · MongoDB · Next.js. Mumbai. Open to full-time and freelance.', type: 'website' },
-  robots: { index: true, follow: true },
+  metadataBase: new URL(siteUrl()),
+  title: { default: seo.title, template: `%s — ${person.name}` },
+  description: seo.description,
+  keywords: seo.keywords,
+  authors: [{ name: person.name, url: siteUrl() }], creator: person.name, publisher: person.name,
+  alternates: { canonical: '/' },
+  openGraph: { type: 'profile', url: '/', siteName: seo.siteName, locale: 'en_IN', title: seo.title, description: seo.description, firstName: person.first, lastName: person.last },
+  twitter: { card: 'summary_large_image', title: seo.title, description: seo.description },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1, 'max-video-preview': -1 } },
+  verification: { google: process.env.GOOGLE_SITE_VERIFICATION, other: process.env.BING_SITE_VERIFICATION ? { 'msvalidate.01': process.env.BING_SITE_VERIFICATION } : undefined },
+  category: 'technology',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
