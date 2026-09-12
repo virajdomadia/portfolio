@@ -4,9 +4,14 @@ import { ContentSchema } from '@/lib/content-schema'
 
 describe('content', () => {
   it('validates against its schema', () => { expect(() => ContentSchema.parse(content)).not.toThrow() })
-  it('has no projects yet, only the coming-soon block', () => {
-    expect(content.projects).toEqual([])
-    expect(content.comingSoon.headingBold).toBe('soon.')
+  it('lists the six projects, each with a live URL and a public repo', () => {
+    expect(content.projects).toHaveLength(6)
+    expect(content.projects.map((p) => p.slug)).toEqual(['tripsmith', 'frontrow', 'pagecraft', 'offcut', 'skillroom', 'platter'])
+    for (const p of content.projects) {
+      expect(p.live).toMatch(/^https:\/\/.+\.vercel\.app$/)
+      expect(p.repo).toBe(`https://github.com/virajdomadia/${p.slug}`)
+      expect(p.status).toMatch(/landing page live/)
+    }
   })
   it('has 30 tools across four layers with honest years (≤ 2)', () => {
     expect(content.tools).toHaveLength(30)

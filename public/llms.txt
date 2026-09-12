@@ -27,7 +27,14 @@ Viraj Domadia is a frontend-heavy full-stack developer based in Bengaluru, origi
 
 ## Projects
 
-Coming soon. Six projects are in the works — each built to prove one production concern, with a live URL, public repo, tests and a case study. Nothing goes here until it’s real. Until then, the code I ship every day is live at https://zapigo.com.
+- **Tripsmith** (Travel + AI concierge; in build · landing page live): A travel-agency site where a chatbot plans a real itinerary from live packages and starts the booking — tool-calling agent, Razorpay checkout, admin for packages and bookings. Live: https://tripsmith.vercel.app · Source: https://github.com/virajdomadia/tripsmith
+- **Frontrow** (Live seat-map ticketing; in build · landing page live): Movie and concert tickets on a live seat map: tap a seat and it is held for ten minutes and greys out for everyone else — Redis holds, transactions, idempotent payments, QR tickets. Live: https://frontrow-viraj.vercel.app · Source: https://github.com/virajdomadia/frontrow
+- **Pagecraft** (Co-edited website builder; in build · landing page live): A landing-page editor two people use at the same time — live cursors, conflict-free merges, version history — then one click publishes it to its own subdomain. Live: https://pagecraft-viraj.vercel.app · Source: https://github.com/virajdomadia/pagecraft
+- **Offcut** (D2C store + visual search; in build · landing page live): A complete streetwear store — variants, inventory that cannot go negative, cart, orders, returns, admin — plus “drop a photo, shop the look” search on image embeddings. Live: https://offcut-viraj.vercel.app · Source: https://github.com/virajdomadia/offcut
+- **Skillroom** (Video course platform; in build · landing page live): Creators upload video courses; students buy or subscribe, resume where they left off, pass quizzes and earn a certificate — streaming, recurring billing, payouts, three-role access. Live: https://skillroom-viraj.vercel.app · Source: https://github.com/virajdomadia/skillroom
+- **Platter** (Food delivery + live tracking; in build · landing page live): Customer, restaurant and rider apps on one order state machine — restaurants within a radius, live rider location on the customer’s map, role-checked transitions. Live: https://platter-viraj.vercel.app · Source: https://github.com/virajdomadia/platter
+
+Each one ships with a public repo, a live URL and a case study as it gets built. The landing pages are live now; the products follow.
 
 ## FAQ
 

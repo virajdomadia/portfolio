@@ -16,7 +16,7 @@ const lines = [
   ...c.education.map((e) => `- ${e.degree}, ${e.school}, ${e.years}${e.note ? ` (${e.note})` : ''}`), '',
   '## Stack', '',
   ...['client', 'server', 'data', 'tooling'].map((l) => `- ${cap(l)}: ${c.tools.filter((t) => t.layer === l).map((t) => `${t.name} (${t.years} yr${t.years > 1 ? 's' : ''})`).join(', ')}`), '',
-  '## Projects', '', `${c.comingSoon.heading} ${c.comingSoon.headingBold} ${c.comingSoon.lead} ${c.comingSoon.note} ${p.employer.url}.`, '',
+  '## Projects', '', ...c.projects.map((pr) => `- **${pr.title}** (${pr.category}; ${pr.status.toLowerCase()}): ${pr.blurb} Live: ${pr.live} · Source: ${pr.repo}`), '', c.projectsNote.after, '',
   '## FAQ', '',
   ...c.faq.flatMap((f) => [`**${f.q}** ${f.a}`, '']),
   '## Contact', '',
