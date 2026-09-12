@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Anybody, Instrument_Sans, IBM_Plex_Mono } from 'next/font/google'
+import ScrollDriver from '@/components/ScrollDriver'
 import './globals.css'
 
 const display = Anybody({ subsets: ['latin'], axes: ['wdth'], weight: 'variable', variable: '--font-display', display: 'swap' })
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body>
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <ScrollDriver />
         {children}
       </body>
     </html>
