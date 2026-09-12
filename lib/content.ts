@@ -55,17 +55,10 @@ export const content: Content = {
   ],
   projects: [],
   comingSoon: {
-    heading: 'Six projects,', headingBold: 'built properly.',
-    lead: 'The tutorial apps are gone. Each of these is built to prove one production concern — and ships with a live URL, public repo, tests and a case study.',
-    items: [
-      { title: 'Booking platform with real payments', proves: 'Razorpay checkout, webhooks, refunds', stack: ['Next.js', 'Node', 'MongoDB', 'Razorpay'] },
-      { title: '“Ask your documents” RAG assistant', proves: 'Embeddings, retrieval, streaming, citations', stack: ['Next.js', 'Claude API', 'Atlas Vector Search'] },
-      { title: 'GST invoicing SaaS', proves: 'Multi-tenancy, RBAC, PostgreSQL, PDFs', stack: ['Next.js', 'PostgreSQL', 'Prisma'] },
-      { title: 'Real-time collaborative kanban', proves: 'Presence, optimistic updates, queues', stack: ['Socket.io', 'Redis', 'BullMQ'] },
-      { title: 'Uptime monitor & status page', proves: 'Cron workers, alerts, Docker, CI, tests', stack: ['Node', 'Postgres', 'Docker'] },
-      { title: 'Bengaluru open-data dashboard', proves: 'Scheduled ingestion, aggregations, caching', stack: ['Next.js', 'MongoDB', 'Recharts'] },
-    ],
-    note: 'First one lands here soon. Until then, the code I ship every day is at zapigo.com.',
+    heading: 'Coming', headingBold: 'soon.',
+    lead: 'Six projects are in the works — each built to prove one production concern, with a live URL, public repo, tests and a case study. Nothing goes here until it’s real.',
+    note: 'Until then, the code I ship every day is live at',
+    cta: 'zapigo.com',
   },
   tools: [
     { key: 'react', name: 'React', layer: 'client', years: 2, brand: '#61DAFB' },

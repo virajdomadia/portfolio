@@ -30,7 +30,7 @@ export const ContentSchema = z.object({
   experience: z.array(ExperienceSchema).length(4),
   education: z.array(z.object({ degree: z.string(), school: z.string(), schoolUrl: z.string().url().optional(), years: z.string(), note: z.string().optional() })).length(2),
   projects: z.array(ProjectSchema),
-  comingSoon: z.object({ heading: z.string(), headingBold: z.string(), lead: z.string(), items: z.array(z.object({ title: z.string(), proves: z.string(), stack: z.array(z.string()).min(1) })).length(6), note: z.string() }),
+  comingSoon: z.object({ heading: z.string(), headingBold: z.string(), lead: z.string(), note: z.string(), cta: z.string() }),
   tools: z.array(ToolSchema),
   stack: z.object({ heading: z.string(), headingBold: z.string(), note: z.string() }),
   band: z.object({ headline: z.string(), sub: z.string(), alt: z.string() }),

@@ -4,9 +4,9 @@ import { ContentSchema } from '@/lib/content-schema'
 
 describe('content', () => {
   it('validates against its schema', () => { expect(() => ContentSchema.parse(content)).not.toThrow() })
-  it('has no projects yet and six planned ones', () => {
+  it('has no projects yet, only the coming-soon block', () => {
     expect(content.projects).toEqual([])
-    expect(content.comingSoon.items).toHaveLength(6)
+    expect(content.comingSoon.headingBold).toBe('soon.')
   })
   it('has 30 tools across four layers with honest years (≤ 2)', () => {
     expect(content.tools).toHaveLength(30)
