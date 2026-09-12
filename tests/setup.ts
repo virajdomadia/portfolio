@@ -1,4 +1,9 @@
 import '@testing-library/jest-dom/vitest'
+import { cleanup } from '@testing-library/react'
+import { afterEach } from 'vitest'
+
+// RTL only auto-cleans with vitest globals; do it explicitly
+afterEach(cleanup)
 
 // jsdom lacks these; components guard on them but tests need stable stubs
 class IO { observe() {} unobserve() {} disconnect() {} takeRecords() { return [] } root = null; rootMargin = ''; thresholds = [] }
