@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Anybody, Instrument_Sans, IBM_Plex_Mono } from 'next/font/google'
 import ScrollDriver from '@/components/ScrollDriver'
+import Nav from '@/components/Nav'
+import ProgressBar from '@/components/ProgressBar'
 import './globals.css'
 
 const display = Anybody({ subsets: ['latin'], axes: ['wdth'], weight: 'variable', variable: '--font-display', display: 'swap' })
@@ -15,9 +17,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
-      <body>
+      <body id="top">
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <ScrollDriver />
+        <ProgressBar />
+        <Nav />
         {children}
       </body>
     </html>

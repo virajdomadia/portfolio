@@ -10,5 +10,7 @@ export default defineConfig({
     include: ['tests/**/*.test.{ts,tsx}'],
     css: { modules: { classNameStrategy: 'non-scoped' } },
   },
+  // tests don't need Tailwind; an inline config stops Vite loading Next's postcss.config.mjs
+  css: { postcss: { plugins: [] } },
   resolve: { alias: { '@': path.resolve(__dirname, '.') } },
 })
