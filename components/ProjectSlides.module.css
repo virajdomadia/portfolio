@@ -1,5 +1,5 @@
 .slides { position: relative; }
-.slide { position: sticky; top: 0; height: 100vh; overflow: hidden; border-top: 1.5px solid var(--ink); display: grid; align-items: end; background: var(--bg); }
+.slide { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; border-top: 1.5px solid var(--ink); display: grid; align-items: end; background: var(--bg); }
 .bg { position: absolute; inset: 0; transform: scale(calc(1 + var(--c, 0) * .06)); filter: brightness(calc(1 - var(--c, 0) * .55)); transition: transform .1s linear, filter .1s linear; }
 .bg img { object-fit: cover; }
 .bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 38%, rgba(31,27,16,.86)); }

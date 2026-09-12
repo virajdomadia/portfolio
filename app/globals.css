@@ -13,9 +13,11 @@
 }
 /* the page inverts at the contact section */
 html.inverted { --bg: #1F1B10; --ink: #F7E6A2; }
+html.menu-open { overflow: hidden; }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* clip on html too: body alone does not stop mobile Chrome zooming out for transformed overflow */
+html { scroll-behavior: smooth; overflow-x: clip; }
 body {
   margin: 0; background: var(--bg); color: var(--ink);
   font-family: var(--font-body), system-ui, sans-serif; font-size: 17px; line-height: 1.5;

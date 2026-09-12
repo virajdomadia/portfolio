@@ -1,0 +1,25 @@
+.burger { display: none; width: 44px; height: 44px; border: 1.5px solid var(--ink); background: none; cursor: pointer; position: relative; z-index: 56; flex: none; transition: border-color .9s; }
+.burger i { position: absolute; left: 11px; right: 11px; height: 2px; background: var(--ink); top: 17px; transition: transform .35s cubic-bezier(.2,.8,.2,1), top .35s, background-color .9s; }
+.burger i:last-child { top: 25px; }
+:global(nav.over) .burger { border-color: rgba(247,230,162,.5); }
+:global(nav.over) .burger i { background: #F7E6A2; }
+:global(html.menu-open) .burger { border-color: rgba(247,230,162,.5); }
+:global(html.menu-open) .burger i { background: #F7E6A2; }
+:global(html.menu-open) .burger i:first-child { top: 21px; transform: rotate(45deg); }
+:global(html.menu-open) .burger i:last-child { top: 21px; transform: rotate(-45deg); }
+@media (max-width: 900px) { .burger { display: block } }
+.menu { position: fixed; inset: 0; z-index: 55; background: #1F1B10; color: #F7E6A2; display: grid; align-content: end; padding-top: 64px; clip-path: circle(0 at calc(100% - 44px) 32px); transition: clip-path .6s cubic-bezier(.2,.8,.2,1); pointer-events: none; }
+:global(html.menu-open) .menu { clip-path: circle(150% at calc(100% - 44px) 32px); pointer-events: auto; }
+.inner { display: grid; gap: 28px; padding-block: 24px 40px; width: 100%; }
+.head { display: flex; justify-content: space-between; align-items: center; color: rgba(247,230,162,.6); }
+.links { display: grid; }
+.links a { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; border-top: 1px solid rgba(247,230,162,.18); font-family: var(--font-display), sans-serif; font-weight: 800; font-size: clamp(40px, 11vw, 64px); letter-spacing: -.03em; line-height: 1; text-transform: uppercase; font-variation-settings: "wdth" 92; opacity: 0; transform: translateY(24px); transition: opacity .5s cubic-bezier(.2,.8,.2,1), transform .5s cubic-bezier(.2,.8,.2,1), font-variation-settings .4s; transition-delay: 0s; }
+:global(html.menu-open) .links a { opacity: 1; transform: none; transition-delay: calc(.15s + var(--i) * 70ms); }
+.links a:active, .links a:hover { color: var(--acc-2); font-variation-settings: "wdth" 115; }
+.links a small { font: 500 12px var(--font-mono), monospace; letter-spacing: .12em; color: rgba(247,230,162,.5); }
+.foot { display: grid; gap: 14px; border-top: 1px solid rgba(247,230,162,.18); padding-top: 22px; opacity: 0; transform: translateY(16px); transition: opacity .5s, transform .5s; transition-delay: 0s; }
+:global(html.menu-open) .foot { opacity: 1; transform: none; transition-delay: .5s; }
+.foot :global(.btn) { background: #F7E6A2; color: #1F1B10; border-color: #F7E6A2; justify-self: start; font-size: 14px; padding: 11px 16px; }
+.soc { display: flex; gap: 18px; font-weight: 500; font-size: 14px; }
+.soc a { border-bottom: 1px solid rgba(247,230,162,.35); }
+.note { color: rgba(247,230,162,.6); }
