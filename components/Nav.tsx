@@ -21,7 +21,7 @@ export default function Nav() {
   return (
     <nav className={`${s.top} ${scrolled ? s.scrolled : ''} ${over ? `${s.over} over` : ''}`} aria-label="Primary">
       <div className={`wrap ${s.inner}`}>
-        <a className={s.brand} href="#top" aria-label={person.name}><b className={s.mark} aria-hidden="true">VD</b><span className={s.name}>{person.name}</span></a>
+        <a className={s.brand} href="#top" aria-label={`VD ${person.name}`}><b className={s.mark} aria-hidden="true">VD</b><span className={s.name}>{person.name}</span></a>
         <div className={s.links}>{LINKS.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</div>
         <div className={s.right}>
           <span className={s.pill}><i className={s.dot} aria-hidden="true" /><span>{person.available}</span></span>
