@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(.3, 1.6, .5, 1)",
+        "createdAt": "2026-09-12T07:01:41.729Z",
+        "reason": "user-approved mockup (mockups/index.html, chosen after ~40 variants): counter suffix pop is the intended Kinetic Editorial motion"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(.3, 1.4, .5, 1)",
+        "createdAt": "2026-09-12T07:01:42.142Z",
+        "reason": "user-approved mockup (mockups/index.html): stack pill pop-in is the intended motion"
+      },
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(.3, 1.5, .5, 1)",
+        "createdAt": "2026-09-12T07:01:42.598Z",
+        "reason": "user-approved mockup (mockups/index.html): pill icon hover overshoot is the intended motion"
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "components/About/About.module.css"
+        ],
+        "createdAt": "2026-09-12T07:01:43.042Z",
+        "reason": "user-approved mockup (mockups/index.html L252): 4px bar is the scroll-driven active-card indicator scaled by --act, not a static accent tab"
+      }
+    ]
+  }
+}
