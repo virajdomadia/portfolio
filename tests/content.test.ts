@@ -4,11 +4,27 @@ import { ContentSchema } from '@/lib/content-schema'
 
 describe('content', () => {
   it('validates against its schema', () => { expect(() => ContentSchema.parse(content)).not.toThrow() })
-  it('has five projects in the approved order', () => {
-    expect(content.projects.map(p => p.slug)).toEqual(['smart-job-board', 'real-time-chat', 'e-commerce', 'expense-tracker', 'ecommerce-ui'])
+  it('has no projects yet and six planned ones', () => {
+    expect(content.projects).toEqual([])
+    expect(content.comingSoon.items).toHaveLength(6)
   })
-  it('has 22 tools across four layers', () => {
-    expect(content.tools).toHaveLength(22)
+  it('has 30 tools across four layers with honest years (≤ 2)', () => {
+    expect(content.tools).toHaveLength(30)
     expect(new Set(content.tools.map(t => t.layer))).toEqual(new Set(['client', 'server', 'data', 'tooling']))
+    expect(Math.max(...content.tools.map(t => t.years))).toBeLessThanOrEqual(2)
+  })
+  it('states the verified facts and none of the retired claims', () => {
+    const text = JSON.stringify(content)
+    expect(content.person.city).toBe('Bengaluru')
+    expect(content.experience[0].title).toBe('Software Engineer · Zapigo')
+    expect(content.experience[1].title).toBe('IT Executive · Venus Vacations Pvt. Ltd')
+    expect(content.person.phone).toBe('+918828091294')
+    for (const retired of ['5 apps live', 'UI libraries for Accenture', 'Full Stack Developer', 'example.com', 'Mumbai, IN']) expect(text).not.toContain(retired)
+    for (const alt of [content.about.photoAlt, content.hero.bgAlt, content.band.alt]) expect(alt).toMatch(/^Illustration/)
+  })
+  it('has four FAQ entries that mention Bengaluru and the phone', () => {
+    expect(content.faq).toHaveLength(4)
+    expect(content.faq.map(f => f.a).join(' ')).toMatch(/Bengaluru/)
+    expect(content.faq.map(f => f.a).join(' ')).toContain('+91 88280 91294')
   })
 })
