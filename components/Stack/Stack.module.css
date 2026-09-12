@@ -22,3 +22,4 @@ html:global(.js) .pill:global(.in) { animation: pop .55s cubic-bezier(.3,1.4,.5,
 .pill:hover { transform: translate(var(--tx, 0px), calc(var(--ty, 0px) - 3px)) scale(calc(var(--s, 1) * 1.03)); box-shadow: 6px 6px 0 var(--b); background: color-mix(in oklab, var(--bg) 80%, #fff); }
 .pill:hover svg { fill: var(--b); transform: rotate(-8deg) scale(1.15); }
 .pill:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { html:global(.js) .pill:not(:global(.in)) { opacity: 1; transform: none } html:global(.js) .pill:global(.in) { animation: none } }

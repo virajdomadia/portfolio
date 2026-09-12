@@ -14,42 +14,48 @@ export default function ScrollDriver() {
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' })
     document.querySelectorAll('[data-reveal], .hd').forEach((el) => io.observe(el))
 
+    // Every tick is split into a read phase (all getBoundingClientRect calls) and a write phase
+    // (all style.setProperty calls) so the browser lays out once, not once per element.
     const tick = () => {
       const vh = window.innerHeight
-      root.style.setProperty('--sp', String(window.scrollY / Math.max(1, root.scrollHeight - vh)))
+      const y = window.scrollY
 
-      document.querySelectorAll<HTMLElement>('[data-progress]').forEach((el) => {
-        const r = el.getBoundingClientRect(); const mode = el.dataset.progress
+      const progress = Array.from(document.querySelectorAll<HTMLElement>('[data-progress]')).map((el) => ({ el, r: el.getBoundingClientRect(), mode: el.dataset.progress }))
+      const slides = Array.from(document.querySelectorAll<HTMLElement>('[data-slide]')).map((el) => ({ el, top: el.getBoundingClientRect().top }))
+      const parallax = Array.from(document.querySelectorAll<HTMLElement>('[data-parallax]')).map((el) => ({ el, r: el.getBoundingClientRect() }))
+      const dots = document.querySelectorAll<HTMLElement>('[data-dot]')
+      const skewEls = document.querySelectorAll<HTMLElement>('[data-skew]')
+      const scrollH = root.scrollHeight
+
+      root.style.setProperty('--sp', String(y / Math.max(1, scrollH - vh)))
+
+      for (const { el, r, mode } of progress) {
         let p = 0
         if (mode === 'sticky') p = stickyProgress(r.top, r.height, vh)
         else if (mode === 'view') p = viewProgress(r.top, vh)
         else if (mode === 'words') p = wordsProgress(r.top, vh)
         else if (mode === 'band') p = bandProgress(r.top, r.height, vh)
-        else if (mode === 'span') { el.style.setProperty('--P', String(reduce ? 1 : spanProgress(r.top, r.height, vh))); return }
+        else if (mode === 'span') { el.style.setProperty('--P', String(reduce ? 1 : spanProgress(r.top, r.height, vh))); continue }
         el.style.setProperty('--p', String(reduce ? (mode === 'sticky' ? 0 : 1) : p))
-      })
+      }
 
-      const slides = document.querySelectorAll<HTMLElement>('[data-slide]')
       let active = 0
-      slides.forEach((el, i) => {
+      slides.forEach(({ el, top }, i) => {
         const next = slides[i + 1]
-        const c = next ? coverProgress(next.getBoundingClientRect().top, vh) : 0
+        const c = next ? coverProgress(next.top, vh) : 0
         el.style.setProperty('--c', String(reduce ? 0 : c))
-        if (el.getBoundingClientRect().top <= vh * 0.5) active = i
+        if (top <= vh * 0.5) active = i
       })
-      document.querySelectorAll<HTMLElement>('[data-dot]').forEach((d, i) => d.classList.toggle('on', i === active))
+      dots.forEach((d, i) => d.classList.toggle('on', i === active))
 
-      document.querySelectorAll<HTMLElement>('[data-parallax]').forEach((el) => {
-        const r = el.getBoundingClientRect()
-        el.style.setProperty('--py', reduce ? '0' : parallaxOffset(r.top, r.height, vh).toFixed(1))
-      })
+      for (const { el, r } of parallax) el.style.setProperty('--py', reduce ? '0' : parallaxOffset(r.top, r.height, vh).toFixed(1))
 
       if (!reduce) {
-        const delta = window.scrollY - lastY; lastY = window.scrollY
+        const delta = y - lastY; lastY = y
         const skew = velocitySkew(delta) + 'deg'
-        document.querySelectorAll<HTMLElement>('[data-skew]').forEach((m) => m.style.setProperty('--skew', skew))
+        skewEls.forEach((m) => m.style.setProperty('--skew', skew))
         window.clearTimeout(skewTimer)
-        skewTimer = window.setTimeout(() => document.querySelectorAll<HTMLElement>('[data-skew]').forEach((m) => m.style.setProperty('--skew', '0deg')), 120)
+        skewTimer = window.setTimeout(() => skewEls.forEach((m) => m.style.setProperty('--skew', '0deg')), 120)
       }
     }
     const onScroll = () => { if (raf) return; raf = requestAnimationFrame(() => { raf = null; tick() }) }

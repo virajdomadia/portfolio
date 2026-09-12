@@ -9,7 +9,10 @@
 .srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 /* quote */
 .quote { font-family: var(--font-display), sans-serif; font-weight: 400; font-size: clamp(26px, 3.2vw, 42px); line-height: 1.1; letter-spacing: -.02em; margin: 0 0 28px; font-variation-settings: "wdth" 90; }
-.quote .w { opacity: clamp(.15, calc(var(--p, 0) * var(--n) - var(--i) + 1), 1); transition: opacity .25s; }
+.quote .w { position: relative; display: inline-block; }
+/* un-revealed words show as a 15% ghost drawn by ::before; the real text fades 0→1, so it is always either hidden or fully readable */
+html:global(.js) .quote .w > span { opacity: clamp(0, calc(var(--p, 0) * var(--n) - var(--i) + 1), 1); transition: opacity .25s; }
+html:global(.js) .quote .w::before { content: attr(data-w); position: absolute; left: 0; top: 0; opacity: .15; pointer-events: none; }
 .quote b { color: var(--acc); font-weight: 400; position: relative; display: inline-block; }
 .quote b::after { content: ""; position: absolute; left: 0; right: 0; bottom: -.04em; height: .08em; background: var(--acc); transform: scaleX(0); transform-origin: left; transition: transform .9s cubic-bezier(.2,.8,.2,1) .5s; }
 .quote:global(.in) b::after { transform: none; }

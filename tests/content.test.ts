@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
-import { content, ContentSchema } from '@/lib/content'
+import { content } from '@/lib/content'
+import { ContentSchema } from '@/lib/content-schema'
 
 describe('content', () => {
   it('validates against its schema', () => { expect(() => ContentSchema.parse(content)).not.toThrow() })
