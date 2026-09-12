@@ -1,0 +1,9 @@
+.band { border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); overflow: hidden; white-space: nowrap; padding: 12px 0; font: 600 14px var(--font-body), sans-serif; letter-spacing: .12em; text-transform: uppercase; transform: skewX(var(--skew, 0deg)); transition: transform .5s cubic-bezier(.2,.7,.2,1), border-color .9s; }
+.band + .band { border-top: 0; }
+.inner { display: inline-block; animation: mq 30s linear infinite; padding-right: 40px; }
+.rev .inner { animation-direction: reverse; }
+.band:hover .inner { animation-play-state: paused; }
+@keyframes mq { to { transform: translateX(-50%) } }
+.dot { font-style: normal; color: var(--acc); margin: 0 22px; }
+.item { display: inline-block; transition: transform .3s, color .3s; }
+.item:hover { transform: scale(1.25) rotate(-3deg); color: var(--acc); }
