@@ -1,0 +1,24 @@
+.sec { padding-block: clamp(56px, 8vw, 110px); }
+.intro { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; margin-bottom: 28px; }
+@media (max-width: 640px) { .intro { grid-template-columns: 1fr } }
+.h2 { font-family: var(--font-display), sans-serif; font-weight: 800; font-size: clamp(28px, 3.4vw, 46px); letter-spacing: -.03em; margin: 0; line-height: .98; }
+.h2 b { color: var(--acc); }
+.intro p { margin: 0; color: var(--muted); font-size: 14px; max-width: 38ch; text-align: right; }
+@media (max-width: 640px) { .intro p { text-align: left } }
+.groups { position: relative; }
+.grp { display: grid; grid-template-columns: 150px 1fr; gap: 20px; align-items: start; padding: 22px 0; border-top: 1px solid var(--line); }
+.grp:last-child { border-bottom: 1px solid var(--line); }
+@media (max-width: 640px) { .grp { grid-template-columns: 1fr; gap: 10px } }
+.glab { display: flex; align-items: baseline; gap: 10px; padding-top: 10px; }
+.glab b { font-family: var(--font-display), sans-serif; font-weight: 800; font-size: 24px; letter-spacing: -.02em; }
+.glab span { font: 500 11px var(--font-mono), monospace; color: var(--muted); }
+.pills { display: flex; flex-wrap: wrap; gap: 10px; }
+.pill { display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 16px 0 12px; border: 1.5px solid var(--ink); background: var(--bg); font-weight: 600; font-size: 15px; white-space: nowrap; position: relative; transform: translate(var(--tx, 0px), var(--ty, 0px)) scale(var(--s, 1)); transform-origin: center; transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .3s, background-color .3s, border-color .9s, opacity .4s; }
+html:global(.js) .pill:not(:global(.in)) { opacity: 0; transform: translateY(16px); }
+html:global(.js) .pill:global(.in) { animation: pop .55s cubic-bezier(.3,1.4,.5,1) backwards; animation-delay: calc(var(--k, 0) * 35ms); }
+@keyframes pop { from { opacity: 0; transform: translateY(18px) scale(.9) } to { opacity: 1; transform: none } }
+.pill svg { width: 20px; height: 20px; fill: var(--ink); transition: fill .3s, transform .4s cubic-bezier(.3,1.5,.5,1); flex: none; }
+.pill small { font: 500 11px var(--font-mono), monospace; letter-spacing: .08em; color: var(--muted); margin-left: 2px; }
+.pill:hover { transform: translate(var(--tx, 0px), calc(var(--ty, 0px) - 3px)) scale(calc(var(--s, 1) * 1.03)); box-shadow: 6px 6px 0 var(--b); background: color-mix(in oklab, var(--bg) 80%, #fff); }
+.pill:hover svg { fill: var(--b); transform: rotate(-8deg) scale(1.15); }
+.pill:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }

@@ -10,7 +10,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "e2e": "playwright test",
-    "lhci": "lhci autorun"
+    "lhci": "lhci autorun",
+    "gen:icons": "node scripts/gen-icons.mjs"
   },
   "dependencies": {
     "next": "15.5.25",
