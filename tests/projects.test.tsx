@@ -1,13 +1,14 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
-import ProjectSlides from '@/components/ProjectSlides'
+import Projects from '@/components/Projects/Projects'
 
-describe('ProjectSlides', () => {
-  it('renders six slides and dots, with live + source links and an honest status on each', () => {
-    const { container } = render(<ProjectSlides />)
+describe('Projects', () => {
+  it('renders six case rows, each with a framed screenshot, live + source links and an honest status', () => {
+    const { container } = render(<Projects />)
     expect(container.querySelector('section#projects')).toBeTruthy()
-    expect(container.querySelectorAll('[data-slide]')).toHaveLength(6)
-    expect(container.querySelectorAll('[data-dot]')).toHaveLength(6)
+    expect(container.querySelectorAll('section#projects article')).toHaveLength(6)
+    expect(screen.getAllByRole('img', { name: /Screenshot of the .* landing page/ })).toHaveLength(6)
+    expect(screen.getByText('tripsmith.vercel.app')).toBeInTheDocument()
     expect(screen.getAllByRole('link', { name: /Open live/ })).toHaveLength(6)
     expect(screen.getAllByRole('link', { name: 'Source' })).toHaveLength(6)
     expect(screen.getByRole('heading', { level: 3, name: 'Tripsmith' })).toBeInTheDocument()
