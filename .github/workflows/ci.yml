@@ -17,9 +17,5 @@ jobs:
       # `pnpm exec`, not `pnpm dlx`: dlx resolves playwright fresh from the registry rather than
       # running the CLI the lockfile pins (1.63).
       - run: pnpm exec playwright install --with-deps chromium
-      # Diagnostic run: the suite passes locally in under 90 s but produced no output at all on
-      # the runner. `line` prints progress as tests finish, one worker removes contention, and
-      # pw:api traces the exact call that stalls.
-      - run: pnpm exec playwright test --workers=1 --reporter=line
-        env:
-          DEBUG: pw:api
+      # `line` rather than the CI default, so a future stall shows which test it reached.
+      - run: pnpm exec playwright test --reporter=line
