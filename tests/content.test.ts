@@ -10,7 +10,8 @@ describe('content', () => {
     for (const p of content.projects) {
       expect(p.live).toMatch(/^https:\/\/.+\.vercel\.app$/)
       expect(p.repo).toBe(`https://github.com/virajdomadia/${p.slug}`)
-      expect(p.status).toMatch(/landing page live/)
+      // Tripsmith shipped v1 on 2026-09-24; the other five are still landing pages.
+      expect(p.status).toMatch(p.slug === 'tripsmith' ? /^v1 live/ : /landing page live/)
     }
   })
   it('has 30 tools across four layers with honest years (≤ 2)', () => {
