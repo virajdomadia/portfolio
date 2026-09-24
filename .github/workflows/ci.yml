@@ -14,7 +14,12 @@ jobs:
         with: { node-version: 22, cache: pnpm }
       - run: pnpm install --frozen-lockfile
       - run: pnpm lint && pnpm test && pnpm build
-      # `pnpm exec`, not `pnpm dlx`: dlx resolves playwright fresh from the registry, so it
-      # installed the browser build for the latest release while @playwright/test stays pinned at
-      # 1.63 by the lockfile. exec runs the pinned CLI, which installs the revision it expects.
-      - run: pnpm exec playwright install --with-deps chromium && pnpm e2e
+      # `pnpm exec`, not `pnpm dlx`: dlx resolves playwright fresh from the registry rather than
+      # running the CLI the lockfile pins (1.63).
+      - run: pnpm exec playwright install --with-deps chromium
+      # Diagnostic run: the suite passes locally in under 90 s but produced no output at all on
+      # the runner. `line` prints progress as tests finish, one worker removes contention, and
+      # pw:api traces the exact call that stalls.
+      - run: pnpm exec playwright test --workers=1 --reporter=line
+        env:
+          DEBUG: pw:api
