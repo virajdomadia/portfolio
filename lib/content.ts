@@ -54,9 +54,9 @@ export const content: Content = {
     { degree: 'B.Sc. Information Technology', school: 'Narsee Monjee College of Commerce and Economics, Mumbai University', years: '2019–2022', note: '8.33 CGPA' },
   ],
   projects: [
-    { slug: 'tripsmith', title: 'Tripsmith', category: 'Travel + AI concierge', status: 'v1 live · site + owner admin',
-      blurb: 'A travel agency that runs on its own site: 12 packages, faceted search, itinerary PDFs, WhatsApp-first enquiries, and an admin the owner runs the catalog and inbox from. Booking engine and AI concierge next.',
-      stack: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL', 'SQLAlchemy', 'Tailwind CSS'],
+    { slug: 'tripsmith', title: 'Tripsmith', category: 'Travel + AI concierge', status: 'v2 live · bookings + payments',
+      blurb: 'A travel agency on its own site: book and pay by Razorpay (test mode) with live seats, deals and coupons, get a PDF voucher, manage trips and reviews in an account; an owner desk runs the bookings. AI concierge next.',
+      stack: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL', 'SQLAlchemy', 'Tailwind CSS', 'Razorpay'],
       live: 'https://tripsmith.vercel.app', repo: 'https://github.com/virajdomadia/tripsmith', image: '/images/projects/tripsmith.jpg' },
     { slug: 'frontrow', title: 'Frontrow', category: 'Live seat-map ticketing', status: 'In build · landing page live',
       blurb: 'Movie and concert tickets on a live seat map: tap a seat and it is held for ten minutes and greys out for everyone else — Redis holds, transactions, idempotent payments, QR tickets.',
