@@ -13,7 +13,7 @@ describe('Projects', () => {
     expect(screen.getAllByRole('link', { name: 'Source' })).toHaveLength(6)
     expect(screen.getByRole('heading', { level: 3, name: 'Tripsmith' })).toBeInTheDocument()
     expect(screen.getAllByText(/In build · landing page live/)).toHaveLength(5)
-    expect(screen.getByText(/v1 live · site \+ owner admin/)).toBeInTheDocument()
+    expect(screen.getByText(/v2 live · bookings \+ payments/)).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'All repos on GitHub' })).toHaveAttribute('href', 'https://github.com/virajdomadia')
   })
 })
