@@ -20,7 +20,7 @@ export default function Projects() {
                 <span className={s.ghost} aria-hidden="true">{n}</span>
                 <div className={s.frame}>
                   <div className={s.bar} aria-hidden="true"><i /><i /><i /><span>{new URL(p.live).host}</span></div>
-                  <Image src={p.image} alt={`Screenshot of the ${p.title} landing page`} width={1600} height={1000} sizes="(max-width: 900px) 100vw, 640px" />
+                  <Image src={p.image} alt={`Screenshot of ${p.title}`} width={1600} height={1000} sizes="(max-width: 900px) 100vw, 640px" />
                 </div>
               </div>
               <div>
