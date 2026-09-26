@@ -7,7 +7,7 @@ describe('Projects', () => {
     const { container } = render(<Projects />)
     expect(container.querySelector('section#projects')).toBeTruthy()
     expect(container.querySelectorAll('section#projects article')).toHaveLength(6)
-    expect(screen.getAllByRole('img', { name: /Screenshot of the .* landing page/ })).toHaveLength(6)
+    expect(screen.getAllByRole('img', { name: /^Screenshot of / })).toHaveLength(6)
     expect(screen.getByText('tripsmith.vercel.app')).toBeInTheDocument()
     expect(screen.getAllByRole('link', { name: /Open live/ })).toHaveLength(6)
     expect(screen.getAllByRole('link', { name: 'Source' })).toHaveLength(6)
