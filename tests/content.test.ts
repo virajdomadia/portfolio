@@ -8,7 +8,7 @@ describe('content', () => {
     expect(content.projects).toHaveLength(6)
     expect(content.projects.map((p) => p.slug)).toEqual(['tripsmith', 'frontrow', 'pagecraft', 'offcut', 'skillroom', 'platter'])
     for (const p of content.projects) {
-      expect(p.live).toMatch(/^https:\/\/.+\.vercel\.app$/)
+      expect(p.live).toMatch(/^https:\/\/.+\.(vercel\.app|virajdomadia\.com)$/)
       expect(p.repo).toBe(`https://github.com/virajdomadia/${p.slug}`)
       // Tripsmith shipped v2 on 2026-09-26; the other five are still landing pages.
       expect(p.status).toMatch(p.slug === 'tripsmith' ? /^v2 live/ : /landing page live/)
