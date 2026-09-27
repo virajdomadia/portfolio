@@ -1,5 +1,5 @@
 import { chromium } from '@playwright/test'
-const sites = { tripsmith: 'https://tripsmith.vercel.app', frontrow: 'https://frontrow-viraj.vercel.app', pagecraft: 'https://pagecraft-viraj.vercel.app', offcut: 'https://offcut-viraj.vercel.app', skillroom: 'https://skillroom-viraj.vercel.app', platter: 'https://platter-viraj.vercel.app' }
+const sites = { tripsmith: 'https://tripsmith.virajdomadia.com', frontrow: 'https://frontrow-viraj.vercel.app', pagecraft: 'https://pagecraft-viraj.vercel.app', offcut: 'https://offcut-viraj.vercel.app', skillroom: 'https://skillroom-viraj.vercel.app', platter: 'https://platter-viraj.vercel.app' }
 const browser = await chromium.launch()
 const ctx = await browser.newContext({ viewport: { width: 1600, height: 1000 }, deviceScaleFactor: 1, reducedMotion: 'no-preference' })
 for (const [slug, url] of Object.entries(sites)) {

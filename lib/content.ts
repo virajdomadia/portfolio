@@ -57,7 +57,7 @@ export const content: Content = {
     { slug: 'tripsmith', title: 'Tripsmith', category: 'Travel + AI concierge', status: 'v2 live · bookings + payments',
       blurb: 'A travel agency on its own site: book and pay by Razorpay (test mode) with live seats, deals and coupons, get a PDF voucher, manage trips and reviews in an account; an owner desk runs the bookings. AI concierge next.',
       stack: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL', 'SQLAlchemy', 'Tailwind CSS', 'Razorpay'],
-      live: 'https://tripsmith.vercel.app', repo: 'https://github.com/virajdomadia/tripsmith', image: '/images/projects/tripsmith.jpg' },
+      live: 'https://tripsmith.virajdomadia.com', repo: 'https://github.com/virajdomadia/tripsmith', image: '/images/projects/tripsmith.jpg' },
     { slug: 'frontrow', title: 'Frontrow', category: 'Live seat-map ticketing', status: 'In build · landing page live',
       blurb: 'Movie and concert tickets on a live seat map: tap a seat and it is held for ten minutes and greys out for everyone else — Redis holds, transactions, idempotent payments, QR tickets.',
       stack: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Redis', 'WebSockets', 'Razorpay'],
