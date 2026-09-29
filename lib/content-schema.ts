@@ -27,7 +27,7 @@ export const ContentSchema = z.object({
   hero: z.object({ eyebrow: z.array(z.string()).length(3), lede: z.string(), corners: z.array(z.string()).length(4), stats: z.array(z.object({ n: z.string(), label: z.string() })).length(3), bgAlt: z.string() }),
   marquee: z.object({ stack: z.array(z.string()), b: z.array(z.string()) }),
   about: z.object({ quote: z.string(), quoteBold: z.array(z.string()).length(2), photoAlt: z.string(), captions: z.array(z.string()).length(2), counters: z.array(z.object({ to: z.number(), suffix: z.string(), label: z.string() })).length(3), rail: z.string() }),
-  experience: z.array(ExperienceSchema).length(4),
+  experience: z.array(ExperienceSchema).length(3),
   education: z.array(z.object({ degree: z.string(), school: z.string(), schoolUrl: z.string().url().optional(), years: z.string(), note: z.string().optional() })).length(2),
   projects: z.array(ProjectSchema).length(6),
   projectsNote: z.object({ after: z.string(), afterCta: z.string() }),

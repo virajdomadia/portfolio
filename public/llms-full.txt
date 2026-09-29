@@ -1,17 +1,16 @@
 # Viraj Domadia
 
-> Frontend-heavy full-stack developer in Bengaluru, India. Software Engineer at Zapigo (https://zapigo.com). Open to full-time and freelance work, on-site in Bengaluru or remote.
+> Frontend-heavy full-stack developer in Bengaluru, India. Open to full-time and freelance work, on-site in Bengaluru or remote.
 
 ## About
 
-Viraj Domadia is a frontend-heavy full-stack developer based in Bengaluru, originally from Mumbai. He works with React, Next.js, TypeScript, Node.js, Express, FastAPI, PostgreSQL and MongoDB. He is a Software Engineer at Zapigo, where he owns the web frontend and built Personal Invites end to end. In 2024 he moved from IT operations into full-stack development through self-directed upskilling, after roles at Venus Vacations and Accenture. He is completing an online MCA at Amity University (2025–2027) and is open to full-time and freelance work, on-site in Bengaluru or remote.
+Viraj Domadia is a frontend-heavy full-stack developer based in Bengaluru, originally from Mumbai. He works with React, Next.js, TypeScript, Node.js, Express, FastAPI, PostgreSQL and MongoDB. He builds the client, the server and the data layer as one product, and has six full-stack products live, from Tripsmith to Platter. He is completing an online MCA at Amity University (2025–2027) and is open to full-time and freelance work, on-site in Bengaluru or remote.
 
 ## Experience
 
 - Software Engineer · Zapigo (2025-10 → present): Own the frontend of zapigo.com: Next.js 16, React 19, TypeScript, Tailwind v4, TanStack Query, Zustand and React Aria, with Vitest + Playwright tests and Sentry monitoring. Built Personal Invites end to end — create and share a digital invitation in under 30 seconds — including its FastAPI + PostgreSQL backend.
 - IT Executive · Venus Vacations Pvt. Ltd (2024-07 → 2025-11): Ran the company’s IT and hardware. Alongside that, built the company website with a custom booking engine end to end — React front, Node/Express API, MongoDB — taken through internal review, not deployed.
 - Application Development Associate · Accenture (2022-12 → 2023-07): Backup and support engineer on an enterprise client account: monitored NetBackup jobs, handled incidents and restores, and worked to SLAs in a large operations team.
-- MCA · Amity University (2025-07 → 2027-06): Online MCA, alongside full-time work. B.Sc. IT · Narsee Monjee College of Commerce and Economics, Mumbai University · 2019–2022 · 8.33 CGPA
 
 ## Education
 
@@ -28,19 +27,19 @@ Viraj Domadia is a frontend-heavy full-stack developer based in Bengaluru, origi
 ## Projects
 
 - **Tripsmith** (Travel + AI concierge; v2 live · bookings + payments): A travel agency on its own site: book and pay by Razorpay (test mode) with live seats, deals and coupons, get a PDF voucher, manage trips and reviews in an account; an owner desk runs the bookings. AI concierge next. Live: https://tripsmith.virajdomadia.com · Source: https://github.com/virajdomadia/tripsmith
-- **Frontrow** (Live seat-map ticketing; in build · landing page live): Movie and concert tickets on a live seat map: tap a seat and it is held for ten minutes and greys out for everyone else — Redis holds, transactions, idempotent payments, QR tickets. Live: https://frontrow-viraj.vercel.app · Source: https://github.com/virajdomadia/frontrow
-- **Pagecraft** (Co-edited website builder; in build · landing page live): A landing-page editor two people use at the same time — live cursors, conflict-free merges, version history — then one click publishes it to its own subdomain. Live: https://pagecraft-viraj.vercel.app · Source: https://github.com/virajdomadia/pagecraft
-- **Offcut** (D2C store + visual search; in build · landing page live): A complete streetwear store — variants, inventory that cannot go negative, cart, orders, returns, admin — plus “drop a photo, shop the look” search on image embeddings. Live: https://offcut-viraj.vercel.app · Source: https://github.com/virajdomadia/offcut
-- **Skillroom** (Video course platform; in build · landing page live): Creators upload video courses; students buy or subscribe, resume where they left off, pass quizzes and earn a certificate — streaming, recurring billing, payouts, three-role access. Live: https://skillroom-viraj.vercel.app · Source: https://github.com/virajdomadia/skillroom
-- **Platter** (Food delivery + live tracking; in build · landing page live): Customer, restaurant and rider apps on one order state machine — restaurants within a radius, live rider location on the customer’s map, role-checked transitions. Live: https://platter-viraj.vercel.app · Source: https://github.com/virajdomadia/platter
+- **Frontrow** (Live seat-map ticketing; live): Movie and concert tickets on a live seat map: tap a seat and it is held for ten minutes and greys out for everyone else — Redis holds, transactions, idempotent payments, QR tickets. Live: https://frontrow-viraj.vercel.app · Source: https://github.com/virajdomadia/frontrow
+- **Pagecraft** (Co-edited website builder; live): A landing-page editor two people use at the same time — live cursors, conflict-free merges, version history — then one click publishes it to its own subdomain. Live: https://pagecraft-viraj.vercel.app · Source: https://github.com/virajdomadia/pagecraft
+- **Offcut** (D2C store + visual search; live): A complete streetwear store — variants, inventory that cannot go negative, cart, orders, returns, admin — plus “drop a photo, shop the look” search on image embeddings. Live: https://offcut-viraj.vercel.app · Source: https://github.com/virajdomadia/offcut
+- **Skillroom** (Video course platform; live): Creators upload video courses; students buy or subscribe, resume where they left off, pass quizzes and earn a certificate — streaming, recurring billing, payouts, three-role access. Live: https://skillroom-viraj.vercel.app · Source: https://github.com/virajdomadia/skillroom
+- **Platter** (Food delivery + live tracking; live): Customer, restaurant and rider apps on one order state machine — restaurants within a radius, live rider location on the customer’s map, role-checked transitions. Live: https://platter-viraj.vercel.app · Source: https://github.com/virajdomadia/platter
 
-Each one ships with a public repo, a live URL and a case study as it gets built. The landing pages are live now; the products follow.
+Every project has a live URL and a public repo — open one, then read the code.
 
 ## FAQ
 
 **Is Viraj Domadia available for work?** Yes — open to full-time roles and freelance projects, in Bengaluru or remote. Replies within a day.
 
-**What does Viraj build with?** React and Next.js with TypeScript on the client; Node/Express and FastAPI APIs; PostgreSQL and MongoDB. Currently a Software Engineer at Zapigo, where he owns the web frontend.
+**What does Viraj build with?** React and Next.js with TypeScript on the client; Node/Express and FastAPI APIs; PostgreSQL and MongoDB.
 
 **Where is Viraj based?** Bengaluru, India (IST, UTC+5:30); originally from Mumbai. Works with remote teams across time zones.
 

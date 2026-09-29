@@ -3,7 +3,7 @@ import s from './About.module.css'
 
 export default function ExperienceStack() {
   return (
-    <div className={s.exp} data-progress="span">
+    <div className={s.exp} data-progress="span" style={{ ['--n' as string]: content.experience.length }}>
       {content.experience.map((e, i) => (
         <article key={e.title} className={s.card} style={{ ['--i' as string]: i }} data-reveal>
           <span className={s.idx} aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
