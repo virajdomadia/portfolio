@@ -10,7 +10,7 @@ describe('Hero', () => {
     expect(h1.querySelectorAll('[data-ch]').length).toBe(12)
     expect(screen.getByRole('link', { name: 'See the projects' })).toHaveAttribute('href', '#projects')
     expect(screen.getByRole('link', { name: 'Hire me' })).toHaveAttribute('href', '#contact')
-    expect(screen.getByText('companies')).toBeInTheDocument()
+    expect(screen.getByText('products in build')).toBeInTheDocument()
   })
 })
 

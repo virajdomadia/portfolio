@@ -1,10 +1,10 @@
 # Viraj Domadia
 
-> Frontend-heavy full-stack developer in Bengaluru, India. Software Engineer at Zapigo (https://zapigo.com). Open to full-time and freelance work, on-site in Bengaluru or remote.
+> Frontend-heavy full-stack developer in Bengaluru, India. Open to full-time and freelance work, on-site in Bengaluru or remote.
 
 ## About
 
-Viraj Domadia is a frontend-heavy full-stack developer based in Bengaluru, originally from Mumbai. He works with React, Next.js, TypeScript, Node.js, Express, FastAPI, PostgreSQL and MongoDB. He is a Software Engineer at Zapigo, where he owns the web frontend and built Personal Invites end to end. In 2024 he moved from IT operations into full-stack development through self-directed upskilling, after roles at Venus Vacations and Accenture. He is completing an online MCA at Amity University (2025–2027) and is open to full-time and freelance work, on-site in Bengaluru or remote.
+Viraj Domadia is a frontend-heavy full-stack developer based in Bengaluru, originally from Mumbai. He works with React, Next.js, TypeScript, Node.js, Express, FastAPI, PostgreSQL and MongoDB. He builds the client, the server and the data layer as one product, and is shipping six full-stack products in public, starting with Tripsmith. He is completing an online MCA at Amity University (2025–2027) and is open to full-time and freelance work, on-site in Bengaluru or remote.
 
 ## Experience
 
@@ -40,7 +40,7 @@ Each one ships with a public repo, a live URL and a case study as it gets built.
 
 **Is Viraj Domadia available for work?** Yes — open to full-time roles and freelance projects, in Bengaluru or remote. Replies within a day.
 
-**What does Viraj build with?** React and Next.js with TypeScript on the client; Node/Express and FastAPI APIs; PostgreSQL and MongoDB. Currently a Software Engineer at Zapigo, where he owns the web frontend.
+**What does Viraj build with?** React and Next.js with TypeScript on the client; Node/Express and FastAPI APIs; PostgreSQL and MongoDB.
 
 **Where is Viraj based?** Bengaluru, India (IST, UTC+5:30); originally from Mumbai. Works with remote teams across time zones.
 

@@ -8,7 +8,7 @@ const p = c.person
 const cap = (s) => s[0].toUpperCase() + s.slice(1)
 const lines = [
   `# ${p.name}`, '',
-  `> ${p.role} in ${p.city}, ${p.country}. ${p.jobTitle} at ${p.employer.name} (${p.employer.url}). Open to full-time and freelance work, on-site in ${p.city} or remote.`, '',
+  `> ${p.role} in ${p.city}, ${p.country}. Open to full-time and freelance work, on-site in ${p.city} or remote.`, '',
   '## About', '', p.bio, '',
   '## Experience', '',
   ...c.experience.map((e) => `- ${e.title} (${e.start} → ${e.end ?? 'present'}): ${e.desc}${e.extra ? ' ' + e.extra : ''}`), '',
