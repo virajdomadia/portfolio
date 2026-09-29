@@ -10,7 +10,7 @@ describe('Hero', () => {
     expect(h1.querySelectorAll('[data-ch]').length).toBe(12)
     expect(screen.getByRole('link', { name: 'See the projects' })).toHaveAttribute('href', '#projects')
     expect(screen.getByRole('link', { name: 'Hire me' })).toHaveAttribute('href', '#contact')
-    expect(screen.getByText('products in build')).toBeInTheDocument()
+    expect(screen.getByText('products live')).toBeInTheDocument()
   })
 })
 
@@ -18,7 +18,7 @@ describe('Hero copy', () => {
   it('shows the agreed stats and an honest image alt', () => {
     render(<Hero />)
     expect(screen.getByText('years building')).toBeInTheDocument()
-    expect(screen.getByText('product live')).toBeInTheDocument()
+    expect(screen.getByText('tools in the stack')).toBeInTheDocument()
     expect(screen.getByRole('img').getAttribute('alt')).toMatch(/^Illustration/)
   })
 })
