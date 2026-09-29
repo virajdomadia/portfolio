@@ -3,6 +3,7 @@ import SectionWord from '@/components/SectionWord'
 import Quote from './Quote'
 import Portrait from './Portrait'
 import ExperienceStack from './ExperienceStack'
+import Education from './Education'
 import Counters from './Counters'
 import s from './About.module.css'
 
@@ -15,7 +16,7 @@ export default function About() {
         <div className={s.rail} aria-hidden="true"><span>{content.about.rail} {content.about.rail}</span></div>
         <div className={s.grid}>
           <div className={s.left}><Quote /><Portrait /></div>
-          <ExperienceStack />
+          <div className={s.right}><ExperienceStack /><Education /></div>
         </div>
         <Counters />
       </section>

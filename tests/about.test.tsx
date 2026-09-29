@@ -11,10 +11,10 @@ describe('About', () => {
     expect(q.querySelectorAll('b').length).toBe(2)
     expect(q.getAttribute('style')).toContain('--n')
   })
-  it('renders four experience cards with indices and the section heading', () => {
+  it('renders three experience cards with indices and the section heading', () => {
     render(<About />)
     expect(screen.getByRole('heading', { level: 2, name: 'About' })).toBeInTheDocument()
-    expect(screen.getAllByText(/^0[1-4]$/)).toHaveLength(4)
+    expect(screen.getAllByText(/^0[1-3]$/)).toHaveLength(3)
   })
   it('counts up to the target when revealed', () => {
     vi.useFakeTimers()
@@ -31,11 +31,15 @@ describe('About', () => {
 })
 
 describe('About copy', () => {
-  it('shows Zapigo first and the B.Sc. line inside the MCA card', () => {
+  it('shows Zapigo first, only jobs as cards, and both degrees under Education', () => {
     render(<About />)
     const cards = screen.getAllByRole('article')
     expect(cards[0]).toHaveTextContent('Software Engineer · Zapigo')
-    expect(cards[3]).toHaveTextContent('8.33 CGPA')
+    expect(cards).toHaveLength(3)
+    for (const c of cards) expect(c).not.toHaveTextContent(/MCA|B\.Sc/)
+    const edu = screen.getByRole('heading', { level: 3, name: 'Education' }).parentElement!
+    expect(edu).toHaveTextContent('Master of Computer Applications')
+    expect(edu).toHaveTextContent('8.33 CGPA')
     expect(screen.getByRole('link', { name: /Zapigo/ })).toHaveAttribute('href', 'https://zapigo.com')
   })
 })

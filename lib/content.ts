@@ -46,8 +46,6 @@ export const content: Content = {
     { year: '2022', period: '– 2023', title: 'Application Development Associate · Accenture', org: 'Accenture', orgUrl: 'https://www.accenture.com', start: '2022-12', end: '2023-07',
       desc: 'Backup and support engineer on an enterprise client account: monitored NetBackup jobs, handled incidents and restores, and worked to SLAs in a large operations team.',
       chips: ['NetBackup', 'Incident support', 'Enterprise IT'], kind: 'job' },
-    { year: '2025', period: '– 2027', title: 'MCA · Amity University', org: 'Amity University', orgUrl: 'https://www.amity.edu', start: '2025-07', end: '2027-06',
-      desc: 'Online MCA, alongside full-time work.', extra: 'B.Sc. IT · Narsee Monjee College of Commerce and Economics, Mumbai University · 2019–2022 · 8.33 CGPA', kind: 'study' },
   ],
   education: [
     { degree: 'Master of Computer Applications (online)', school: 'Amity University', schoolUrl: 'https://www.amity.edu', years: '2025–2027' },

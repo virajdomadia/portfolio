@@ -11,7 +11,6 @@ Viraj Domadia is a frontend-heavy full-stack developer based in Bengaluru, origi
 - Software Engineer · Zapigo (2025-10 → present): Own the frontend of zapigo.com: Next.js 16, React 19, TypeScript, Tailwind v4, TanStack Query, Zustand and React Aria, with Vitest + Playwright tests and Sentry monitoring. Built Personal Invites end to end — create and share a digital invitation in under 30 seconds — including its FastAPI + PostgreSQL backend.
 - IT Executive · Venus Vacations Pvt. Ltd (2024-07 → 2025-11): Ran the company’s IT and hardware. Alongside that, built the company website with a custom booking engine end to end — React front, Node/Express API, MongoDB — taken through internal review, not deployed.
 - Application Development Associate · Accenture (2022-12 → 2023-07): Backup and support engineer on an enterprise client account: monitored NetBackup jobs, handled incidents and restores, and worked to SLAs in a large operations team.
-- MCA · Amity University (2025-07 → 2027-06): Online MCA, alongside full-time work. B.Sc. IT · Narsee Monjee College of Commerce and Economics, Mumbai University · 2019–2022 · 8.33 CGPA
 
 ## Education
 
