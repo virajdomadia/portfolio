@@ -10,6 +10,7 @@ const headers = [
 const nextConfig: NextConfig = {
   trailingSlash: false,
   async headers() { return [{ source: '/(.*)', headers }] },
+  images: { remotePatterns: [{ protocol: 'https', hostname: 'i.ytimg.com', pathname: '/vi/**' }] },
 }
 
 export default nextConfig

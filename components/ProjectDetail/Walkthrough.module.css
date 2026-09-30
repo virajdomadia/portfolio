@@ -1,0 +1,8 @@
+.wt { padding-block: 64px 0; border-top: 1.5px solid var(--ink); margin-top: 64px; }
+.h { font: 800 clamp(28px, 3.4vw, 44px) var(--font-display), sans-serif; text-transform: uppercase; letter-spacing: -.02em; margin: 0 0 24px; }
+.box { position: relative; aspect-ratio: 16 / 9; background: var(--ink); border: 1.5px solid var(--ink); }
+.box iframe, .play { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.play { padding: 0; cursor: pointer; background: var(--ink); }
+.play img { width: 100%; height: 100%; object-fit: cover; opacity: .8; }
+.play span { position: absolute; inset: 0; display: grid; place-items: center; font-size: 56px; color: var(--bg); }
+.play:focus-visible { outline: 2px solid var(--acc); outline-offset: 4px; }
