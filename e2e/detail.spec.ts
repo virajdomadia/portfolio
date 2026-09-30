@@ -44,8 +44,9 @@ test('SEO: canonical, one JSON-LD graph with SoftwareSourceCode + BreadcrumbList
   const og = await request.get(`${URL}/opengraph-image`); expect(og.status()).toBe(200); expect(og.headers()['content-type']).toContain('image/png')
 })
 
-test('a project without a detail page is a 404, and only Tripsmith links to one from home', async ({ page }) => {
+test('a project without a detail page is a 404, and only Tripsmith links to one from home', async ({ page, request }) => {
   expect((await page.goto('/projects/frontrow'))?.status()).toBe(404)
+  expect((await request.get('/projects/frontrow/opengraph-image')).status()).toBe(404)
   await page.goto('/')
   await expect(page.getByRole('link', { name: 'View project →' })).toHaveCount(1)
   await page.getByRole('link', { name: 'View project →' }).click()
@@ -64,4 +65,15 @@ test('no horizontal scroll at 360px', async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 780 })
   await page.goto(URL)
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth)).toBe(true)
+})
+
+test('soft navigation back to home re-arms reveals', async ({ page }) => {
+  await page.goto(URL)
+  await page.getByRole('link', { name: '← All projects' }).click()
+  await expect(page).toHaveURL(/\/#project-tripsmith$/)
+  await expect(page.locator('#project-tripsmith')).toBeInViewport() // let the hash scroll settle before scrolling on
+  const first = page.locator('#stack [data-reveal]').first()
+  await page.locator('#stack').scrollIntoViewIfNeeded()
+  await first.scrollIntoViewIfNeeded() // #stack is taller than the phone viewport, so bring its first reveal itself on screen
+  await expect(first).toHaveClass(/\bin\b/)
 })

@@ -1,9 +1,11 @@
 'use client'
 import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { bandProgress, coverProgress, parallaxOffset, spanProgress, stickyProgress, velocitySkew, viewProgress, wordsProgress } from '@/lib/scroll'
 
 /** Writes the scroll-progress CSS variables and toggles reveal classes. Mount once in the layout. */
 export default function ScrollDriver() {
+  const pathname = usePathname() // re-arm the observers when a soft navigation swaps the page content
   useEffect(() => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const root = document.documentElement
@@ -63,6 +65,6 @@ export default function ScrollDriver() {
     window.addEventListener('resize', onScroll)
     tick(); const t = window.setTimeout(tick, 500)
     return () => { io.disconnect(); window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onScroll); window.clearTimeout(t); window.clearTimeout(skewTimer); if (raf) cancelAnimationFrame(raf) }
-  }, [])
+  }, [pathname])
   return null
 }
