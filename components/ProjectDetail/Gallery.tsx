@@ -14,6 +14,7 @@ export default function Gallery({ media, title }: { media: Media[]; title: strin
   const n = media.length
   const [i, setI] = useState(0)
   const [hydrated, setHydrated] = useState(false)
+  const [lightbox, setLightbox] = useState(false)
   const [broken, setBroken] = useState<ReadonlySet<number>>(new Set())
   const video = useRef<HTMLVideoElement>(null)
   const dialog = useRef<HTMLDialogElement>(null)
@@ -31,10 +32,14 @@ export default function Gallery({ media, title }: { media: Media[]; title: strin
   }, [i, isVideo])
 
   const onKey = (e: KeyboardEvent) => {
+    if (e.target !== e.currentTarget) return
     if (e.key === 'ArrowRight') { e.preventDefault(); go(i + 1) }
     if (e.key === 'ArrowLeft') { e.preventDefault(); go(i - 1) }
   }
-  const onDown = (e: PointerEvent) => { startX.current = e.clientX }
+  const onDown = (e: PointerEvent) => {
+    if ((e.target as Element).closest('video, button')) return
+    startX.current = e.clientX
+  }
   const onUp = (e: PointerEvent) => {
     if (startX.current === null) return
     const dx = e.clientX - startX.current; startX.current = null
@@ -58,7 +63,7 @@ export default function Gallery({ media, title }: { media: Media[]; title: strin
           <button type="button" className={`${s.arrow} ${s.prev}`} aria-label="Previous" onClick={() => go(i - 1)}>←</button>
           <button type="button" className={`${s.arrow} ${s.next}`} aria-label="Next" onClick={() => go(i + 1)}>→</button>
         </>}
-        <button type="button" className={s.full} onClick={() => dialog.current?.showModal()}>Fullscreen</button>
+        <button type="button" className={s.full} onClick={() => { dialog.current?.showModal(); setLightbox(true) }}>Fullscreen</button>
       </div>
       <p className={s.cap} aria-live="polite">
         {n > 1 ? `Item ${i + 1} of ${n} · ` : ''}{m.caption}{broken.has(i) ? ' — video could not load' : ''}
@@ -75,9 +80,9 @@ export default function Gallery({ media, title }: { media: Media[]; title: strin
           ))}
         </ol>
       )}
-      <dialog ref={dialog} className={s.dialog} aria-label={`${title} — ${m.caption}`}>
+      <dialog ref={dialog} className={s.dialog} onClose={() => setLightbox(false)} aria-label={`${title} — ${m.caption}`}>
         <button type="button" className={s.close} onClick={() => dialog.current?.close()}>Close</button>
-        {render(true)}
+        {lightbox && render(true)}
       </dialog>
     </div>
   )
