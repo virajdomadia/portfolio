@@ -1,5 +1,6 @@
 import { content } from './content'
 import { absolute, siteUrl } from './site'
+import type { DetailProject } from './projects'
 
 const { person, seo, faq, tools, hero, education } = content
 const ID = { person: () => `${siteUrl()}/#person`, site: () => `${siteUrl()}/#website`, page: () => `${siteUrl()}/#profile` }
@@ -33,4 +34,24 @@ export function jsonLdGraph() {
 /** BreadcrumbList for inner pages (Phase B: /projects/<slug>). */
 export function breadcrumbs(items: { name: string; path: string }[]) {
   return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: absolute(it.path) })) }
+}
+
+/** @graph for /projects/<slug>: the software itself + the visible breadcrumb. */
+export function projectJsonLd(p: DetailProject) {
+  const path = `/projects/${p.slug}`
+  const crumbs = breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Projects', path: '/#projects' }, { name: p.title, path }]) as Partial<ReturnType<typeof breadcrumbs>>
+  delete crumbs['@context']
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'SoftwareSourceCode', '@id': `${absolute(path)}#software`, name: p.title, description: p.detail.pitch,
+        url: p.live, codeRepository: p.repo, programmingLanguage: p.stack, dateModified: p.detail.updated,
+        image: p.detail.media.map((m) => absolute(m.kind === 'image' ? m.src : m.poster)),
+        mainEntityOfPage: absolute(path),
+        author: { '@type': 'Person', '@id': ID.person(), name: person.name, url: siteUrl() },
+      },
+      crumbs,
+    ],
+  }
 }

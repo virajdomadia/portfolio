@@ -1,0 +1,12 @@
+.panel { position: sticky; top: 96px; align-self: start; }
+.kicker { font: 500 12px var(--font-mono), monospace; letter-spacing: .1em; color: var(--acc); text-transform: uppercase; }
+.title { font-family: var(--font-display), sans-serif; font-weight: 800; font-size: clamp(44px, 5.6vw, 84px); letter-spacing: -.035em; text-transform: uppercase; line-height: .9; margin: 10px 0 16px; font-variation-settings: "wdth" 110; }
+.pitch { margin: 0 0 22px; max-width: 42ch; font-size: 18px; }
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 0 0 22px; border-top: 1.5px solid var(--ink); }
+.facts div { padding: 10px 0; border-bottom: 1px solid var(--line); }
+.facts dt { font: 500 11px var(--font-mono), monospace; letter-spacing: .08em; color: var(--muted); text-transform: uppercase; }
+.facts dd { margin: 2px 0 0; font-weight: 500; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+.tags span { font: 500 11px var(--font-mono), monospace; border: 1px solid var(--line); padding: 4px 8px; color: var(--muted); }
+.acts { display: flex; gap: 10px; flex-wrap: wrap; }
+@media (max-width: 900px) { .panel { position: static; } }

@@ -1,10 +1,11 @@
 'use client'
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { content } from '@/lib/content'
 import MobileMenu from './MobileMenu'
 import s from './Nav.module.css'
 
-const LINKS = [['About', '#about'], ['Projects', '#projects'], ['Stack', '#stack'], ['Contact', '#contact']] as const
+const LINKS = [['About', '/#about'], ['Projects', '/#projects'], ['Stack', '/#stack'], ['Contact', '/#contact']] as const
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -25,7 +26,7 @@ export default function Nav() {
         <div className={s.links}>{LINKS.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</div>
         <div className={s.right}>
           <span className={s.pill}><i className={s.dot} aria-hidden="true" /><span>{person.available}</span></span>
-          <a className={`btn sm ${s.hire}`} href="#contact"><span>Hire me</span></a>
+          <Link className={`btn sm ${s.hire}`} href="/#contact"><span>Hire me</span></Link>
           <MobileMenu />
         </div>
       </div>
