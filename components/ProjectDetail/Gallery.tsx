@@ -10,7 +10,7 @@ const dur = (sec: number) => `${Math.floor(sec / 60)}:${String(sec % 60).padStar
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 /** Stage + thumbnail strip + lightbox for any mix of images and clips. Item 0 is server-rendered (a clip's poster until hydration). */
-export default function Gallery({ media, title }: { media: Media[]; title: string }) {
+export default function Gallery({ media, title, host }: { media: Media[]; title: string; host?: string }) {
   const n = media.length
   const [i, setI] = useState(0)
   const [hydrated, setHydrated] = useState(false)
@@ -58,6 +58,7 @@ export default function Gallery({ media, title }: { media: Media[]; title: strin
   return (
     <div className={s.gallery}>
       <div className={s.stage} role="region" aria-roledescription="carousel" aria-label={`${title} gallery`} tabIndex={0} onKeyDown={onKey} onPointerDown={onDown} onPointerUp={onUp}>
+        {host && <div className={s.chrome} aria-hidden="true"><i /><i /><i /><span>{host}</span></div>}
         {render(false)}
         {n > 1 && <>
           <button type="button" className={`${s.arrow} ${s.prev}`} aria-label="Previous" onClick={() => go(i - 1)}>←</button>
