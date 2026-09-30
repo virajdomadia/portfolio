@@ -13,7 +13,7 @@ export default function ProjectDetail({ p }: { p: DetailProject }) {
         <ol><li><Link href="/">Home</Link></li><li><Link href="/#projects">Projects</Link></li><li aria-current="page">{p.title}</li></ol>
       </nav>
       <div className={s.top}>
-        <Gallery media={p.detail.media} title={p.title} />
+        <Gallery media={p.detail.media} title={p.title} host={new URL(p.live).host} />
         <FactsPanel p={p} />
       </div>
       <CaseStudy d={p.detail} />

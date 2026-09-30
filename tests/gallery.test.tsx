@@ -106,3 +106,12 @@ describe('Gallery', () => {
     expect(screen.getByText(/Item 2 of 2/)).toBeInTheDocument()
   })
 })
+
+describe('Gallery browser chrome', () => {
+  it('shows the live host above the stage when given, and nothing when not', () => {
+    const { rerender } = render(<Gallery media={[img(1)]} title="Demo" host="demo.example.com" />)
+    expect(screen.getByText('demo.example.com')).toBeInTheDocument()
+    rerender(<Gallery media={[img(1)]} title="Demo" />)
+    expect(screen.queryByText('demo.example.com')).toBeNull()
+  })
+})

@@ -4,4 +4,4 @@
 .crumbs a { color: inherit; }
 .top { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 56px; align-items: start; }
 .back { margin-top: 64px; }
-@media (max-width: 900px) { .page { padding-top: 96px; } .top { grid-template-columns: 1fr; gap: 36px; } }
+@media (max-width: 900px) { .page { padding-top: 96px; } .top { grid-template-columns: minmax(0, 1fr); gap: 36px; } }
