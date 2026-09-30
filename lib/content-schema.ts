@@ -4,9 +4,31 @@ import { z } from 'zod'
 export const LayerSchema = z.enum(['client', 'server', 'data', 'tooling'])
 export type Layer = z.infer<typeof LayerSchema>
 
+const mediaPath = (ext: string) => z.string().regex(new RegExp(`^/projects/[\\w./-]+\\.(${ext})$`))
+export const MediaSchema = z.discriminatedUnion('kind', [
+  z.object({ kind: z.literal('image'), src: mediaPath('webp|jpg|png'), alt: z.string().min(10), caption: z.string().min(1) }),
+  z.object({
+    kind: z.literal('clip'), webm: mediaPath('webm'), mp4: mediaPath('mp4'), poster: mediaPath('jpg|webp'),
+    seconds: z.number().int().min(1).max(30), alt: z.string().min(10), caption: z.string().min(1),
+  }),
+])
+// Product-detail page for a shipped project. Any media mix works (one image, images only, clips only, clip first); at least one item.
+export const DetailSchema = z.object({
+  pitch: z.string().min(20).max(140),
+  facts: z.object({ role: z.string().min(1), year: z.string().regex(/^\d{4}(–\d{4})?$/), version: z.string().min(1) }),
+  media: z.array(MediaSchema).min(1),
+  walkthrough: z.string().regex(/^[\w-]{11}$/).optional(),
+  sections: z.object({
+    problem: z.string().min(40), built: z.string().min(40), outcome: z.string().min(40),
+    decisions: z.array(z.object({ title: z.string().min(1), body: z.string().min(20) })).min(3).max(5),
+  }),
+  versions: z.array(z.object({ name: z.string().min(1), summary: z.string().min(1), state: z.enum(['shipped', 'next']) })).min(1),
+  updated: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+})
+
 export const ProjectSchema = z.object({
   slug: z.string(), title: z.string(), category: z.string(), status: z.string(), blurb: z.string().max(220), stack: z.array(z.string()).min(1),
-  live: z.string().url(), repo: z.string().url(), image: z.string().startsWith('/images/'),
+  live: z.string().url(), repo: z.string().url(), image: z.string().startsWith('/images/'), detail: DetailSchema.optional(),
 })
 export const ToolSchema = z.object({
   key: z.string(), name: z.string(), layer: LayerSchema, years: z.number().int().min(1).max(3), brand: z.string().regex(/^#[0-9A-F]{6}$/i),
@@ -43,3 +65,5 @@ export type Content = z.infer<typeof ContentSchema>
 export type Project = z.infer<typeof ProjectSchema>
 export type Tool = z.infer<typeof ToolSchema>
 export type Experience = z.infer<typeof ExperienceSchema>
+export type Media = z.infer<typeof MediaSchema>
+export type Detail = z.infer<typeof DetailSchema>
