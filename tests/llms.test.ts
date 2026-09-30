@@ -20,3 +20,19 @@ describe('generated files', () => {
     expect((await PDFDocument.load(new Uint8Array(pdf))).getPageCount()).toBe(1)
   })
 })
+
+import { llmsText, llmsFullText } from '../scripts/llms.mjs'
+import { fixtureDetail } from '@/lib/fixtures/detail'
+
+describe('llms builders', () => {
+  const withDetail = { ...content, projects: content.projects.map((p) => (p.slug === 'tripsmith' ? { ...p, detail: fixtureDetail } : p)) }
+  it('adds a Pages line per detail project', () => {
+    expect(llmsText(withDetail, 'https://x.dev')).toContain('- [Tripsmith — project page](https://x.dev/projects/tripsmith)')
+    expect(llmsText(content, 'https://x.dev')).not.toContain('/projects/')
+  })
+  it('llms-full carries the case study', () => {
+    const full = llmsFullText(withDetail, 'https://x.dev')
+    expect(full).toContain('## Tripsmith — case study')
+    expect(full).toContain(fixtureDetail.sections.decisions[0].body)
+  })
+})

@@ -1,5 +1,5 @@
 import type { Content, Layer } from './content-schema'
-export type { Content, Project, Tool, Experience, Layer } from './content-schema'
+export type { Content, Project, Tool, Experience, Layer, Media, Detail } from './content-schema'
 
 // All copy and data for the site — values agreed with Viraj in content/decisions.md (2026-09-12).
 // Plain data only (no zod at runtime) so client components can import it cheaply; tests/content.test.ts validates it.

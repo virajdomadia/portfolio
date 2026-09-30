@@ -1,2 +1,4 @@
 allowBuilds:
   unrs-resolver: true
+  ffmpeg-static: true
+  sharp: true

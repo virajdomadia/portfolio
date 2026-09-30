@@ -1,0 +1,14 @@
+.cs { margin-top: 96px; display: grid; gap: 0; }
+.cs section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 32px; padding-block: 40px; border-top: 1.5px solid var(--ink); }
+.cs h2 { font: 800 clamp(24px, 2.6vw, 34px) var(--font-display), sans-serif; text-transform: uppercase; letter-spacing: -.02em; margin: 0; }
+.cs p { margin: 0; max-width: 62ch; }
+.dec { list-style: none; counter-reset: d; margin: 0; padding: 0; display: grid; gap: 24px; }
+.dec li { counter-increment: d; }
+.dec h3 { font-size: 18px; margin: 0 0 6px; }
+.dec h3::before { content: counter(d, decimal-leading-zero) " "; font: 500 12px var(--font-mono), monospace; color: var(--acc); }
+.ver { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.ver span { font: 500 11px var(--font-mono), monospace; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--line); padding: 2px 6px; margin-left: 6px; }
+.ver [data-state="shipped"] span { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.ver p { margin-top: 4px; }
+.upd { font: 500 12px var(--font-mono), monospace; color: var(--muted); padding-top: 24px; border-top: 1.5px solid var(--ink); }
+@media (max-width: 900px) { .cs section { grid-template-columns: 1fr; gap: 12px; } }

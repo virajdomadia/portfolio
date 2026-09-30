@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { content } from '@/lib/content'
 import s from './MobileMenu.module.css'
 
-const LINKS = [['About', '#about'], ['Projects', '#projects'], ['Stack', '#stack'], ['Contact', '#contact']] as const
+const LINKS = [['About', '/#about'], ['Projects', '/#projects'], ['Stack', '/#stack'], ['Contact', '/#contact']] as const
 
 export default function MobileMenu() {
   const [open, setOpen] = useState(false)

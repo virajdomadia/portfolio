@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
-import { jsonLdGraph, breadcrumbs } from '@/lib/seo'
+import { jsonLdGraph, breadcrumbs, projectJsonLd } from '@/lib/seo'
 import { content } from '@/lib/content'
+import { fixtureDetail } from '@/lib/fixtures/detail'
 
 const byType = (t: string) => jsonLdGraph()['@graph'].find((n: any) => n['@type'] === t) as any
 
@@ -33,5 +34,20 @@ describe('JSON-LD', () => {
   it('breadcrumbs number from 1 with absolute urls', () => {
     const b = breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Projects', path: '/projects' }])
     expect(b.itemListElement[1]).toMatchObject({ position: 2, item: expect.stringMatching(/\/projects$/) })
+  })
+})
+
+describe('project JSON-LD', () => {
+  it('has SoftwareSourceCode with repo, live url, author and images, plus a 3-step breadcrumb', () => {
+    const p = { ...content.projects[0], detail: fixtureDetail }
+    const g = projectJsonLd(p)['@graph'] as any[]
+    const sw = g.find((n) => n['@type'] === 'SoftwareSourceCode')
+    expect(sw).toMatchObject({ name: 'Tripsmith', codeRepository: p.repo, url: p.live, dateModified: '2026-09-30', description: fixtureDetail.pitch })
+    expect(sw.author['@id']).toMatch(/#person$/)
+    expect(sw.image).toHaveLength(3)
+    expect(sw.image[1]).toMatch(/\/projects\/_fixture\/flow\.jpg$/) // clips contribute their poster
+    const bc = g.find((n) => n['@type'] === 'BreadcrumbList')
+    expect(bc.itemListElement.map((x: any) => x.name)).toEqual(['Home', 'Projects', 'Tripsmith'])
+    expect(bc['@context']).toBeUndefined()
   })
 })

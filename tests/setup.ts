@@ -10,3 +10,9 @@ class IO { observe() {} unobserve() {} disconnect() {} takeRecords() { return []
 ;(globalThis as any).IntersectionObserver = IO
 ;(globalThis as any).ResizeObserver = IO
 window.matchMedia = window.matchMedia || ((q: string) => ({ matches: false, media: q, onchange: null, addListener() {}, removeListener() {}, addEventListener() {}, removeEventListener() {}, dispatchEvent() { return false } }) as MediaQueryList)
+
+// jsdom has no media playback or modal dialogs
+HTMLMediaElement.prototype.play = function () { return Promise.resolve() }
+HTMLMediaElement.prototype.pause = function () {}
+HTMLDialogElement.prototype.showModal = function (this: HTMLDialogElement) { this.open = true }
+HTMLDialogElement.prototype.close = function (this: HTMLDialogElement) { this.open = false }

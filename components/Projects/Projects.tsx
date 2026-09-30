@@ -1,11 +1,14 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { content } from '@/lib/content'
+import { allProjects } from '@/lib/projects'
 import SectionWord from '@/components/SectionWord'
 import s from './Projects.module.css'
 
 /** Six case rows on ink rules: framed screenshot one side, title / story / stack / links the other, sides alternating. */
 export default function Projects() {
-  const { projects, projectsNote, person } = content
+  const { projectsNote, person } = content
+  const projects = allProjects()
   const total = String(projects.length).padStart(2, '0')
   return (
     <>
@@ -25,10 +28,14 @@ export default function Projects() {
               </div>
               <div>
                 <span className={s.num}>{n} / {total} <em>· {p.category} · {p.status}</em></span>
-                <h3 className={s.title}>{p.title}</h3>
+                <h3 className={s.title}>{p.detail ? <Link href={`/projects/${p.slug}`}>{p.title}</Link> : p.title}</h3>
                 <p className={s.blurb}>{p.blurb}</p>
                 <div className={s.tags}>{p.stack.map((t) => <span key={t}>{t}</span>)}</div>
-                <div className={s.acts}><a className="btn" href={p.live} target="_blank" rel="noreferrer"><span>Open live ↗</span></a><a className="btn o" href={p.repo} target="_blank" rel="noreferrer"><span>Source</span></a></div>
+                <div className={s.acts}>
+                  {p.detail && <Link className="btn" href={`/projects/${p.slug}`}><span>View project →</span></Link>}
+                  <a className={`btn${p.detail ? ' o' : ''}`} href={p.live} target="_blank" rel="noreferrer"><span>Open live ↗</span></a>
+                  <a className="btn o" href={p.repo} target="_blank" rel="noreferrer"><span>Source</span></a>
+                </div>
               </div>
             </article>
           )

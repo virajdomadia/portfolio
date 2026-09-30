@@ -1,0 +1,7 @@
+.page { padding-top: 120px; padding-bottom: 96px; }
+.crumbs ol { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0 0 32px; padding: 0; font: 500 12px var(--font-mono), monospace; letter-spacing: .06em; color: var(--muted); }
+.crumbs li + li::before { content: "/"; margin-right: 8px; }
+.crumbs a { color: inherit; }
+.top { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+.back { margin-top: 64px; }
+@media (max-width: 900px) { .page { padding-top: 96px; } .top { grid-template-columns: 1fr; gap: 36px; } }
