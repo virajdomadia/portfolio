@@ -7,6 +7,15 @@ const ID = { person: () => `${siteUrl()}/#person`, site: () => `${siteUrl()}/#we
 const place = (city: string, region?: string) => ({ '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: city, ...(region ? { addressRegion: region } : {}), addressCountry: person.countryCode } })
 
 /** One @graph for the home page. Every fact here is also visible on the page (Google's structured-data policy). */
+// Text on the home OG image (app/opengraph-image.tsx), derived from content so it never drifts from the site.
+export function homeOgText() {
+  const { person, marquee } = content
+  return {
+    eyebrow: `${person.role} · ${person.city}`.toUpperCase(),
+    stack: `${marquee.stack.slice(0, 5).join(' · ')} — open to full-time & freelance`,
+  }
+}
+
 export function jsonLdGraph() {
   const personNode = {
     '@type': 'Person', '@id': ID.person(), name: person.name, givenName: person.first, familyName: person.last,

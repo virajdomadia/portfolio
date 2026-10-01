@@ -24,4 +24,8 @@ describe('MobileMenu', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Open menu' }))
     expect(menu).not.toHaveAttribute('inert')
   })
+  it('names the current city in its footer note', () => {
+    render(<MobileMenu />)
+    expect(screen.getByText(/^Bengaluru · IST/)).toBeInTheDocument()
+  })
 })

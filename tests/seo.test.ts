@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { jsonLdGraph, breadcrumbs, projectJsonLd } from '@/lib/seo'
+import { jsonLdGraph, breadcrumbs, projectJsonLd, homeOgText } from '@/lib/seo'
 import { content } from '@/lib/content'
 import { fixtureDetail } from '@/lib/fixtures/detail'
 
@@ -49,5 +49,14 @@ describe('project JSON-LD', () => {
     const bc = g.find((n) => n['@type'] === 'BreadcrumbList')
     expect(bc.itemListElement.map((x: any) => x.name)).toEqual(['Home', 'Projects', 'Tripsmith'])
     expect(bc['@context']).toBeUndefined()
+  })
+})
+
+describe('home OG image text', () => {
+  it('comes from content: role and current city, the real stack, no stale Mumbai or MongoDB-first line', () => {
+    const t = homeOgText()
+    expect(t.eyebrow).toBe('FRONTEND-HEAVY FULL-STACK DEVELOPER · BENGALURU')
+    expect(t.stack).toBe(`${content.marquee.stack.slice(0, 5).join(' · ')} — open to full-time & freelance`)
+    expect(JSON.stringify(t)).not.toMatch(/Mumbai/i)
   })
 })
