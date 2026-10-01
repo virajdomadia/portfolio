@@ -32,7 +32,7 @@ export default function MobileMenu() {
           <div className={s.foot}>
             <a className="btn" href={`mailto:${person.email}`}><span>{person.email}</span></a>
             <div className={s.soc}><a href={person.github} target="_blank" rel="noreferrer">GitHub ↗</a><a href={person.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><a href={person.resume} target="_blank" rel="noreferrer">Résumé ↗</a></div>
-            <span className={`mono ${s.note}`}>Mumbai · IST · open to full-time & freelance</span>
+            <span className={`mono ${s.note}`}>{person.city} · IST · open to full-time & freelance</span>
           </div>
         </div>
       </div>
