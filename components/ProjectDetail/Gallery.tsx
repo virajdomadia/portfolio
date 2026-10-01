@@ -74,7 +74,7 @@ export default function Gallery({ media, title, host }: { media: Media[]; title:
           {media.map((t, k) => (
             <li key={k}>
               <a href={file(t)} className={s.thumb} aria-current={k === i || undefined} aria-label={`Show ${t.caption}${t.kind === 'clip' ? ' (video)' : ''}`} onClick={(e) => { e.preventDefault(); go(k) }}>
-                <Image src={still(t)} alt="" width={160} height={100} sizes="160px" />
+                <Image src={still(t)} alt="" width={160} height={100} sizes="(max-width: 900px) 92px, 116px" fetchPriority="low" />
                 {t.kind === 'clip' && <span className={s.badge}>▶ {dur(t.seconds)}</span>}
               </a>
             </li>

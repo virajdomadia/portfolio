@@ -15,7 +15,6 @@
     "gen:llms": "node --experimental-strip-types --no-warnings scripts/gen-llms.mjs",
     "gen:resume": "node --experimental-strip-types --no-warnings scripts/gen-resume.mjs",
     "shoot:detail": "node scripts/shoot-detail.mjs",
-    "gen:fixture-media": "node scripts/make-fixture-media.mjs",
     "prebuild": "pnpm gen:llms"
   },
   "dependencies": {

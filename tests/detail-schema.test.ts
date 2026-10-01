@@ -1,4 +1,5 @@
-import { describe, it, expect, vi, afterEach } from 'vitest'
+import fs from 'node:fs'
+import { describe, it, expect } from 'vitest'
 import { DetailSchema, ContentSchema } from '@/lib/content-schema'
 import { fixtureDetail } from '@/lib/fixtures/detail'
 import { content } from '@/lib/content'
@@ -8,7 +9,6 @@ const img = (n: number) => ({ kind: 'image' as const, src: `/projects/x/${n}.web
 const clip = (n: number) => ({ kind: 'clip' as const, webm: `/projects/x/${n}.webm`, mp4: `/projects/x/${n}.mp4`, poster: `/projects/x/${n}.jpg`, seconds: 8, alt: 'A clip of the checkout flow', caption: `Clip ${n}` })
 const withMedia = (media: unknown[]) => ({ ...fixtureDetail, media })
 
-afterEach(() => vi.unstubAllEnvs())
 
 describe('detail schema', () => {
   it('accepts the fixture', () => { expect(DetailSchema.safeParse(fixtureDetail).success).toBe(true) })
@@ -34,14 +34,14 @@ describe('detail schema', () => {
 })
 
 describe('project helpers', () => {
-  it('without the fixture flag, only projects with a real detail block get a page', () => {
-    expect(detailProjects().map((p) => p.slug)).toEqual(content.projects.filter((p) => p.detail).map((p) => p.slug))
-    expect(getDetailProject('frontrow')).toBeUndefined()
-  })
-  it('the fixture flag attaches the fixture to Tripsmith only', () => {
-    vi.stubEnv('PORTFOLIO_FIXTURE_DETAIL', '1')
-    expect(getDetailProject('tripsmith')?.detail.pitch).toBe(fixtureDetail.pitch)
+  it('only Tripsmith has a detail page, straight from content', () => {
     expect(allProjects()).toHaveLength(6)
     expect(detailProjects().map((p) => p.slug)).toEqual(['tripsmith'])
+    expect(getDetailProject('tripsmith')?.detail).toBe(content.projects.find((p) => p.slug === 'tripsmith')?.detail)
+    expect(getDetailProject('frontrow')).toBeUndefined()
+  })
+  it('every media file a detail block names is committed under public/', () => {
+    const paths = detailProjects().flatMap((p) => p.detail.media.flatMap((m) => (m.kind === 'image' ? [m.src] : [m.webm, m.mp4, m.poster])))
+    expect(paths.filter((f) => !fs.existsSync(`public${f}`))).toEqual([])
   })
 })

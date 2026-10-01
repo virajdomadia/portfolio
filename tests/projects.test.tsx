@@ -1,9 +1,8 @@
 import { render, screen } from '@testing-library/react'
-import { describe, it, expect, vi, afterEach } from 'vitest'
+import { describe, it, expect } from 'vitest'
 import Projects from '@/components/Projects/Projects'
 
 describe('Projects', () => {
-  afterEach(() => vi.unstubAllEnvs())
   it('renders six case rows, each with a framed screenshot, live + source links and an honest status', () => {
     const { container } = render(<Projects />)
     expect(container.querySelector('section#projects')).toBeTruthy()
@@ -18,17 +17,12 @@ describe('Projects', () => {
     expect(screen.getByText(/v2 live · bookings \+ payments/)).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'All repos on GitHub' })).toHaveAttribute('href', 'https://github.com/virajdomadia')
   })
-  it('rows with a detail page get "View project →" and a linked title; the others do not', () => {
-    vi.stubEnv('PORTFOLIO_FIXTURE_DETAIL', '1')
+  it('only Tripsmith has a detail page: "View project →" and a linked title; the others do not', () => {
     render(<Projects />)
     const links = screen.getAllByRole('link', { name: 'View project →' })
     expect(links).toHaveLength(1)
     expect(links[0]).toHaveAttribute('href', '/projects/tripsmith')
     expect(screen.getByRole('link', { name: 'Tripsmith' })).toHaveAttribute('href', '/projects/tripsmith')
     expect(screen.queryByRole('link', { name: 'Frontrow' })).toBeNull()
-  })
-  it('without any detail block the rows are unchanged', () => {
-    render(<Projects />)
-    expect(screen.queryAllByRole('link', { name: 'View project →' })).toHaveLength(0)
   })
 })
