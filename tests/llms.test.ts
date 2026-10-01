@@ -28,7 +28,8 @@ describe('llms builders', () => {
   const withDetail = { ...content, projects: content.projects.map((p) => (p.slug === 'tripsmith' ? { ...p, detail: fixtureDetail } : p)) }
   it('adds a Pages line per detail project', () => {
     expect(llmsText(withDetail, 'https://x.dev')).toContain('- [Tripsmith — project page](https://x.dev/projects/tripsmith)')
-    expect(llmsText(content, 'https://x.dev')).not.toContain('/projects/')
+    const noDetail = { ...content, projects: content.projects.map((p) => ({ ...p, detail: undefined })) }
+    expect(llmsText(noDetail, 'https://x.dev')).not.toContain('/projects/')
   })
   it('llms-full carries the case study', () => {
     const full = llmsFullText(withDetail, 'https://x.dev')

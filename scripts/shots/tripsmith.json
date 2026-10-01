@@ -1,0 +1,113 @@
+{
+  "base": "https://tripsmith.virajdomadia.com",
+  "logins": {
+    "traveller": [
+      { "do": "goto", "path": "/account/sign-in" },
+      { "do": "fill", "sel": "input[type=email]", "text": "$ENV:TRIPSMITH_DEMO_EMAIL" },
+      { "do": "click", "sel": "button:has-text('Send code')" },
+      { "do": "click", "sel": "button:has-text('Fill it in')" },
+      { "do": "click", "sel": "button[type=submit]:has-text('Sign in')" },
+      { "do": "waitFor", "sel": "h1:has-text('Hello')" }
+    ],
+    "owner": [
+      { "do": "goto", "path": "/admin/login" },
+      { "do": "fill", "sel": "input[type=email]", "text": "$ENV:TRIPSMITH_OWNER_EMAIL" },
+      { "do": "fill", "sel": "input[type=password]", "text": "$ENV:TRIPSMITH_OWNER_PASSWORD" },
+      { "do": "click", "sel": "button[type=submit]" },
+      { "do": "waitFor", "sel": "nav a[href='/admin/bookings']" }
+    ]
+  },
+  "images": [
+    { "name": "home", "path": "/", "wait": 5000 },
+    { "name": "package", "path": "/packages/leh-nubra-pangong", "wait": 3500 },
+    { "name": "sheet", "path": "/packages/kasol-weekend-camp#book", "wait": 5000 },
+    { "name": "sheet-extras", "path": "/packages/kasol-weekend-camp", "wait": 3000, "steps": [
+      { "do": "click", "sel": "button:has-text('Book now')" },
+      { "do": "click", "sel": "[role=dialog] button:has-text('Fri 4 Dec 2026')" },
+      { "do": "click", "sel": "button[aria-label='One more traveller for Kullu river rafting']" },
+      { "do": "click", "sel": "button[aria-label='One more traveller for Kullu river rafting']" },
+      { "do": "click", "sel": "[role=dialog] button:has-text('Have a code?')" },
+      { "do": "fill", "sel": "#coupon", "text": "WELCOME10" },
+      { "do": "click", "sel": "[role=dialog] button:has-text('Apply')" },
+      { "do": "wait", "ms": 2500 }
+    ] },
+    { "name": "my-trips", "path": "/account", "as": "traveller", "wait": 3000 },
+    { "name": "trip", "path": "/account/bookings/TB-CE9BQJ", "as": "traveller", "wait": 3000 },
+    { "name": "desk", "path": "/admin", "as": "owner", "wait": 3500 },
+    { "name": "desk-booking", "path": "/admin/bookings/TB-CE9BQJ", "as": "owner", "wait": 3500 }
+  ],
+  "clips": [
+    { "name": "browse", "path": "/", "wait": 3500, "seconds": 8, "steps": [
+      { "do": "wait", "ms": 600 },
+      { "do": "select", "sel": "select[name=destination]", "value": "Himachal" },
+      { "do": "wait", "ms": 600 },
+      { "do": "click", "sel": "button:has-text('Search trips')" },
+      { "do": "wait", "ms": 2200 },
+      { "do": "hover", "sel": "a[href='/packages/kasol-weekend-camp']" },
+      { "do": "wait", "ms": 700 },
+      { "do": "click", "sel": "a[href='/packages/kasol-weekend-camp']" },
+      { "do": "wait", "ms": 3000 }
+    ] },
+    { "name": "book", "path": "/packages/kasol-weekend-camp", "wait": 3000, "seconds": 10, "steps": [
+      { "do": "click", "sel": "button:has-text('Book now')" },
+      { "do": "wait", "ms": 1200 },
+      { "do": "click", "sel": "[role=dialog] button:has-text('Fri 4 Dec 2026')" },
+      { "do": "wait", "ms": 1000 },
+      { "do": "click", "sel": "button[aria-label='One more traveller for Kullu river rafting']" },
+      { "do": "wait", "ms": 500 },
+      { "do": "click", "sel": "button[aria-label='One more traveller for Kullu river rafting']" },
+      { "do": "wait", "ms": 900 },
+      { "do": "click", "sel": "[role=dialog] button:has-text('Have a code?')" },
+      { "do": "type", "sel": "#coupon", "text": "WELCOME10" },
+      { "do": "click", "sel": "[role=dialog] button:has-text('Apply')" },
+      { "do": "wait", "ms": 2500 }
+    ] },
+    { "name": "pay", "path": "/packages/kasol-weekend-camp", "wait": 3000, "seconds": 12, "lead": 1.5, "writes": true, "setup": [
+      { "do": "click", "sel": "button:has-text('Book now')" },
+      { "do": "click", "sel": "[role=dialog] button:has-text('Fri 4 Dec 2026')" },
+      { "do": "fill", "sel": "#t-double-0-0-name", "text": "Meera Rao" },
+      { "do": "fill", "sel": "#t-double-0-0-age", "text": "31" },
+      { "do": "fill", "sel": "#t-double-0-1-name", "text": "Arjun Rao" },
+      { "do": "fill", "sel": "#t-double-0-1-age", "text": "33" },
+      { "do": "fill", "sel": "[id='contact.name']", "text": "Meera Rao" },
+      { "do": "fill", "sel": "[id='contact.phone']", "text": "9000000001" },
+      { "do": "fill", "sel": "[id='contact.email']", "text": "$ENV:TRIPSMITH_DEMO_EMAIL" },
+      { "do": "select", "sel": "[id='contact.state']", "value": "Karnataka" },
+      { "do": "click", "sel": "[role=dialog] button:has-text('Pay') >> nth=-1" },
+      { "do": "waitFor", "frame": "iframe.razorpay-checkout-frame", "sel": "[data-testid=card]", "ms": 60000 },
+      { "do": "wait", "ms": 1500 }
+    ], "steps": [
+      { "do": "click", "frame": "iframe.razorpay-checkout-frame", "sel": "[data-testid=card]" },
+      { "do": "type", "frame": "iframe.razorpay-checkout-frame", "sel": "input[name='card.number']", "text": "5267318187975449" },
+      { "do": "fill", "frame": "iframe.razorpay-checkout-frame", "sel": "input[name='card.expiry']", "text": "12 / 30" },
+      { "do": "fill", "frame": "iframe.razorpay-checkout-frame", "sel": "input[name='card.cvv']", "text": "123" },
+      { "do": "click", "frame": "iframe.razorpay-checkout-frame", "sel": "button:has-text('Continue'):visible" },
+      { "do": "click", "frame": "iframe.razorpay-checkout-frame", "sel": "button:has-text('Maybe later'):visible" },
+      { "do": "waitFor", "frame": "iframe.razorpay-checkout-frame", "sel": "input[placeholder='Enter OTP']" },
+      { "do": "type", "frame": "iframe.razorpay-checkout-frame", "sel": "input[placeholder='Enter OTP']", "text": "123456" },
+      { "do": "click", "frame": "iframe.razorpay-checkout-frame", "sel": "button:has-text('Continue'):visible >> nth=-1" },
+      { "do": "waitFor", "frame": "iframe.razorpay-checkout-frame", "sel": "text=Payment Successful", "ms": 60000 },
+      { "do": "wait", "ms": 1500 }
+    ] },
+    { "name": "counter", "path": "/admin/bookings/new", "as": "owner", "wait": 3000, "seconds": 10, "setup": [
+      { "do": "select", "sel": "main select", "value": "Kasol Riverside Weekend" },
+      { "do": "wait", "ms": 1500 }
+    ], "steps": [
+      { "do": "click", "sel": "main button:has-text('Fri 4 Dec 2026')" },
+      { "do": "wait", "ms": 700 },
+      { "do": "click", "sel": "main button:has-text('Next: Party')" },
+      { "do": "wait", "ms": 500 },
+      { "do": "click", "sel": "button[aria-label='More: Double rooms']" },
+      { "do": "wait", "ms": 900 },
+      { "do": "click", "sel": "main button:has-text('Next: Add-ons')" },
+      { "do": "wait", "ms": 500 },
+      { "do": "click", "sel": "button[aria-label='Bonfire + BBQ night, ₹2,500 per booking']" },
+      { "do": "wait", "ms": 900 },
+      { "do": "click", "sel": "main button:has-text('Next: Discounts')" },
+      { "do": "wait", "ms": 500 },
+      { "do": "type", "sel": "input[placeholder='Amount']", "text": "1000" },
+      { "do": "type", "sel": "input[placeholder^='e.g. Repeat']", "text": "Repeat customer" },
+      { "do": "wait", "ms": 2000 }
+    ] }
+  ]
+}

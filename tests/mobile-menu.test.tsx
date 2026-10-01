@@ -17,4 +17,11 @@ describe('MobileMenu', () => {
     fireEvent.keyDown(document, { key: 'Escape' })
     expect(document.documentElement).not.toHaveClass('menu-open')
   })
+  it('takes the closed menu out of the tab order (inert), and gives it back when open', () => {
+    const { container } = render(<MobileMenu />)
+    const menu = container.querySelector('#menu')!
+    expect(menu).toHaveAttribute('inert')
+    fireEvent.click(screen.getByRole('button', { name: 'Open menu' }))
+    expect(menu).not.toHaveAttribute('inert')
+  })
 })

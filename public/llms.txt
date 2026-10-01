@@ -57,4 +57,5 @@ Every project has a live URL and a public repo — open one, then read the code.
 ## Pages
 
 - [Home](https://virajdomadia.vercel.app/)
+- [Tripsmith — project page](https://virajdomadia.vercel.app/projects/tripsmith)
 - [Résumé PDF](https://virajdomadia.vercel.app/Viraj-Domadia-Resume.pdf)

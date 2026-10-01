@@ -1,6 +1,6 @@
 import type { Detail } from '../content'
 
-// Test-only detail block. Attached to Tripsmith when PORTFOLIO_FIXTURE_DETAIL=1 (unit tests, e2e build). Never set on Vercel.
+// Test-only detail block for unit tests (schema, SEO, llms, ProjectDetail). Its media paths are strings only — no files.
 export const fixtureDetail: Detail = {
   pitch: 'Fixture pitch — a travel agency on its own site, used only by tests.',
   facts: { role: 'Solo — design, frontend, backend', year: '2026', version: 'v2' },

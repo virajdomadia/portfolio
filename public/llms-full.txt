@@ -57,4 +57,29 @@ Every project has a live URL and a public repo — open one, then read the code.
 ## Pages
 
 - [Home](https://virajdomadia.vercel.app/)
+- [Tripsmith — project page](https://virajdomadia.vercel.app/projects/tripsmith)
 - [Résumé PDF](https://virajdomadia.vercel.app/Viraj-Domadia-Resume.pdf)
+
+## Tripsmith — case study
+
+A travel agency’s own booking site: live seats, Razorpay checkout, PDF vouchers and GST invoices, and an owner desk on the same API. Page: https://virajdomadia.vercel.app/projects/tripsmith
+
+**The problem.** A small Indian tour agency sells fixed-date group trips: a set itinerary, a price per person and a limited number of seats per departure. Most run on WhatsApp, phone calls and a spreadsheet, so two people can pay for the same last seat, prices are worked out by hand, and nobody can see who changed a booking. Tripsmith is that agency’s own site, built so every seat, rupee and change is accounted for.
+
+**What I built.** A Next.js site with 14 packages and 51 departures; package and destination pages are generated ahead of time and refresh on demand when the owner edits them. A FastAPI + Postgres API behind it. Customers book with live seats, add-ons, deals, early-bird prices and coupons; pay in full or a 25% deposit through Razorpay in test mode; get a PDF voucher and GST invoice; and sign in with an emailed 6-digit code to manage their trips. The owner runs bookings, refunds, enquiries, packages, coupons, reviews and counter bookings over Razorpay Payment Links from an admin desk on the same API.
+
+**Key decisions.**
+1. The server owns the price — Every quote is built on the server in whole paise: deal, then early-bird, then coupon, with add-ons added last. The browser never sends a price; the owner’s counter screen sends the total it expects and gets 409 price_changed if it moved.
+2. Seats are held, not hoped for — Pressing Pay creates a 10-minute hold. The server locks the customer’s email or phone, then the departure row (FOR UPDATE). A test fires two orders for the last seat at once: exactly one wins, the other gets 409 sold_out.
+3. All payments go through one capture function — The Checkout callback, the sync when Checkout closes, the webhook and payment links all lead into it. Signatures are checked with HMAC and a unique Razorpay payment id turns replays into no-ops. A payment that lands after the seats are gone is cancelled and refunded automatically through the Razorpay refund API.
+4. History can’t be rewritten — Every booking change is written to booking_events, and a Postgres trigger refuses any UPDATE or DELETE on it. The owner sees it as a timeline, the customer as “Activity”.
+5. GST numbers have no gaps — Receipts, tax invoices and credit notes are numbered per financial year (TS/2026-27/0001) from a counter row taken in the same transaction as the document; PDFs are made with fpdf2. The GSTIN is a demo one, labelled not registered.
+
+**Versions.**
+- v1 Agency website (shipped): Catalog, search, package pages, enquiries + WhatsApp, itinerary PDF, owner admin.
+- v2 Booking engine (shipped): Razorpay checkout, webhooks, accounts, deals, coupons, reviews, owner bookings desk.
+- v2.5 Strengthen (next): Partly live: history log, refunds + GST documents, add-ons, early-bird, deposit + balance, counter booking, admin redesign. Still to come: waitlist, date change, calendar, reports.
+- v3 AI concierge (next): Chat that searches the catalog, checks seats and starts a booking.
+- v4 Tripsmith anywhere (next): An MCP server with the same tools.
+
+**Outcome.** Live at tripsmith.virajdomadia.com, taking bookings in Razorpay test mode. Over 750 API tests and over 500 web tests. CI runs three jobs: web, api, and an OpenAPI contract check that fails if the generated types drift. The booking page scores 94 on PageSpeed mobile.

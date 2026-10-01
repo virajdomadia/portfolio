@@ -16,8 +16,6 @@ export default defineConfig({
     url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,
-    // e2e builds attach the test fixture to Tripsmith so /projects/tripsmith exists (removed in Part 3 when the real page ships)
-    env: { PORTFOLIO_FIXTURE_DETAIL: '1' },
     gracefulShutdown: { signal: 'SIGTERM', timeout: 500 },
   },
   use: { baseURL },

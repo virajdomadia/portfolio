@@ -23,7 +23,7 @@ export default function MobileMenu() {
   return (
     <>
       <button ref={burger} className={s.burger} type="button" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="menu" onClick={() => setOpen((o) => !o)}><i /><i /></button>
-      <div className={s.menu} id="menu" aria-hidden={!open}>
+      <div className={s.menu} id="menu" aria-hidden={!open} inert={!open}>
         <div className={`wrap ${s.inner}`}>
           <div className={s.head}><span className="mono">Menu</span><span className="mono">{person.name}</span></div>
           <nav className={s.links} aria-label="Mobile">
