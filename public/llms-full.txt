@@ -26,7 +26,7 @@ Viraj Domadia is a frontend-heavy full-stack developer based in Bengaluru, origi
 
 ## Projects
 
-- **Tripsmith** (Travel + AI concierge; v2 live · bookings + payments): A travel agency on its own site: book and pay by Razorpay (test mode) with live seats, deals and coupons, get a PDF voucher, manage trips and reviews in an account; an owner desk runs the bookings. AI concierge next. Live: https://tripsmith.virajdomadia.com · Source: https://github.com/virajdomadia/tripsmith
+- **Tripsmith** (Travel + AI concierge; v2.5 live · bookings, payments + operator desk): A travel agency’s own booking site: live seats, add-ons, deposits, a waitlist, Razorpay (test mode), GST invoices and real refunds — and an owner desk with counter booking, a calendar and reports. AI concierge next. Live: https://tripsmith.virajdomadia.com · Source: https://github.com/virajdomadia/tripsmith
 - **Frontrow** (Live seat-map ticketing; live): Movie and concert tickets on a live seat map: tap a seat and it is held for ten minutes and greys out for everyone else — Redis holds, transactions, idempotent payments, QR tickets. Live: https://frontrow-viraj.vercel.app · Source: https://github.com/virajdomadia/frontrow
 - **Pagecraft** (Co-edited website builder; live): A landing-page editor two people use at the same time — live cursors, conflict-free merges, version history — then one click publishes it to its own subdomain. Live: https://pagecraft-viraj.vercel.app · Source: https://github.com/virajdomadia/pagecraft
 - **Offcut** (D2C store + visual search; live): A complete streetwear store — variants, inventory that cannot go negative, cart, orders, returns, admin — plus “drop a photo, shop the look” search on image embeddings. Live: https://offcut-viraj.vercel.app · Source: https://github.com/virajdomadia/offcut
@@ -66,7 +66,7 @@ A travel agency’s own booking site: live seats, Razorpay checkout, PDF voucher
 
 **The problem.** A small Indian tour agency sells fixed-date group trips: a set itinerary, a price per person and a limited number of seats per departure. Most run on WhatsApp, phone calls and a spreadsheet, so two people can pay for the same last seat, prices are worked out by hand, and nobody can see who changed a booking. Tripsmith is that agency’s own site, built so every seat, rupee and change is accounted for.
 
-**What I built.** A Next.js site with 14 packages and 51 departures; package and destination pages are generated ahead of time and refresh on demand when the owner edits them. A FastAPI + Postgres API behind it. Customers book with live seats, add-ons, deals, early-bird prices and coupons; pay in full or a 25% deposit through Razorpay in test mode; get a PDF voucher and GST invoice; and sign in with an emailed 6-digit code to manage their trips. The owner runs bookings, refunds, enquiries, packages, coupons, reviews and counter bookings over Razorpay Payment Links from an admin desk on the same API.
+**What I built.** A Next.js site with 14 packages and 51 departures; package and destination pages are generated ahead of time and refresh on demand when the owner edits them. A FastAPI + Postgres API behind it. Customers book with live seats, add-ons, deals, early-bird prices and coupons; pay in full or a 25% deposit through Razorpay in test mode; get a PDF voucher and GST invoice; and sign in with an emailed 6-digit code to manage their trips. Customers can also join a waitlist on a sold-out date, change their date, save and compare trips, fill in traveller details and open a trip pack a week before they leave. The owner runs bookings, refunds, enquiries, packages, coupons, reviews and counter bookings over Razorpay Payment Links from an admin desk on the same API, with a departure calendar, reports that reconcile with the bookings CSV, and automatic trip emails.
 
 **Key decisions.**
 1. The server owns the price — Every quote is built on the server in whole paise: deal, then early-bird, then coupon, with add-ons added last. The browser never sends a price; the owner’s counter screen sends the total it expects and gets 409 price_changed if it moved.
@@ -78,8 +78,8 @@ A travel agency’s own booking site: live seats, Razorpay checkout, PDF voucher
 **Versions.**
 - v1 Agency website (shipped): Catalog, search, package pages, enquiries + WhatsApp, itinerary PDF, owner admin.
 - v2 Booking engine (shipped): Razorpay checkout, webhooks, accounts, deals, coupons, reviews, owner bookings desk.
-- v2.5 Strengthen (next): Partly live: history log, refunds + GST documents, add-ons, early-bird, deposit + balance, counter booking, admin redesign. Still to come: waitlist, date change, calendar, reports.
+- v2.5 Strengthen (shipped): Deposits, add-ons, early-bird, a waitlist, date change, refunds + GST documents, traveller details, a trip pack, saved trips + compare, counter booking, a departure calendar, reports and automatic emails.
 - v3 AI concierge (next): Chat that searches the catalog, checks seats and starts a booking.
 - v4 Tripsmith anywhere (next): An MCP server with the same tools.
 
-**Outcome.** Live at tripsmith.virajdomadia.com, taking bookings in Razorpay test mode. Over 750 API tests and over 500 web tests. CI runs three jobs: web, api, and an OpenAPI contract check that fails if the generated types drift. The booking page scores 94 on PageSpeed mobile.
+**Outcome.** Live at tripsmith.virajdomadia.com, taking bookings in Razorpay test mode. Over 1,000 API tests and nearly 700 web tests, with a forced-race test on every lock path. CI runs three jobs: web, api, and an OpenAPI contract check that fails if the generated types drift. The booking page scores 88 on PageSpeed mobile with the booking sheet open.
