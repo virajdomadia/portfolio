@@ -83,7 +83,7 @@ export const content: Content = {
             { title: 'History can’t be rewritten', body: 'Every booking change is written to booking_events, and a Postgres trigger refuses any UPDATE or DELETE on it. The owner sees it as a timeline, the customer as “Activity”.' },
             { title: 'GST numbers have no gaps', body: 'Receipts, tax invoices and credit notes are numbered per financial year (TS/2026-27/0001) from a counter row taken in the same transaction as the document; PDFs are made with fpdf2. The GSTIN is a demo one, labelled not registered.' },
           ],
-          outcome: 'Live at tripsmith.virajdomadia.com, taking bookings in Razorpay test mode. Over 1,000 API tests and nearly 700 web tests, with a forced-race test on every lock path. CI runs three jobs: web, api, and an OpenAPI contract check that fails if the generated types drift. The booking page scores 88 on PageSpeed mobile with the booking sheet open.',
+          outcome: 'Live at tripsmith.virajdomadia.com, taking bookings in Razorpay test mode. Over 1,000 API tests and over 700 web tests, with a forced-race test on every lock path. CI runs three jobs: web, api, and an OpenAPI contract check that fails if the generated types drift. The booking page scores 88 on PageSpeed mobile with the booking sheet open.',
         },
         versions: [
           { name: 'v1 Agency website', summary: 'Catalog, search, package pages, enquiries + WhatsApp, itinerary PDF, owner admin.', state: 'shipped' },

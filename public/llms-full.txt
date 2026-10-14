@@ -82,4 +82,4 @@ A travel agency’s own booking site: live seats, Razorpay checkout, PDF voucher
 - v3 AI concierge (next): Chat that searches the catalog, checks seats and starts a booking.
 - v4 Tripsmith anywhere (next): An MCP server with the same tools.
 
-**Outcome.** Live at tripsmith.virajdomadia.com, taking bookings in Razorpay test mode. Over 1,000 API tests and nearly 700 web tests, with a forced-race test on every lock path. CI runs three jobs: web, api, and an OpenAPI contract check that fails if the generated types drift. The booking page scores 88 on PageSpeed mobile with the booking sheet open.
+**Outcome.** Live at tripsmith.virajdomadia.com, taking bookings in Razorpay test mode. Over 1,000 API tests and over 700 web tests, with a forced-race test on every lock path. CI runs three jobs: web, api, and an OpenAPI contract check that fails if the generated types drift. The booking page scores 88 on PageSpeed mobile with the booking sheet open.
