@@ -52,13 +52,13 @@ export const content: Content = {
     { degree: 'B.Sc. Information Technology', school: 'Narsee Monjee College of Commerce and Economics, Mumbai University', years: '2019–2022', note: '8.33 CGPA' },
   ],
   projects: [
-    { slug: 'tripsmith', title: 'Tripsmith', category: 'Travel + AI concierge', status: 'v2 live · bookings + payments',
-      blurb: 'A travel agency on its own site: book and pay by Razorpay (test mode) with live seats, deals and coupons, get a PDF voucher, manage trips and reviews in an account; an owner desk runs the bookings. AI concierge next.',
+    { slug: 'tripsmith', title: 'Tripsmith', category: 'Travel + AI concierge', status: 'v2.5 live · bookings, payments + operator desk',
+      blurb: 'A travel agency’s own booking site: live seats, add-ons, deposits, a waitlist, Razorpay (test mode), GST invoices and real refunds — and an owner desk with counter booking, a calendar and reports. AI concierge next.',
       stack: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL', 'SQLAlchemy', 'Tailwind CSS', 'Razorpay'],
       live: 'https://tripsmith.virajdomadia.com', repo: 'https://github.com/virajdomadia/tripsmith', image: '/images/projects/tripsmith.jpg',
       detail: {
         pitch: 'A travel agency’s own booking site: live seats, Razorpay checkout, PDF vouchers and GST invoices, and an owner desk on the same API.',
-        facts: { role: 'Solo — design, frontend, API, database, deploy', year: '2026', version: 'v2.5 (in progress)' },
+        facts: { role: 'Solo — design, frontend, API, database, deploy', year: '2026', version: 'v2.5' },
         media: [
           { kind: 'image', src: '/projects/tripsmith/home.webp', alt: 'Tripsmith home page: headline over a Kerala backwaters photo and a search by place, month and budget', caption: 'Home — search by place, month and budget' },
           { kind: 'clip', webm: '/projects/tripsmith/browse.webm', mp4: '/projects/tripsmith/browse.mp4', poster: '/projects/tripsmith/browse.jpg', seconds: 8, alt: 'Clip: searching Himachal from the home page and opening the Kasol package', caption: 'Search to package' },
@@ -75,7 +75,7 @@ export const content: Content = {
         ],
         sections: {
           problem: 'A small Indian tour agency sells fixed-date group trips: a set itinerary, a price per person and a limited number of seats per departure. Most run on WhatsApp, phone calls and a spreadsheet, so two people can pay for the same last seat, prices are worked out by hand, and nobody can see who changed a booking. Tripsmith is that agency’s own site, built so every seat, rupee and change is accounted for.',
-          built: 'A Next.js site with 14 packages and 51 departures; package and destination pages are generated ahead of time and refresh on demand when the owner edits them. A FastAPI + Postgres API behind it. Customers book with live seats, add-ons, deals, early-bird prices and coupons; pay in full or a 25% deposit through Razorpay in test mode; get a PDF voucher and GST invoice; and sign in with an emailed 6-digit code to manage their trips. The owner runs bookings, refunds, enquiries, packages, coupons, reviews and counter bookings over Razorpay Payment Links from an admin desk on the same API.',
+          built: 'A Next.js site with 14 packages and 51 departures; package and destination pages are generated ahead of time and refresh on demand when the owner edits them. A FastAPI + Postgres API behind it. Customers book with live seats, add-ons, deals, early-bird prices and coupons; pay in full or a 25% deposit through Razorpay in test mode; get a PDF voucher and GST invoice; and sign in with an emailed 6-digit code to manage their trips. Customers can also join a waitlist on a sold-out date, change their date, save and compare trips, fill in traveller details and open a trip pack a week before they leave. The owner runs bookings, refunds, enquiries, packages, coupons, reviews and counter bookings over Razorpay Payment Links from an admin desk on the same API, with a departure calendar, reports that reconcile with the bookings CSV, and automatic trip emails.',
           decisions: [
             { title: 'The server owns the price', body: 'Every quote is built on the server in whole paise: deal, then early-bird, then coupon, with add-ons added last. The browser never sends a price; the owner’s counter screen sends the total it expects and gets 409 price_changed if it moved.' },
             { title: 'Seats are held, not hoped for', body: 'Pressing Pay creates a 10-minute hold. The server locks the customer’s email or phone, then the departure row (FOR UPDATE). A test fires two orders for the last seat at once: exactly one wins, the other gets 409 sold_out.' },
@@ -83,16 +83,16 @@ export const content: Content = {
             { title: 'History can’t be rewritten', body: 'Every booking change is written to booking_events, and a Postgres trigger refuses any UPDATE or DELETE on it. The owner sees it as a timeline, the customer as “Activity”.' },
             { title: 'GST numbers have no gaps', body: 'Receipts, tax invoices and credit notes are numbered per financial year (TS/2026-27/0001) from a counter row taken in the same transaction as the document; PDFs are made with fpdf2. The GSTIN is a demo one, labelled not registered.' },
           ],
-          outcome: 'Live at tripsmith.virajdomadia.com, taking bookings in Razorpay test mode. Over 750 API tests and over 500 web tests. CI runs three jobs: web, api, and an OpenAPI contract check that fails if the generated types drift. The booking page scores 94 on PageSpeed mobile.',
+          outcome: 'Live at tripsmith.virajdomadia.com, taking bookings in Razorpay test mode. Over 1,000 API tests and over 700 web tests, with a forced-race test on every lock path. CI runs three jobs: web, api, and an OpenAPI contract check that fails if the generated types drift. The booking page scores 88 on PageSpeed mobile with the booking sheet open.',
         },
         versions: [
           { name: 'v1 Agency website', summary: 'Catalog, search, package pages, enquiries + WhatsApp, itinerary PDF, owner admin.', state: 'shipped' },
           { name: 'v2 Booking engine', summary: 'Razorpay checkout, webhooks, accounts, deals, coupons, reviews, owner bookings desk.', state: 'shipped' },
-          { name: 'v2.5 Strengthen', summary: 'Partly live: history log, refunds + GST documents, add-ons, early-bird, deposit + balance, counter booking, admin redesign. Still to come: waitlist, date change, calendar, reports.', state: 'next' },
+          { name: 'v2.5 Strengthen', summary: 'Deposits, add-ons, early-bird, a waitlist, date change, refunds + GST documents, traveller details, a trip pack, saved trips + compare, counter booking, a departure calendar, reports and automatic emails.', state: 'shipped' },
           { name: 'v3 AI concierge', summary: 'Chat that searches the catalog, checks seats and starts a booking.', state: 'next' },
           { name: 'v4 Tripsmith anywhere', summary: 'An MCP server with the same tools.', state: 'next' },
         ],
-        updated: '2026-10-01',
+        updated: '2026-10-14',
       } },
     { slug: 'frontrow', title: 'Frontrow', category: 'Live seat-map ticketing', status: 'Live',
       blurb: 'Movie and concert tickets on a live seat map: tap a seat and it is held for ten minutes and greys out for everyone else — Redis holds, transactions, idempotent payments, QR tickets.',

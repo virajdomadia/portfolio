@@ -14,7 +14,7 @@ describe('Projects', () => {
     expect(screen.getByRole('heading', { level: 3, name: 'Tripsmith' })).toBeInTheDocument()
     expect(screen.queryByText(/In build/)).toBeNull()
     expect(screen.getAllByText(/· Live$/)).toHaveLength(5)
-    expect(screen.getByText(/v2 live · bookings \+ payments/)).toBeInTheDocument()
+    expect(screen.getByText(/v2\.5 live · bookings, payments \+ operator desk/)).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'All repos on GitHub' })).toHaveAttribute('href', 'https://github.com/virajdomadia')
   })
   it('only Tripsmith has a detail page: "View project →" and a linked title; the others do not', () => {
