@@ -51,18 +51,18 @@ Every project has a live URL and a public repo — open one, then read the code.
 - Phone: +91 88280 91294
 - GitHub: https://github.com/virajdomadia
 - LinkedIn: https://www.linkedin.com/in/viraj-domadia-6b89751b5
-- Résumé: https://virajdomadia.vercel.app/Viraj-Domadia-Resume.pdf
-- Site: https://virajdomadia.vercel.app
+- Résumé: https://virajdomadia.com/Viraj-Domadia-Resume.pdf
+- Site: https://virajdomadia.com
 
 ## Pages
 
-- [Home](https://virajdomadia.vercel.app/)
-- [Tripsmith — project page](https://virajdomadia.vercel.app/projects/tripsmith)
-- [Résumé PDF](https://virajdomadia.vercel.app/Viraj-Domadia-Resume.pdf)
+- [Home](https://virajdomadia.com/)
+- [Tripsmith — project page](https://virajdomadia.com/projects/tripsmith)
+- [Résumé PDF](https://virajdomadia.com/Viraj-Domadia-Resume.pdf)
 
 ## Tripsmith — case study
 
-A travel agency’s booking site: an AI trip planner on the real catalogue, live seats, Razorpay checkout, GST invoices and an owner desk. Page: https://virajdomadia.vercel.app/projects/tripsmith
+A travel agency’s booking site: an AI trip planner on the real catalogue, live seats, Razorpay checkout, GST invoices and an owner desk. Page: https://virajdomadia.com/projects/tripsmith
 
 **The problem.** A small Indian tour agency sells fixed-date group trips: a set itinerary, a price per person and a limited number of seats per departure. Most run on WhatsApp, phone calls and a spreadsheet, so two people can pay for the same last seat, prices are worked out by hand, and nobody can see who changed a booking. Tripsmith is that agency’s own site, built so every seat, rupee and change is accounted for.
 

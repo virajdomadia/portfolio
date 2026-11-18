@@ -51,11 +51,11 @@ Every project has a live URL and a public repo — open one, then read the code.
 - Phone: +91 88280 91294
 - GitHub: https://github.com/virajdomadia
 - LinkedIn: https://www.linkedin.com/in/viraj-domadia-6b89751b5
-- Résumé: https://virajdomadia.vercel.app/Viraj-Domadia-Resume.pdf
-- Site: https://virajdomadia.vercel.app
+- Résumé: https://virajdomadia.com/Viraj-Domadia-Resume.pdf
+- Site: https://virajdomadia.com
 
 ## Pages
 
-- [Home](https://virajdomadia.vercel.app/)
-- [Tripsmith — project page](https://virajdomadia.vercel.app/projects/tripsmith)
-- [Résumé PDF](https://virajdomadia.vercel.app/Viraj-Domadia-Resume.pdf)
+- [Home](https://virajdomadia.com/)
+- [Tripsmith — project page](https://virajdomadia.com/projects/tripsmith)
+- [Résumé PDF](https://virajdomadia.com/Viraj-Domadia-Resume.pdf)
