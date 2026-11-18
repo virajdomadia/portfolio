@@ -7,5 +7,10 @@ describe('ContactSchema', () => {
     expect(ContactSchema.safeParse({ ...ok, email: 'nope' }).success).toBe(false)
     expect(ContactSchema.safeParse({ ...ok, message: 'hi' }).success).toBe(false)
   })
+  it('rejects line breaks and tags in the name, keeps accents and emoji', () => {
+    expect(ContactSchema.safeParse({ ...ok, name: 'Priya\r\nBcc: x@y.z' }).success).toBe(false)
+    expect(ContactSchema.safeParse({ ...ok, name: '<script>alert(1)</script>' }).success).toBe(false)
+    expect(ContactSchema.safeParse({ ...ok, name: 'Zoë O’Brien-Ñúñez 😀' }).success).toBe(true)
+  })
   it('rejects a filled honeypot', () => { expect(ContactSchema.safeParse({ ...ok, website: 'http://spam' }).success).toBe(false) })
 })
