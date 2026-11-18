@@ -13,7 +13,7 @@ afterEach(() => { vi.restoreAllMocks(); reduce(false) })
 describe('Gallery', () => {
   it('a single image renders no strip, arrows or counter', () => {
     render(<Gallery media={[img(1)]} title="Demo" />)
-    expect(screen.getByRole('img', { name: 'Screenshot number 1 of the app' })).toBeInTheDocument()
+    expect(screen.getByRole('img', { name: 'Screenshot number 1 of the app' })).toHaveAttribute('fetchpriority', 'high')
     expect(screen.queryByRole('button', { name: 'Next' })).toBeNull()
     expect(screen.queryByRole('link', { name: /^Show / })).toBeNull()
     expect(screen.queryByText(/Item 1 of/)).toBeNull()
@@ -35,8 +35,8 @@ describe('Gallery', () => {
   it('thumbnails are real links to the files (works without JS) and clips carry a badge', () => {
     render(<Gallery media={[img(1), clip(2)]} title="Demo" />)
     expect(screen.getByRole('link', { name: 'Show Shot 1' })).toHaveAttribute('href', '/projects/x/1.webp')
-    expect(screen.getByRole('link', { name: 'Show Clip 2 (video)' })).toHaveAttribute('href', '/projects/x/2.mp4')
-    expect(screen.getByText('▶ 0:09')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /^Show Clip 2 \(video\) \d+:\d\d$/ })).toHaveAttribute('href', '/projects/x/2.mp4')
+    expect(screen.getByText('0:09')).toHaveTextContent('▶ 0:09')
   })
   it('plays a clip only when it is selected', async () => {
     const play = vi.spyOn(HTMLMediaElement.prototype, 'play')
@@ -44,7 +44,7 @@ describe('Gallery', () => {
     const { container } = render(<Gallery media={[img(1), clip(2)]} title="Demo" />)
     expect(play).not.toHaveBeenCalled()
     expect(container.querySelector('video')).toBeNull()
-    await u.click(screen.getByRole('link', { name: 'Show Clip 2 (video)' }))
+    await u.click(screen.getByRole('link', { name: /^Show Clip 2 \(video\) \d+:\d\d$/ }))
     const v = container.querySelector('video')!
     expect(v).toHaveAttribute('preload', 'none'); expect(v.muted).toBe(true); expect(v).toHaveAttribute('controls')
     expect(play).toHaveBeenCalledTimes(1)
@@ -54,7 +54,7 @@ describe('Gallery', () => {
     const play = vi.spyOn(HTMLMediaElement.prototype, 'play')
     const u = userEvent.setup()
     render(<Gallery media={[img(1), clip(2)]} title="Demo" />)
-    await u.click(screen.getByRole('link', { name: 'Show Clip 2 (video)' }))
+    await u.click(screen.getByRole('link', { name: /^Show Clip 2 \(video\) \d+:\d\d$/ }))
     expect(play).not.toHaveBeenCalled()
   })
   it('a clip first paints its poster as an image, then the video after hydration', () => {
@@ -83,7 +83,7 @@ describe('Gallery', () => {
   it('the closed lightbox holds no video; opening it mounts one', async () => {
     const u = userEvent.setup()
     const { container } = render(<Gallery media={[img(1), clip(2)]} title="Demo" />)
-    await u.click(screen.getByRole('link', { name: 'Show Clip 2 (video)' }))
+    await u.click(screen.getByRole('link', { name: /^Show Clip 2 \(video\) \d+:\d\d$/ }))
     const d = container.querySelector('dialog')!
     expect(d.querySelector('video')).toBeNull()
     await u.click(screen.getByRole('button', { name: 'Fullscreen' }))
@@ -93,7 +93,7 @@ describe('Gallery', () => {
     const pause = vi.spyOn(HTMLMediaElement.prototype, 'pause')
     const u = userEvent.setup()
     render(<Gallery media={[img(1), clip(2)]} title="Demo" />)
-    await u.click(screen.getByRole('link', { name: 'Show Clip 2 (video)' }))
+    await u.click(screen.getByRole('link', { name: /^Show Clip 2 \(video\) \d+:\d\d$/ }))
     pause.mockClear()
     await u.click(screen.getByRole('button', { name: 'Next' }))
     expect(pause).toHaveBeenCalled()
@@ -101,7 +101,7 @@ describe('Gallery', () => {
   it('arrow keys from the focused video do not change the item', async () => {
     const u = userEvent.setup()
     const { container } = render(<Gallery media={[img(1), clip(2)]} title="Demo" />)
-    await u.click(screen.getByRole('link', { name: 'Show Clip 2 (video)' }))
+    await u.click(screen.getByRole('link', { name: /^Show Clip 2 \(video\) \d+:\d\d$/ }))
     fireEvent.keyDown(container.querySelector('video')!, { key: 'ArrowRight' })
     expect(screen.getByText(/Item 2 of 2/)).toBeInTheDocument()
   })

@@ -13,7 +13,7 @@ export default function Contact() {
         <div className={s.grid}>
           <div data-reveal>
             <span className="mono">Contact</span>
-            <h2 id="contact-h" className={s.h2}>{contact.heading} <b>{contact.headingBold}</b></h2>
+            <h2 id="contact-h" className={s.h2}>{`${contact.heading} `}<b>{contact.headingBold}</b></h2>
             <p className={s.lead}>{contact.lead}</p>
             <ContactForm />
           </div>

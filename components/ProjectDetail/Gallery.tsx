@@ -47,13 +47,15 @@ export default function Gallery({ media, title, host }: { media: Media[]; title:
   }
   const fail = () => setBroken((b) => new Set(b).add(i))
 
+  // item 0 is the page's LCP: priority preloads it, but Next 15 leaves its fetch at the browser's default (Chrome
+  // starts images at Low), so ask for high explicitly
   const render = (big: boolean) =>
     m.kind === 'clip' && isVideo
       ? <video key={`v${i}${big}`} ref={big ? undefined : video} className={s.media} muted playsInline loop controls preload={big ? 'auto' : 'none'} poster={m.poster} aria-label={m.alt} autoPlay={big && !reducedMotion()}>
           <source src={m.webm} type="video/webm" />
           <source src={m.mp4} type="video/mp4" onError={fail} />
         </video>
-      : <Image key={`i${i}${big}`} className={s.media} src={still(m)} alt={m.alt} width={1600} height={1000} sizes={big ? '100vw' : '(max-width: 900px) 100vw, 760px'} priority={i === 0 && !big} />
+      : <Image key={`i${i}${big}`} className={s.media} src={still(m)} alt={m.alt} width={1600} height={1000} sizes={big ? '100vw' : '(max-width: 900px) 100vw, 760px'} priority={i === 0 && !big} fetchPriority={i === 0 && !big ? 'high' : undefined} />
 
   return (
     <div className={s.gallery}>
@@ -73,9 +75,11 @@ export default function Gallery({ media, title, host }: { media: Media[]; title:
         <ol className={s.strip}>
           {media.map((t, k) => (
             <li key={k}>
-              <a href={file(t)} className={s.thumb} aria-current={k === i || undefined} aria-label={`Show ${t.caption}${t.kind === 'clip' ? ' (video)' : ''}`} onClick={(e) => { e.preventDefault(); go(k) }}>
+              {/* named by its content, not aria-label, so the visible clip length is part of the name */}
+              <a href={file(t)} className={s.thumb} aria-current={k === i || undefined} onClick={(e) => { e.preventDefault(); go(k) }}>
                 <Image src={still(t)} alt="" width={160} height={100} sizes="(max-width: 900px) 92px, 116px" fetchPriority="low" />
-                {t.kind === 'clip' && <span className={s.badge}>▶ {dur(t.seconds)}</span>}
+                <span className="sr-only">Show {t.caption}{t.kind === 'clip' ? ' (video)' : ''}</span>{' '}
+                {t.kind === 'clip' && <span className={s.badge}><span aria-hidden="true">▶</span> {dur(t.seconds)}</span>}
               </a>
             </li>
           ))}

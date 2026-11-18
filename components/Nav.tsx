@@ -24,7 +24,8 @@ export default function Nav() {
   return (
     <nav className={`${s.top} ${scrolled ? s.scrolled : ''} ${over ? `${s.over} over` : ''}`} aria-label="Primary">
       <div className={`wrap ${s.inner}`}>
-        <Link className={s.brand} href="/#top" aria-label={person.name}><b className={s.mark} aria-hidden="true">VD</b><span className={s.name}>{person.name}</span></Link>
+        {/* no aria-label: the name is the visible text, "VD Viraj Domadia" (the name is only visually hidden on phones) */}
+        <Link className={s.brand} href="/#top"><b className={s.mark}>VD</b> <span className={s.name}>{person.name}</span></Link>
         <div className={s.links}>{LINKS.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</div>
         <div className={s.right}>
           <span className={s.pill}><i className={s.dot} aria-hidden="true" /><span>{person.available}</span></span>

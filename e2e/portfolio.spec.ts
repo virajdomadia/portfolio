@@ -9,6 +9,29 @@ test('sections, anchors and no horizontal overflow', async ({ page }) => {
   expect(overflow).toBe(false)
 })
 
+test('the nav blurs what scrolls under it (the standard property survives the CSS build)', async ({ page }) => {
+  // no hero on a detail page, so the nav is in its solid, blurred state from the start
+  await page.goto('/projects/tripsmith')
+  await expect.poll(() => page.locator('nav[aria-label="Primary"]').evaluate((el) => getComputedStyle(el).backdropFilter)).toBe('blur(12px)')
+})
+
+test('the first Tab reaches a skip link that jumps to the content', async ({ page, isMobile }) => {
+  test.skip(isMobile, 'keyboard: desktop project only')
+  await page.goto('/')
+  await page.keyboard.press('Tab')
+  const skip = page.getByRole('link', { name: 'Skip to content' })
+  await expect(skip).toBeFocused(); await expect(skip).toBeInViewport()
+  await page.keyboard.press('Enter')
+  await expect(page.locator('#main')).toBeFocused()
+})
+
+test('reduced motion turns smooth scrolling off', async ({ browser }) => {
+  const ctx = await browser.newContext({ reducedMotion: 'reduce' }); const page = await ctx.newPage()
+  await page.goto('/')
+  expect(await page.evaluate(() => getComputedStyle(document.documentElement).scrollBehavior)).toBe('auto')
+  await ctx.close()
+})
+
 test('reduced motion renders everything visible', async ({ browser }) => {
   const ctx = await browser.newContext({ reducedMotion: 'reduce' }); const page = await ctx.newPage()
   await page.goto('/')

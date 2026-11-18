@@ -10,7 +10,7 @@ export default function Stack() {
     <>
       <SectionWord text="Stack" bold="ack" />
       <section className={`wrap ${s.sec}`} id="stack" aria-labelledby="stack-h">
-        <div className={s.intro} data-reveal><h2 id="stack-h" className={s.h2}>{content.stack.heading} <b>{content.stack.headingBold}</b></h2><p>{content.stack.note}</p></div>
+        <div className={s.intro} data-reveal><h2 id="stack-h" className={s.h2}>{`${content.stack.heading} `}<b>{content.stack.headingBold}</b></h2><p>{content.stack.note}</p></div>
         <StackInteractions>
           <div className={s.groups} data-groups>
             {LAYERS.map((l) => {

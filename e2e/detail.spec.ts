@@ -20,7 +20,7 @@ test('detail page: gallery by keyboard, a clip plays, lightbox opens and closes'
 test('reduced motion: a selected clip stays paused', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto(URL)
-  await page.getByRole('link', { name: 'Show Search to package (video)' }).click()
+  await page.getByRole('link', { name: 'Show Search to package (video) 0:08' }).click()
   await page.waitForTimeout(1500)
   expect(await page.getByRole('region', { name: 'Tripsmith gallery' }).locator('video').evaluate((el: HTMLVideoElement) => el.paused)).toBe(true)
 })

@@ -8,6 +8,10 @@ describe('Hero', () => {
     const h1 = screen.getByRole('heading', { level: 1 })
     expect(h1).toHaveTextContent(/Viraj\s*Domadia/)
     expect(h1.querySelectorAll('[data-ch]').length).toBe(12)
+    // read as a name, not spelled out letter by letter, and the text has a real space
+    expect(screen.getByRole('heading', { level: 1, name: 'Viraj Domadia' })).toBe(h1)
+    expect(h1.textContent).toBe('Viraj Domadia')
+    expect(h1.querySelectorAll('[data-ch]:not([aria-hidden="true"] [data-ch])')).toHaveLength(0)
     expect(screen.getByRole('link', { name: 'See the projects' })).toHaveAttribute('href', '#projects')
     expect(screen.getByRole('link', { name: 'Hire me' })).toHaveAttribute('href', '#contact')
     expect(screen.getByText('products live')).toBeInTheDocument()
