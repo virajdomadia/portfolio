@@ -101,7 +101,7 @@ export const content: Content = {
     { slug: 'pagecraft', title: 'Pagecraft', category: 'Co-edited website builder', status: 'Live',
       blurb: 'A landing-page editor two people use at the same time — live cursors, conflict-free merges, version history — then one click publishes it to its own subdomain.',
       stack: ['Next.js', 'TypeScript', 'Yjs', 'WebSockets', 'FastAPI', 'PostgreSQL'],
-      live: 'https://pagecraft-viraj.vercel.app', repo: 'https://github.com/virajdomadia/pagecraft', image: '/images/projects/pagecraft.jpg' },
+      live: 'https://pagecraft.virajdomadia.com', repo: 'https://github.com/virajdomadia/pagecraft', image: '/images/projects/pagecraft.jpg' },
     { slug: 'offcut', title: 'Offcut', category: 'D2C store + visual search', status: 'Live',
       blurb: 'A complete streetwear store — variants, inventory that cannot go negative, cart, orders, returns, admin — plus “drop a photo, shop the look” search on image embeddings.',
       stack: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL', 'pgvector', 'Cloudinary', 'Razorpay'],
