@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Anybody, Instrument_Sans, IBM_Plex_Mono } from 'next/font/google'
+import localFont from 'next/font/local'
 import ScrollDriver from '@/components/ScrollDriver'
 import Nav from '@/components/Nav'
 import ProgressBar from '@/components/ProgressBar'
@@ -7,10 +7,30 @@ import { content } from '@/lib/content'
 import { siteUrl } from '@/lib/site'
 import './globals.css'
 
-const display = Anybody({ subsets: ['latin'], axes: ['wdth'], weight: 'variable', variable: '--font-display', display: 'swap' })
-const body = Instrument_Sans({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-body', display: 'swap' })
+// Self-hosted (latin subset, from Google Fonts, OFL — app/fonts/LICENSE.md). next/font/google fetched
+// these from Google on every build and the fetch failed now and then, failing CI; local files can't.
+const display = localFont({
+  src: './fonts/anybody-latin-variable.woff2',
+  weight: '100 900', // the file also carries the wdth axis (50–150), driven by font-variation-settings
+  variable: '--font-display',
+  display: 'swap',
+})
+const body = localFont({
+  src: './fonts/instrument-sans-latin-variable.woff2',
+  weight: '400 600',
+  variable: '--font-body',
+  display: 'swap',
+})
 // mono only sets small labels, so it is not worth a preload ahead of the LCP text
-const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-mono', display: 'swap', preload: false })
+const mono = localFont({
+  src: [
+    { path: './fonts/ibm-plex-mono-latin-400.woff2', weight: '400' },
+    { path: './fonts/ibm-plex-mono-latin-500.woff2', weight: '500' },
+  ],
+  variable: '--font-mono',
+  display: 'swap',
+  preload: false,
+})
 
 const { seo, person } = content
 export const metadata: Metadata = {

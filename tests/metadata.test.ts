@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
 // next/font needs the Next compiler; the layout's fonts are irrelevant to the metadata under test
-vi.mock('next/font/google', () => { const f = () => ({ variable: 'x', className: 'x' }); return { Anybody: f, Instrument_Sans: f, IBM_Plex_Mono: f } })
+vi.mock('next/font/local', () => ({ default: () => ({ variable: 'x', className: 'x' }) }))
 import { metadata } from '@/app/layout'
 import robots from '@/app/robots'
 import sitemap from '@/app/sitemap'
