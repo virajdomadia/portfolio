@@ -109,7 +109,7 @@ export const content: Content = {
     { slug: 'skillroom', title: 'Skillroom', category: 'Video course platform', status: 'Live',
       blurb: 'Creators upload video courses; students buy or subscribe, resume where they left off, pass quizzes and earn a certificate — streaming, recurring billing, payouts, three-role access.',
       stack: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Mux', 'Razorpay Subscriptions'],
-      live: 'https://skillroom-viraj.vercel.app', repo: 'https://github.com/virajdomadia/skillroom', image: '/images/projects/skillroom.jpg' },
+      live: 'https://skillroom.virajdomadia.com', repo: 'https://github.com/virajdomadia/skillroom', image: '/images/projects/skillroom.jpg' },
     { slug: 'platter', title: 'Platter', category: 'Food delivery + live tracking', status: 'Live',
       blurb: 'Customer, restaurant and rider apps on one order state machine — restaurants within a radius, live rider location on the customer’s map, role-checked transitions.',
       stack: ['Next.js', 'TypeScript', 'FastAPI', 'PostGIS', 'WebSockets', 'MapLibre'],
