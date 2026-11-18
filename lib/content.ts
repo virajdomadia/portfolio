@@ -113,7 +113,7 @@ export const content: Content = {
     { slug: 'platter', title: 'Platter', category: 'Food delivery + live tracking', status: 'Live',
       blurb: 'Customer, restaurant and rider apps on one order state machine — restaurants within a radius, live rider location on the customer’s map, role-checked transitions.',
       stack: ['Next.js', 'TypeScript', 'FastAPI', 'PostGIS', 'WebSockets', 'MapLibre'],
-      live: 'https://platter-viraj.vercel.app', repo: 'https://github.com/virajdomadia/platter', image: '/images/projects/platter.jpg' },
+      live: 'https://platter.virajdomadia.com', repo: 'https://github.com/virajdomadia/platter', image: '/images/projects/platter.jpg' },
   ],
   projectsNote: { after: 'Every project has a live URL and a public repo — open one, then read the code.', afterCta: 'All repos on GitHub' },
   tools: [
