@@ -30,7 +30,7 @@ Pagecraft moved up from fifth so the three strongest, most different stories shi
 
 | # | Project | Identity | v1 | v2 | v3 | v4 (unique) | Planned h | Status |
 |---|---|---|---|---|---|---|---|---|
-| 1 | **Tripsmith** | AI agent with tool calling | Agency website (35) | Booking engine (20.5) + v2.5 Strengthen (62.5) + v2.6 Hardening (23) | AI trip planner (21) | **MCP server**: the same 4 tools as a thin adapter over existing services, public catalogue only, never pays (≈ 6, prototype target) | ≈ 162 | v1–v3 ✅ (14 Nov) · v4 **next** |
+| 1 | **Tripsmith** | AI agent with tool calling | Agency website (35) | Booking engine (20.5) + v2.5 Strengthen (62.5) + v2.6 Hardening (23) | AI trip planner (21) | **MCP server**: the same 4 tools as a thin adapter over existing services, public catalogue only, never pays (≈ 6, prototype target) | ≈ 168 (v1–v3 ≈ 162 + v4 ≈ 6) | v1–v3 ✅ (14 Nov) · v4 **next** |
 | 2 | **Frontrow** | Concurrency + realtime | Box office (18) | Live hall (10) | Full house (10) | **In your pocket**: native Expo app, offline wallet, push, multi-scanner check-in with provisional offline scans (16) | 54 | planned |
 | 3 | **Pagecraft** | CRDT / editor engineering | Solo studio (18) | Studio session (14) | Pro (13) | **Your domain, your code**: custom domains, static export, GitHub push, import of Pagecraft's own export (8) | 53 | planned |
 | 4 | **Offcut** | Embeddings / vector search | Store (16) | Lens (11) | Full fit (8) | **Share to Offcut**: PWA Web Share Target, Android; upload/paste fallback on iOS (3) | 38 | planned |
@@ -53,7 +53,7 @@ Both native apps: Expo (React Native, TypeScript), the same FastAPI API with bea
 
 | Project | Claim | Precise wording |
 |---|---|---|
-| Frontrow | Offline scanners | Offline scans are `pending_sync`; on sync the first scan the server commits is `confirmed`, later ones `duplicate_flagged`. Two offline scanners can't prevent a duplicate, only detect it |
+| Frontrow | Offline scanners | Offline scans are `pending_sync`; on sync the first scan the server commits is `confirmed`, later ones `duplicate_flagged`. Two offline scanners can't prevent a duplicate, only detect it; a ticket refunded or transferred after a scanner's last download stays valid in that snapshot until it reconnects |
 | Skillroom | Cost | No per-play platform fees; ₹0 at demo scale within free quotas |
 | Skillroom | Protection | Encrypted playback with entitlement checks and a device limit, **not DRM** |
 | Skillroom | Worker | A queue-driven script; GitHub Actions is the free runner; at scale it runs as a container worker |
