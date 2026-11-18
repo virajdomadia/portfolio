@@ -27,7 +27,7 @@ Viraj Domadia is a frontend-heavy full-stack developer based in Bengaluru, origi
 ## Projects
 
 - **Tripsmith** (Travel + AI trip planner; v3 live · complete — ai trip planner + bookings): A travel agency’s booking site with an AI trip planner that only quotes the real catalogue — live seats, deposits, Razorpay (test mode), GST invoices, refunds and an owner desk that reads every chat. Live: https://tripsmith.virajdomadia.com · Source: https://github.com/virajdomadia/tripsmith
-- **Frontrow** (Live seat-map ticketing; live): Movie and concert tickets on a live seat map: tap a seat and it is held for ten minutes and greys out for everyone else — Redis holds, transactions, idempotent payments, QR tickets. Live: https://frontrow-viraj.vercel.app · Source: https://github.com/virajdomadia/frontrow
+- **Frontrow** (Live seat-map ticketing; live): Movie and concert tickets on a live seat map: tap a seat and it is held for ten minutes and greys out for everyone else — Redis holds, transactions, idempotent payments, QR tickets. Live: https://frontrow.virajdomadia.com · Source: https://github.com/virajdomadia/frontrow
 - **Pagecraft** (Co-edited website builder; live): A landing-page editor two people use at the same time — live cursors, conflict-free merges, version history — then one click publishes it to its own subdomain. Live: https://pagecraft-viraj.vercel.app · Source: https://github.com/virajdomadia/pagecraft
 - **Offcut** (D2C store + visual search; live): A complete streetwear store — variants, inventory that cannot go negative, cart, orders, returns, admin — plus “drop a photo, shop the look” search on image embeddings. Live: https://offcut-viraj.vercel.app · Source: https://github.com/virajdomadia/offcut
 - **Skillroom** (Video course platform; live): Creators upload video courses; students buy or subscribe, resume where they left off, pass quizzes and earn a certificate — streaming, recurring billing, payouts, three-role access. Live: https://skillroom-viraj.vercel.app · Source: https://github.com/virajdomadia/skillroom
@@ -51,18 +51,18 @@ Every project has a live URL and a public repo — open one, then read the code.
 - Phone: +91 88280 91294
 - GitHub: https://github.com/virajdomadia
 - LinkedIn: https://www.linkedin.com/in/viraj-domadia-6b89751b5
-- Résumé: https://virajdomadia.com/Viraj-Domadia-Resume.pdf
-- Site: https://virajdomadia.com
+- Résumé: https://virajdomadia.vercel.app/Viraj-Domadia-Resume.pdf
+- Site: https://virajdomadia.vercel.app
 
 ## Pages
 
-- [Home](https://virajdomadia.com/)
-- [Tripsmith — project page](https://virajdomadia.com/projects/tripsmith)
-- [Résumé PDF](https://virajdomadia.com/Viraj-Domadia-Resume.pdf)
+- [Home](https://virajdomadia.vercel.app/)
+- [Tripsmith — project page](https://virajdomadia.vercel.app/projects/tripsmith)
+- [Résumé PDF](https://virajdomadia.vercel.app/Viraj-Domadia-Resume.pdf)
 
 ## Tripsmith — case study
 
-A travel agency’s booking site: an AI trip planner on the real catalogue, live seats, Razorpay checkout, GST invoices and an owner desk. Page: https://virajdomadia.com/projects/tripsmith
+A travel agency’s booking site: an AI trip planner on the real catalogue, live seats, Razorpay checkout, GST invoices and an owner desk. Page: https://virajdomadia.vercel.app/projects/tripsmith
 
 **The problem.** A small Indian tour agency sells fixed-date group trips: a set itinerary, a price per person and a limited number of seats per departure. Most run on WhatsApp, phone calls and a spreadsheet, so two people can pay for the same last seat, prices are worked out by hand, and nobody can see who changed a booking. Tripsmith is that agency’s own site, built so every seat, rupee and change is accounted for.
 
