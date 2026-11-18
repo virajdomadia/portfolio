@@ -13,7 +13,7 @@ afterEach(() => { vi.restoreAllMocks(); reduce(false) })
 describe('Gallery', () => {
   it('a single image renders no strip, arrows or counter', () => {
     render(<Gallery media={[img(1)]} title="Demo" />)
-    expect(screen.getByRole('img', { name: 'Screenshot number 1 of the app' })).toBeInTheDocument()
+    expect(screen.getByRole('img', { name: 'Screenshot number 1 of the app' })).toHaveAttribute('fetchpriority', 'high')
     expect(screen.queryByRole('button', { name: 'Next' })).toBeNull()
     expect(screen.queryByRole('link', { name: /^Show / })).toBeNull()
     expect(screen.queryByText(/Item 1 of/)).toBeNull()

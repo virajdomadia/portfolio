@@ -47,13 +47,15 @@ export default function Gallery({ media, title, host }: { media: Media[]; title:
   }
   const fail = () => setBroken((b) => new Set(b).add(i))
 
+  // item 0 is the page's LCP: priority preloads it, but Next 15 leaves its fetch at the browser's default (Chrome
+  // starts images at Low), so ask for high explicitly
   const render = (big: boolean) =>
     m.kind === 'clip' && isVideo
       ? <video key={`v${i}${big}`} ref={big ? undefined : video} className={s.media} muted playsInline loop controls preload={big ? 'auto' : 'none'} poster={m.poster} aria-label={m.alt} autoPlay={big && !reducedMotion()}>
           <source src={m.webm} type="video/webm" />
           <source src={m.mp4} type="video/mp4" onError={fail} />
         </video>
-      : <Image key={`i${i}${big}`} className={s.media} src={still(m)} alt={m.alt} width={1600} height={1000} sizes={big ? '100vw' : '(max-width: 900px) 100vw, 760px'} priority={i === 0 && !big} />
+      : <Image key={`i${i}${big}`} className={s.media} src={still(m)} alt={m.alt} width={1600} height={1000} sizes={big ? '100vw' : '(max-width: 900px) 100vw, 760px'} priority={i === 0 && !big} fetchPriority={i === 0 && !big ? 'high' : undefined} />
 
   return (
     <div className={s.gallery}>
