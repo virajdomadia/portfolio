@@ -34,6 +34,8 @@
 .p { margin: 0; font-size: 15px; }
 .sent { border: 1px solid var(--acc-2); padding: 22px; font-size: 16px; }
 .sent b { font-family: var(--font-display), sans-serif; font-weight: 800; font-size: 28px; display: block; margin-bottom: 6px; color: var(--acc-2); }
+.field :is(input, textarea)[aria-invalid="true"] { border-bottom-color: var(--acc-2); }
+.fieldErr { margin: -12px 0 0; font-size: 14px; color: var(--ink); }
 .err { border: 1px solid var(--acc-2); padding: 12px 14px; font-size: 14px; }
 .err a { border-bottom: 1px solid var(--acc-2); }
 .faqH { margin: 0 0 10px; display: block; font-weight: 500; }
