@@ -21,5 +21,6 @@ export default function Quote() {
     flush(); nodes.push(<span key={i} className={s.w} data-w={w} style={{ ['--i' as string]: i }}><span>{w}</span></span>); nodes.push(' ')
   })
   flush()
-  return <blockquote className={s.quote} data-progress="words" data-reveal="none" style={{ ['--n' as string]: words.length }}>{nodes}</blockquote>
+  // screen readers get the sentence once from .srOnly; the per-word spans (and their CSS ghost copies) are hidden from them
+  return <blockquote className={s.quote} data-progress="words" data-reveal="none" style={{ ['--n' as string]: words.length }}><span className={s.srOnly}>{quote}</span><span aria-hidden="true">{nodes}</span></blockquote>
 }

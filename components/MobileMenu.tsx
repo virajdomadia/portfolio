@@ -17,7 +17,24 @@ export default function MobileMenu() {
   useEffect(() => {
     document.documentElement.classList.toggle('menu-open', open)
     if (kb.current) (open ? first.current : burger.current)?.focus()
-    return () => document.documentElement.classList.remove('menu-open')
+    if (!open) return () => document.documentElement.classList.remove('menu-open')
+    // while open, the page behind the overlay is inert and Tab cycles between the close button and the menu
+    const behind = Array.from(document.querySelectorAll<HTMLElement>('main, footer'))
+    behind.forEach((el) => { el.inert = true })
+    const menu = document.getElementById('menu')
+    const onTab = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab' || !menu || !burger.current) return
+      const items = [burger.current, ...menu.querySelectorAll<HTMLElement>('a[href], button')]
+      const i = items.indexOf(document.activeElement as HTMLElement)
+      const next = i === -1 ? items[0] : items[(i + (e.shiftKey ? -1 : 1) + items.length) % items.length]
+      e.preventDefault(); next.focus()
+    }
+    document.addEventListener('keydown', onTab)
+    return () => {
+      document.documentElement.classList.remove('menu-open')
+      behind.forEach((el) => { el.inert = false })
+      document.removeEventListener('keydown', onTab)
+    }
   }, [open])
   const { person } = content
   return (

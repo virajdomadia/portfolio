@@ -6,10 +6,11 @@ const hits = new Map<string, number[]>() // naive per-instance rate limit: 5 / 1
 function limited(ip: string) { const now = Date.now(), win = hits.get(ip)?.filter((t) => now - t < 600_000) ?? []; win.push(now); hits.set(ip, win); return win.length > 5 }
 
 export async function POST(req: Request) {
-  const ip = req.headers.get('x-forwarded-for')?.split(',')[0] ?? 'local'
-  if (limited(ip)) return NextResponse.json({ error: 'Too many messages. Please email me directly.' }, { status: 429 })
   const parsed = ContactSchema.safeParse(await req.json().catch(() => null))
   if (!parsed.success) return NextResponse.json({ error: 'Please check the form — name, a valid email and a message of at least 10 characters.' }, { status: 400 })
+  // count only valid submissions, so a visitor fixing typos is never locked out
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0] ?? 'local'
+  if (limited(ip)) return NextResponse.json({ error: 'Too many messages. Please email me directly.' }, { status: 429 })
   const key = process.env.RESEND_API_KEY
   if (!key) return NextResponse.json({ error: 'Mail is not configured. Please email me directly.' }, { status: 500 })
   const { intent, name, email, message } = parsed.data

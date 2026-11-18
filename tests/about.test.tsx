@@ -11,6 +11,19 @@ describe('About', () => {
     expect(q.querySelectorAll('b').length).toBe(2)
     expect(q.getAttribute('style')).toContain('--n')
   })
+  it('gives screen readers the quote once, with the animated words hidden', () => {
+    const { container } = render(<About />)
+    const q = container.querySelector('blockquote')!
+    const words = q.querySelector('.w')!.closest('[aria-hidden="true"]')
+    expect(words).not.toBeNull()
+    const spoken = [...q.childNodes].filter((n) => !(n as Element).getAttribute?.('aria-hidden')).map((n) => n.textContent).join('')
+    expect(spoken).toMatch(/^I build the client/)
+  })
+  it('server-renders the final counter values', async () => {
+    const { renderToString } = await import('react-dom/server')
+    const html = renderToString(<Counters />)
+    expect(html).toContain('data-count="30">30<')
+  })
   it('renders three experience cards with indices and the section heading', () => {
     render(<About />)
     expect(screen.getByRole('heading', { level: 2, name: 'About' })).toBeInTheDocument()

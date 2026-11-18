@@ -17,6 +17,8 @@ export default function Counters() {
       requestAnimationFrame(step)
     }
     const tiles = Array.from(root.querySelectorAll<Revealable>('[data-reveal]'))
+    // the server renders the final numbers (crawlers and no-JS visitors see them); reset to 0 only here, where the count-up will run
+    if (!reduce) tiles.forEach((tile) => { if (!tile.classList.contains('in')) tile.querySelectorAll<HTMLElement>('[data-count]').forEach((n) => { n.textContent = '0' }) })
     tiles.forEach((tile) => { tile.__reveal = () => tile.querySelectorAll<HTMLElement>('[data-count]').forEach(run) })
     // ScrollDriver adds `.in` when the tile scrolls into view; that's the trigger
     const mo = new MutationObserver(() => tiles.forEach((tile) => { if (tile.classList.contains('in') && !tile.dataset.done) { tile.dataset.done = '1'; tile.__reveal?.() } }))
@@ -26,7 +28,7 @@ export default function Counters() {
   return (
     <div ref={ref} className={s.stats}>
       {content.about.counters.map((c, i) => (
-        <div key={c.label} className={s.stat} data-reveal data-delay={String(i)}><div className={s.n}><span data-count={c.to}>0</span>{c.suffix && <i>{c.suffix}</i>}</div><small>{c.label}</small></div>
+        <div key={c.label} className={s.stat} data-reveal data-delay={String(i)}><div className={s.n}><span data-count={c.to}>{c.to}</span>{c.suffix && <i>{c.suffix}</i>}</div><small>{c.label}</small></div>
       ))}
     </div>
   )
