@@ -97,7 +97,7 @@ export const content: Content = {
     { slug: 'frontrow', title: 'Frontrow', category: 'Live seat-map ticketing', status: 'Live',
       blurb: 'Movie and concert tickets on a live seat map: tap a seat and it is held for ten minutes and greys out for everyone else — Redis holds, transactions, idempotent payments, QR tickets.',
       stack: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Redis', 'WebSockets', 'Razorpay'],
-      live: 'https://frontrow-viraj.vercel.app', repo: 'https://github.com/virajdomadia/frontrow', image: '/images/projects/frontrow.jpg' },
+      live: 'https://frontrow.virajdomadia.com', repo: 'https://github.com/virajdomadia/frontrow', image: '/images/projects/frontrow.jpg' },
     { slug: 'pagecraft', title: 'Pagecraft', category: 'Co-edited website builder', status: 'Live',
       blurb: 'A landing-page editor two people use at the same time — live cursors, conflict-free merges, version history — then one click publishes it to its own subdomain.',
       stack: ['Next.js', 'TypeScript', 'Yjs', 'WebSockets', 'FastAPI', 'PostgreSQL'],
