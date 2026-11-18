@@ -1,8 +1,11 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { content } from '@/lib/content'
 import s from './not-found.module.css'
 
-export const metadata = { title: 'Page not found', robots: { index: false } }
+// Next adds noindex to every 404 itself, so a robots entry here doubled the tag: null just clears the layout's
+// index/follow. canonical: null drops the home canonical the layout would otherwise hand down to this page.
+export const metadata: Metadata = { title: 'Page not found', robots: null, alternates: { canonical: null } }
 
 export default function NotFound() {
   return (
