@@ -1,6 +1,8 @@
-.top { position: fixed; top: 0; left: 0; right: 0; z-index: 60; background: color-mix(in oklab, var(--bg) 82%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .4s, background-color .9s; }
+/* backdrop-filter only, no hand-written -webkit- twin: Lightning CSS (Turbopack) treats the two as one property, so a
+   trailing -webkit- line replaced the standard one in the build. It adds the -webkit- prefix itself for Safari. */
+.top { position: fixed; top: 0; left: 0; right: 0; z-index: 60; background: color-mix(in oklab, var(--bg) 82%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .4s, background-color .9s; }
 .scrolled { border-bottom-color: var(--line); }
-.over { background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; border-bottom-color: transparent; }
+.over { background: transparent; backdrop-filter: none; border-bottom-color: transparent; }
 .inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 64px; font-size: 14px; font-weight: 500; color: var(--muted); }
 .over .inner { color: #CFC6A6; }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--ink); }
