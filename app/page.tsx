@@ -11,7 +11,7 @@ import { jsonLdGraph } from '@/lib/seo'
 export default function Page() {
   return (
     <>
-      <main>
+      <main id="main" tabIndex={-1}>
         <Hero /><Marquee /><About /><Projects /><Stack /><Band /><Contact />
       </main>
       <Footer />

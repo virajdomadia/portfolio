@@ -8,7 +8,7 @@ import s from './ProjectDetail.module.css'
 
 export default function ProjectDetail({ p }: { p: DetailProject }) {
   return (
-    <main className={`wrap ${s.page}`}>
+    <main id="main" tabIndex={-1} className={`wrap ${s.page}`}>
       <nav aria-label="Breadcrumb" className={s.crumbs}>
         <ol><li><Link href="/">Home</Link></li><li><Link href="/#projects">Projects</Link></li><li aria-current="page">{p.title}</li></ol>
       </nav>

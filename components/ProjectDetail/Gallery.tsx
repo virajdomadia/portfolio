@@ -73,9 +73,11 @@ export default function Gallery({ media, title, host }: { media: Media[]; title:
         <ol className={s.strip}>
           {media.map((t, k) => (
             <li key={k}>
-              <a href={file(t)} className={s.thumb} aria-current={k === i || undefined} aria-label={`Show ${t.caption}${t.kind === 'clip' ? ' (video)' : ''}`} onClick={(e) => { e.preventDefault(); go(k) }}>
+              {/* named by its content, not aria-label, so the visible clip length is part of the name */}
+              <a href={file(t)} className={s.thumb} aria-current={k === i || undefined} onClick={(e) => { e.preventDefault(); go(k) }}>
                 <Image src={still(t)} alt="" width={160} height={100} sizes="(max-width: 900px) 92px, 116px" fetchPriority="low" />
-                {t.kind === 'clip' && <span className={s.badge}>▶ {dur(t.seconds)}</span>}
+                <span className="sr-only">Show {t.caption}{t.kind === 'clip' ? ' (video)' : ''}</span>{' '}
+                {t.kind === 'clip' && <span className={s.badge}><span aria-hidden="true">▶</span> {dur(t.seconds)}</span>}
               </a>
             </li>
           ))}

@@ -52,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body id="top">
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <a className="skip" href="#main">Skip to content</a>
         <ScrollDriver />
         <ProgressBar />
         <Nav />

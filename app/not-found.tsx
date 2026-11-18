@@ -6,7 +6,7 @@ export const metadata = { title: 'Page not found', robots: { index: false } }
 
 export default function NotFound() {
   return (
-    <main className={`wrap ${s.nf}`}>
+    <main id="main" tabIndex={-1} className={`wrap ${s.nf}`}>
       <span className="mono">404</span>
       <h1 className={s.h1}>Nothing <b>here.</b></h1>
       <p className={s.p}>That page doesn’t exist. Everything worth seeing starts on the home page.</p>

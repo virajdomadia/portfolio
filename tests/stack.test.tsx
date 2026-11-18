@@ -9,6 +9,10 @@ describe('Stack', () => {
   it('renders 30 pills in four labelled rows', () => {
     const { container } = render(<Stack />)
     expect(container.querySelectorAll('.tpill')).toHaveLength(30)
+    // labels, not fake links: nothing in the section is focusable
+    expect(container.querySelectorAll('.tpill a, a.tpill, [tabindex]')).toHaveLength(0)
+    expect(screen.queryAllByRole('link')).toHaveLength(0)
+    expect(screen.getByRole('heading', { level: 2, name: 'What I ship with, by layer.' })).toBeInTheDocument()
     for (const l of ['Client', 'Server', 'Data', 'Tooling']) expect(screen.getByText(l)).toBeInTheDocument()
   })
   it('every pill shows its years', () => {

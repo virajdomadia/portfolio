@@ -16,14 +16,15 @@ export default function Hero() {
         <div className={s.frame} aria-hidden="true"><i className={s.tl}>{hero.corners[0]}</i><i className={s.tr}>{hero.corners[1]}</i><i className={s.bl}>{hero.corners[2]}</i><i className={s.br}>{hero.corners[3]}</i></div>
         <div className={`wrap ${s.inner}`}>
           <p className={s.eyebrow}>{hero.eyebrow.map((t, i) => <span key={t}>{i > 0 && <i>· </i>}{t}</span>)}</p>
-          <h1 className={s.name}><span className={`${s.line} ${s.l1}`}><Letters text={person.first} /></span><span className={`${s.line} ${s.l2}`}><Letters text={person.last} /></span></h1>
+          {/* named as a whole: letter by letter, screen readers would spell it out */}
+          <h1 className={s.name} aria-label={person.name}><span className={`${s.line} ${s.l1}`} aria-hidden="true"><Letters text={person.first} /></span>{' '}<span className={`${s.line} ${s.l2}`} aria-hidden="true"><Letters text={person.last} /></span></h1>
           <div className={s.row}>
             <div className={s.col}>
               <p className={s.lede}>{hero.lede}</p>
               <div className={s.cta}><a className="btn" href="#projects"><span>See the projects</span></a><a className="btn o" href="#contact"><span>Hire me</span></a></div>
               <div className={s.socials}><a href={person.github} target="_blank" rel="noreferrer">GitHub ↗</a><a href={person.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><a href={`mailto:${person.email}`}>Email ↗</a><a href={person.resume} target="_blank" rel="noreferrer">Résumé (PDF) ↗</a></div>
             </div>
-            <div className={s.stats}>{hero.stats.map((st) => <div key={st.label}><b>{st.n}</b>{st.label}</div>)}</div>
+            <div className={s.stats}>{hero.stats.map((st) => <div key={st.label}><b>{st.n}</b> {st.label}</div>)}</div>
           </div>
         </div>
         <div className={s.cue} aria-hidden="true"><span>scroll</span><i /></div>
