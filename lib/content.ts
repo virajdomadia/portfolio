@@ -105,7 +105,7 @@ export const content: Content = {
     { slug: 'offcut', title: 'Offcut', category: 'D2C store + visual search', status: 'Live',
       blurb: 'A complete streetwear store — variants, inventory that cannot go negative, cart, orders, returns, admin — plus “drop a photo, shop the look” search on image embeddings.',
       stack: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL', 'pgvector', 'Cloudinary', 'Razorpay'],
-      live: 'https://offcut-viraj.vercel.app', repo: 'https://github.com/virajdomadia/offcut', image: '/images/projects/offcut.jpg' },
+      live: 'https://offcut.virajdomadia.com', repo: 'https://github.com/virajdomadia/offcut', image: '/images/projects/offcut.jpg' },
     { slug: 'skillroom', title: 'Skillroom', category: 'Video course platform', status: 'Live',
       blurb: 'Creators upload video courses; students buy or subscribe, resume where they left off, pass quizzes and earn a certificate — streaming, recurring billing, payouts, three-role access.',
       stack: ['Next.js', 'TypeScript', 'FastAPI', 'PostgreSQL', 'Mux', 'Razorpay Subscriptions'],
