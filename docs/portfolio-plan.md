@@ -30,14 +30,14 @@ Pagecraft moved up from fifth so the three strongest, most different stories shi
 
 | # | Project | Identity | v1 | v2 | v3 | v4 (unique) | Planned h | Status |
 |---|---|---|---|---|---|---|---|---|
-| 1 | **Tripsmith** | AI agent with tool calling | Agency website (35) | Booking engine (20.5) + v2.5 Strengthen (62.5) + v2.6 Hardening (23) | AI trip planner (21) | **MCP server**: the same 4 tools as a thin adapter over existing services, public catalogue only, never pays (≈ 6, prototype target) | ≈ 168 (v1–v3 ≈ 162 + v4 ≈ 6) | v1–v3 ✅ (14 Nov) · v4 **next** |
+| 1 | **Tripsmith** | AI agent with tool calling | Agency website (35) | Booking engine (20.5) + v2.5 Strengthen (62.5) + v2.6 Hardening (23) | AI trip planner (21) | **MCP server**: 4 tools as a thin adapter over the v3 registry; two read the catalogue, two return handoff links; no payment, reservation or lead creation (≈ 9 core, re-estimated at step 3) | ≈ 171 (v1–v3 ≈ 162 + v4 ≈ 9) | v1–v3 ✅ (14 Nov) · v4 **next** |
 | 2 | **Frontrow** | Concurrency + realtime | Box office (18) | Live hall (10) | Full house (10) | **In your pocket**: native Expo app, offline wallet, push, multi-scanner check-in with provisional offline scans (16) | 54 | planned |
 | 3 | **Pagecraft** | CRDT / editor engineering | Solo studio (18) | Studio session (14) | Pro (13) | **Your domain, your code**: custom domains, static export, GitHub push, import of Pagecraft's own export (8) | 53 | planned |
 | 4 | **Offcut** | Embeddings / vector search | Store (16) | Lens (11) | Full fit (8) | **Share to Offcut**: PWA Web Share Target, Android; upload/paste fallback on iOS (3) | 38 | planned |
 | 5 | **Skillroom** | Own video pipeline + creator payouts | Classroom (16) | All-access (11) | Royalties (8) | **Offline lessons**: encrypted offline playback, 48-h device-bound lease (3) | 38 | planned |
 | 6 | **Platter** | Geo + realtime dispatch | Kitchen (16) | Rush (11) | Fleet, incl. **native rider app** (16) | **Order together**: group cart + shared tracking (6) | 49 | planned |
 
-**Remaining planned work:** Tripsmith v4 6 + 54 + 53 + 38 + 38 + 49 = **≈ 238 h** (add-ons excluded). Tripsmith's v1–v3 came to ≈ 162 h planned against an original ≈ 66 h, almost all of it from the unplanned v2.5 / v2.6 stages. Hour figures here are plan estimates, not recorded actuals.
+**Remaining planned work:** Tripsmith v4 9 + 54 + 53 + 38 + 38 + 49 = **≈ 241 h** (add-ons excluded). Tripsmith's v1–v3 came to ≈ 162 h planned against an original ≈ 66 h, almost all of it from the unplanned v2.5 / v2.6 stages. Hour figures here are plan estimates, not recorded actuals.
 
 ## Mobile
 
@@ -61,7 +61,7 @@ Both native apps: Expo (React Native, TypeScript), the same FastAPI API with bea
 | Pagecraft | Export | Round-trip guaranteed for Pagecraft's own export format only |
 | Platter | ETA | "Measured from our own history" (average ± 1 SD), not "learned" |
 | Platter | Events | `order_events` is the durable log; `LISTEN/NOTIFY` is only a wake-up |
-| Tripsmith | MCP | Single agency, no tenancy; `createEnquiry` reuses the web form's limits and PII redaction |
+| Tripsmith | MCP | Single agency, no tenancy; MCP creates nothing: `startBooking` / `startEnquiry` return links and the customer acts on the site; no contact details in MCP or URLs; client identity is diagnostic, never trusted |
 
 ## Decisions (resolved 2026-11-19)
 
