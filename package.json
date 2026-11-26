@@ -22,7 +22,9 @@
     "deploy": "gh workflow run vercel.yml --ref main"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "next": "15.5.25",
+    "node-html-parser": "^9.0.7",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "resend": "^6.27.0",

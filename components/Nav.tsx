@@ -6,7 +6,7 @@ import { content } from '@/lib/content'
 import MobileMenu from './MobileMenu'
 import s from './Nav.module.css'
 
-const LINKS = [['About', '/#about'], ['Projects', '/#projects'], ['Stack', '/#stack'], ['Contact', '/#contact']] as const
+const LINKS = [['About', '/#about'], ['Projects', '/#projects'], ['Stack', '/#stack'], ['Contact', '/#contact'], ['Free check', '/tools/website-checkup']] as const
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)

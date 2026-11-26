@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
+import { Analytics } from '@vercel/analytics/next'
 import ScrollDriver from '@/components/ScrollDriver'
 import Nav from '@/components/Nav'
 import ProgressBar from '@/components/ProgressBar'
@@ -57,6 +58,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ProgressBar />
         <Nav />
         {children}
+        {/* the script is served by Vercel at /_vercel/insights; elsewhere (CI, local prod) it would 404 */}
+        {process.env.VERCEL && <Analytics />}
       </body>
     </html>
   )
