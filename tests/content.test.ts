@@ -4,9 +4,9 @@ import { ContentSchema } from '@/lib/content-schema'
 
 describe('content', () => {
   it('validates against its schema', () => { expect(() => ContentSchema.parse(content)).not.toThrow() })
-  it('lists the six projects, each with a live URL and a public repo', () => {
-    expect(content.projects).toHaveLength(6)
-    expect(content.projects.map((p) => p.slug)).toEqual(['tripsmith', 'frontrow', 'pagecraft', 'offcut', 'skillroom', 'platter'])
+  it('lists the four projects, each with a live URL and a public repo', () => {
+    expect(content.projects).toHaveLength(4)
+    expect(content.projects.map((p) => p.slug)).toEqual(['tripsmith', 'frontrow', 'pagecraft', 'platter'])
     for (const p of content.projects) {
       expect(p.live).toMatch(/^https:\/\/.+\.(vercel\.app|virajdomadia\.com)$/)
       expect(p.repo).toBe(`https://github.com/virajdomadia/${p.slug}`)

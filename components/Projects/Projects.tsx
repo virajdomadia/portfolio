@@ -5,7 +5,7 @@ import { allProjects } from '@/lib/projects'
 import SectionWord from '@/components/SectionWord'
 import s from './Projects.module.css'
 
-/** Six case rows on ink rules: framed screenshot one side, title / story / stack / links the other, sides alternating. */
+/** Four case rows on ink rules: framed screenshot one side, title / story / stack / links the other, sides alternating. */
 export default function Projects() {
   const { projectsNote, person } = content
   const projects = allProjects()
