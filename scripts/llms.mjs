@@ -1,7 +1,7 @@
 // Pure builders for public/llms.txt and public/llms-full.txt (llmstxt.org). gen-llms.mjs writes them; tests call them directly.
 const cap = (s) => s[0].toUpperCase() + s.slice(1)
 
-export function llmsText(c, site) {
+export function llmsText(c, site, guides = []) {
   const p = c.person
   const pages = c.projects.filter((pr) => pr.detail).map((pr) => `- [${pr.title} — project page](${site}/projects/${pr.slug})`)
   return [
@@ -19,11 +19,12 @@ export function llmsText(c, site) {
   ...c.faq.flatMap((f) => [`**${f.q}** ${f.a}`, '']),
   '## Contact', '',
   `- Email: ${p.email}`, `- Phone: ${p.phoneDisplay}`, `- GitHub: ${p.github}`, `- LinkedIn: ${p.linkedin}`, `- Résumé: ${site}${p.resume}`, `- Site: ${site}`, '',
+  ...(guides.length ? ['## Free tool and guides for small businesses', '', `- [Free website check](${site}/tools/website-checkup): paste a business website and get a plain-language report (Google visibility, phone-friendliness, tap-to-call and WhatsApp, trust) with the top 3 fixes. Free, no sign-up.`, ...guides.map((g) => `- [${g.title}](${site}/guides/${g.slug}): ${g.description}`), ''] : []),
   '## Pages', '', `- [Home](${site}/)`, ...pages, `- [Résumé PDF](${site}${p.resume})`, '',
 ].join('\n')
 }
 
-export function llmsFullText(c, site) {
+export function llmsFullText(c, site, guides = []) {
   const studies = c.projects.filter((pr) => pr.detail).flatMap((pr) => {
     const d = pr.detail
     return [
@@ -34,5 +35,5 @@ export function llmsFullText(c, site) {
       `**Outcome.** ${d.sections.outcome}`, '',
     ]
   })
-  return studies.length ? [llmsText(c, site), ...studies].join('\n') : llmsText(c, site)
+  return studies.length ? [llmsText(c, site, guides), ...studies].join('\n') : llmsText(c, site, guides)
 }

@@ -60,6 +60,10 @@ export default async function Page({ params }: Props) {
             <p className={s.ctaLine}>See what’s costing you customers. Paste your website and get your top 3 fixes in about 20 seconds.</p>
             <Link className="btn" href="/tools/website-checkup"><span>Check my website free</span></Link>
           </aside>
+          <nav className={s.more} aria-labelledby="more-h">
+            <h2 id="more-h">More guides</h2>
+            <ul>{guides.filter((o) => o.slug !== g.slug).map((o) => <li key={o.slug}><Link href={`/guides/${o.slug}`}>{o.title}</Link></li>)}</ul>
+          </nav>
           <p className={s.by}>Written by <Link href="/">{content.person.name}</Link>, a full-stack developer in {content.person.city} who builds websites, booking systems and automation for small businesses.</p>
         </article>
       </main>
