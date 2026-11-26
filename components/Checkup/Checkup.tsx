@@ -1,6 +1,6 @@
 'use client'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { GROUPS, score, speedCheck, topFixes, verdict, type Check, type Group } from '@/lib/checkup/analyze'
+import { GROUPS, score, speedCheck, topFixes, verdict, type Check, type Group } from '@/lib/checkup/report'
 import { content } from '@/lib/content'
 import s from './Checkup.module.css'
 

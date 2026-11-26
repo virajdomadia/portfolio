@@ -58,7 +58,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ProgressBar />
         <Nav />
         {children}
-        <Analytics />
+        {/* the script is served by Vercel at /_vercel/insights; elsewhere (CI, local prod) it would 404 */}
+        {process.env.VERCEL && <Analytics />}
       </body>
     </html>
   )
