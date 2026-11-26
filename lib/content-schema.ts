@@ -51,7 +51,7 @@ export const ContentSchema = z.object({
   about: z.object({ quote: z.string(), quoteBold: z.array(z.string()).length(2), photoAlt: z.string(), captions: z.array(z.string()).length(2), counters: z.array(z.object({ to: z.number(), suffix: z.string(), label: z.string() })).length(3), rail: z.string() }),
   experience: z.array(ExperienceSchema).length(3),
   education: z.array(z.object({ degree: z.string(), school: z.string(), schoolUrl: z.string().url().optional(), years: z.string(), note: z.string().optional() })).length(2),
-  projects: z.array(ProjectSchema).length(6),
+  projects: z.array(ProjectSchema).length(4),
   projectsNote: z.object({ after: z.string(), afterCta: z.string() }),
   tools: z.array(ToolSchema),
   stack: z.object({ heading: z.string(), headingBold: z.string(), note: z.string() }),

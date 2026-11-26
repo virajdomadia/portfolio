@@ -4,7 +4,7 @@
 
 ## About
 
-Viraj Domadia is a frontend-heavy full-stack developer based in Bengaluru, originally from Mumbai. He works with React, Next.js, TypeScript, Node.js, Express, FastAPI, PostgreSQL and MongoDB. He builds the client, the server and the data layer as one product, and has six full-stack products live, from Tripsmith to Platter. He is completing an online MCA at Amity University (2025–2027) and is open to full-time and freelance work, on-site in Bengaluru or remote.
+Viraj Domadia is a frontend-heavy full-stack developer based in Bengaluru, originally from Mumbai. He works with React, Next.js, TypeScript, Node.js, Express, FastAPI, PostgreSQL and MongoDB. He builds the client, the server and the data layer as one product, and has four full-stack products live, from Tripsmith to Platter. He is completing an online MCA at Amity University (2025–2027) and is open to full-time and freelance work, on-site in Bengaluru or remote.
 
 ## Experience
 
@@ -29,8 +29,6 @@ Viraj Domadia is a frontend-heavy full-stack developer based in Bengaluru, origi
 - **Tripsmith** (Travel + AI trip planner; v3 live · complete — ai trip planner + bookings): A travel agency’s booking site with an AI trip planner that only quotes the real catalogue — live seats, deposits, Razorpay (test mode), GST invoices, refunds and an owner desk that reads every chat. Live: https://tripsmith.virajdomadia.com · Source: https://github.com/virajdomadia/tripsmith
 - **Frontrow** (Live seat-map ticketing; live): Movie and concert tickets on a live seat map: tap a seat and it is held for ten minutes and greys out for everyone else — Redis holds, transactions, idempotent payments, QR tickets. Live: https://frontrow.virajdomadia.com · Source: https://github.com/virajdomadia/frontrow
 - **Pagecraft** (Co-edited website builder; live): A landing-page editor two people use at the same time — live cursors, conflict-free merges, version history — then one click publishes it to its own subdomain. Live: https://pagecraft.virajdomadia.com · Source: https://github.com/virajdomadia/pagecraft
-- **Offcut** (D2C store + visual search; live): A complete streetwear store — variants, inventory that cannot go negative, cart, orders, returns, admin — plus “drop a photo, shop the look” search on image embeddings. Live: https://offcut.virajdomadia.com · Source: https://github.com/virajdomadia/offcut
-- **Skillroom** (Video course platform; live): Creators upload video courses; students buy or subscribe, resume where they left off, pass quizzes and earn a certificate — streaming, recurring billing, payouts, three-role access. Live: https://skillroom.virajdomadia.com · Source: https://github.com/virajdomadia/skillroom
 - **Platter** (Food delivery + live tracking; live): Customer, restaurant and rider apps on one order state machine — restaurants within a radius, live rider location on the customer’s map, role-checked transitions. Live: https://platter.virajdomadia.com · Source: https://github.com/virajdomadia/platter
 
 Every project has a live URL and a public repo — open one, then read the code.

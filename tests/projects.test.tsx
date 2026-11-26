@@ -3,17 +3,17 @@ import { describe, it, expect } from 'vitest'
 import Projects from '@/components/Projects/Projects'
 
 describe('Projects', () => {
-  it('renders six case rows, each with a framed screenshot, live + source links and an honest status', () => {
+  it('renders four case rows, each with a framed screenshot, live + source links and an honest status', () => {
     const { container } = render(<Projects />)
     expect(container.querySelector('section#projects')).toBeTruthy()
-    expect(container.querySelectorAll('section#projects article')).toHaveLength(6)
-    expect(screen.getAllByRole('img', { name: /^Screenshot of / })).toHaveLength(6)
+    expect(container.querySelectorAll('section#projects article')).toHaveLength(4)
+    expect(screen.getAllByRole('img', { name: /^Screenshot of / })).toHaveLength(4)
     expect(screen.getByText('tripsmith.virajdomadia.com')).toBeInTheDocument()
-    expect(screen.getAllByRole('link', { name: /Open live/ })).toHaveLength(6)
-    expect(screen.getAllByRole('link', { name: 'Source' })).toHaveLength(6)
+    expect(screen.getAllByRole('link', { name: /Open live/ })).toHaveLength(4)
+    expect(screen.getAllByRole('link', { name: 'Source' })).toHaveLength(4)
     expect(screen.getByRole('heading', { level: 3, name: 'Tripsmith' })).toBeInTheDocument()
     expect(screen.queryByText(/In build/)).toBeNull()
-    expect(screen.getAllByText(/· Live$/)).toHaveLength(5)
+    expect(screen.getAllByText(/· Live$/)).toHaveLength(3)
     expect(screen.getByText(/v3 live · complete — AI trip planner \+ bookings/)).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'All repos on GitHub' })).toHaveAttribute('href', 'https://github.com/virajdomadia')
   })

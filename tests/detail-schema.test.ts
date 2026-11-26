@@ -35,7 +35,7 @@ describe('detail schema', () => {
 
 describe('project helpers', () => {
   it('only Tripsmith has a detail page, straight from content', () => {
-    expect(allProjects()).toHaveLength(6)
+    expect(allProjects()).toHaveLength(4)
     expect(detailProjects().map((p) => p.slug)).toEqual(['tripsmith'])
     expect(getDetailProject('tripsmith')?.detail).toBe(content.projects.find((p) => p.slug === 'tripsmith')?.detail)
     expect(getDetailProject('frontrow')).toBeUndefined()
