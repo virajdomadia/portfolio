@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { absolute } from '@/lib/site'
 import { content } from '@/lib/content'
 import { detailProjects } from '@/lib/projects'
+import { guides } from '@/lib/guides'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
@@ -11,6 +12,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: absolute(`/projects/${p.slug}`), lastModified: new Date(p.detail.updated), changeFrequency: 'monthly' as const, priority: 0.7,
       images: [absolute(`/projects/${p.slug}/opengraph-image`), ...p.detail.media.map((m) => absolute(m.kind === 'image' ? m.src : m.poster))],
     })),
+    { url: absolute('/tools/website-checkup'), lastModified: new Date('2026-11-27'), changeFrequency: 'monthly', priority: 0.9, images: [absolute('/tools/website-checkup/opengraph-image')] },
+    { url: absolute('/guides'), lastModified: new Date('2026-11-27'), changeFrequency: 'weekly', priority: 0.6 },
+    ...guides.map((g) => ({ url: absolute(`/guides/${g.slug}`), lastModified: new Date(g.updated), changeFrequency: 'monthly' as const, priority: 0.7 })),
     { url: absolute('/llms.txt'), lastModified: now, changeFrequency: 'monthly', priority: 0.3 },
     { url: absolute(content.person.resume), lastModified: now, changeFrequency: 'monthly', priority: 0.3 },
   ]

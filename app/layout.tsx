@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
+import { Analytics } from '@vercel/analytics/next'
 import ScrollDriver from '@/components/ScrollDriver'
 import Nav from '@/components/Nav'
 import ProgressBar from '@/components/ProgressBar'
@@ -57,6 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ProgressBar />
         <Nav />
         {children}
+        <Analytics />
       </body>
     </html>
   )
