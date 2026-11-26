@@ -21,7 +21,7 @@ export default function Contact() {
             <div className={s.box}><span className="mono">Email</span><p className={s.big}><a href={`mailto:${person.email}`}>{person.email}</a></p><CopyEmail email={person.email} /></div>
             <div className={s.box}><span className="mono">Phone</span><p className={`${s.big} ${s.tel}`}><a href={`tel:${person.phone}`}>{person.phoneDisplay}</a></p><div className={s.soc}><a href={`https://wa.me/${person.phone.replace(/\D/g, '')}?text=${encodeURIComponent('Hi Viraj, I found you on virajdomadia.com')}`} target="_blank" rel="noreferrer">WhatsApp <span>Message me ↗</span></a></div></div>
             <div className={s.box}><span className="mono">Elsewhere</span><div className={s.soc}><a href={person.github} target="_blank" rel="noreferrer">GitHub <span>{person.github.replace('https://', '')} ↗</span></a><a href={person.linkedin} target="_blank" rel="noreferrer">LinkedIn <span>{person.linkedin.replace('https://www.linkedin.com/', '')} ↗</span></a><a href={person.resume} target="_blank" rel="noreferrer">Résumé <span>PDF · 1 page ↗</span></a></div></div>
-            <div className={s.box}><span className="mono">Practical</span><p className={s.p}>{contact.practical.map((l, i) => <span key={l}>{i > 0 && <br />}{l}</span>)}</p></div>
+            <div className={s.box}><span className="mono">Practical</span><p className={s.p}>{contact.practical.map((l, i) => <span key={l}>{i > 0 && <br />}{i === 0 ? <a href={`https://www.google.com/maps/place/${encodeURIComponent(`${person.city}, ${person.region}`)}`} target="_blank" rel="noreferrer">{l}</a> : l}</span>)}</p></div>
             <Faq />
           </aside>
         </div>
