@@ -8,7 +8,8 @@
 .article p, .article li { font-size: 18px; line-height: 1.6; }
 .article li { margin: 6px 0; }
 .code { background: var(--ink); color: var(--bg); padding: 14px 16px; overflow-x: auto; font: 500 14px/1.5 var(--font-mono), monospace; }
-.tip { background: var(--ph); padding: 14px 18px; border-left: 4px solid var(--acc); }
+.tip { background: var(--ph); padding: 14px 18px; }
+.tip b { color: var(--acc); }
 .cta { margin-top: 56px; padding: 28px; background: var(--ink); color: var(--bg); }
 .cta :global(.mono) { color: color-mix(in oklab, var(--bg) 70%, var(--ink)); }
 .ctaLine { font-size: 20px !important; margin: 8px 0 18px; }
