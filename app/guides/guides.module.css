@@ -25,3 +25,6 @@
 .desc { color: var(--muted); }
 .index a:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
 @media (max-width: 900px) { .page { padding-top: 96px; } }
+.more { margin-top: 48px; }
+.more ul { padding-left: 18px; }
+.more li { font-size: 17px; }

@@ -52,6 +52,19 @@ Every project has a live URL and a public repo — open one, then read the code.
 - Résumé: https://virajdomadia.com/Viraj-Domadia-Resume.pdf
 - Site: https://virajdomadia.com
 
+## Free tool and guides for small businesses
+
+- [Free website check](https://virajdomadia.com/tools/website-checkup): paste a business website and get a plain-language report (Google visibility, phone-friendliness, tap-to-call and WhatsApp, trust) with the top 3 fixes. Free, no sign-up.
+- [How to add a WhatsApp button to your business website](https://virajdomadia.com/guides/whatsapp-button-for-business-website): Step-by-step: create a click-to-chat WhatsApp link with a pre-filled message, put it where customers will tap it, and avoid the mistakes that cost enquiries. Works on WordPress, Wix, Shopify or any site.
+- [Why your business isn’t showing up on Google (and how to fix it)](https://virajdomadia.com/guides/why-business-not-showing-on-google): The 7 most common reasons a small business doesn’t appear in Google search or Maps, how to check each one yourself in minutes, and what to do about it. No jargon.
+- [How to make your phone number clickable on your website (tap-to-call)](https://virajdomadia.com/guides/make-phone-number-clickable-on-website): Turn the phone number on your website into a one-tap call button on mobile. The exact link format for Indian numbers, plus how to do it on WordPress, Wix, Shopify and plain HTML.
+- [WhatsApp link preview not showing an image? Here’s how to fix it](https://virajdomadia.com/guides/whatsapp-link-preview-not-showing-image): Why your website shows as a plain link with no photo when shared on WhatsApp, and how to fix it with Open Graph tags, the right image size, and clearing WhatsApp’s preview cache.
+- [Why your website says “Not secure”, and how to fix it](https://virajdomadia.com/guides/website-not-secure-warning-fix): What the “Not secure” warning in Chrome means, why it scares off customers, and how to fix it with a free SSL certificate on common Indian hosting, WordPress, and other website builders.
+- [How to add Google Maps and a “Get directions” button to your website](https://virajdomadia.com/guides/add-google-maps-to-website): Two ways to show your location: embed a Google Map, and add a one-tap “Get directions” button that opens navigation on the customer’s phone. Step by step, free, no API key.
+- [How to make your business website load faster on mobile](https://virajdomadia.com/guides/make-website-faster-on-mobile): A plain-language checklist to speed up a slow small-business website on phones: compressing photos, removing heavy plugins and widgets, caching and hosting. With the free tools to measure it.
+- [How to get more Google reviews for your business (the right way)](https://virajdomadia.com/guides/get-more-google-reviews-for-business): A simple system to get more genuine Google reviews: your direct review link, when and how to ask on WhatsApp, a message template, replying to reviews, and what not to do so you don’t break Google’s rules.
+- [How much does a website cost for a small business in India? (2026)](https://virajdomadia.com/guides/website-cost-small-business-india): An honest breakdown of what a small-business website costs in India in 2026: DIY builders vs freelancers vs agencies, yearly running costs, hidden costs, and how to avoid overpaying.
+
 ## Pages
 
 - [Home](https://virajdomadia.com/)
