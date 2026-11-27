@@ -19,15 +19,15 @@ export const metadata: Metadata = {
 }
 
 const WHAT: Record<Group, string[]> = {
-  google: ['The headline and description Google shows', 'Whether Google is allowed to list you at all', 'Main heading, sitemap and photo descriptions', 'Business details Google can read (for local results and Maps)'],
-  phone: ['Phone-friendly layout', 'Secure connection (no “Not secure” warning)', 'How fast the server answers', 'Google’s own phone speed score'],
-  contact: ['Tap-to-call number', 'WhatsApp chat button', 'Enquiry form or contact page', 'A clear “Book / Order / Call” button', 'Directions on Google Maps'],
-  trust: ['Photo + title preview when shared on WhatsApp', 'Links to your Instagram and other pages', 'Reviews and testimonials', 'An up-to-date footer'],
+  google: ['The headline and description Google shows', 'Whether Google is allowed to list you at all', 'Main heading, sitemap and photo descriptions', 'Business details Google can read (for local results and Maps)', 'Which address Google treats as the real one', 'Whether there’s enough text for Google to understand the page', 'Page language'],
+  phone: ['Phone-friendly layout', 'Secure connection, and old http:// links forwarding to it', 'Insecure files that break the padlock', 'How fast the server answers, and compression', 'Too many scripts, widgets and plugins', 'Photos that load before they’re needed', 'Google’s own phone speed score'],
+  contact: ['Tap-to-call number (and numbers that aren’t tappable)', 'WhatsApp chat button', 'Enquiry form or contact page', 'A clear “Book / Order / Call” button', 'Directions on Google Maps', 'Prices or price ranges', 'Opening hours'],
+  trust: ['Photo + title preview when shared on WhatsApp', 'Links to your Instagram and other pages', 'Reviews and testimonials', 'Privacy policy', 'Browser tab icon', 'An up-to-date footer'],
 }
 
 const FAQ = [
   { q: 'Is it really free?', a: 'Yes. No sign-up, no email needed, no limit on how many of your own pages you check. I built it to help small businesses and to show what I do.' },
-  { q: 'What does the score mean?', a: 'Each check is weighted by how much it affects enquiries: things like being visible on Google, working on a phone and having a tap-to-call number count most. 85+ is strong, 65–84 has a few leaks, under 65 is likely losing customers.' },
+  { q: 'What does the score mean?', a: 'There are around 30 checks, each weighted by how much it affects enquiries: things like being visible on Google, working on a phone and having a tap-to-call number count most. 85+ is strong, 65–84 has a few leaks, under 65 is likely losing customers.' },
   { q: 'Does it change anything on my website?', a: 'No. It only reads your public home page, the same way Google or a visitor would. Nothing is changed and nothing is stored apart from a short cache so a shared report loads fast.' },
   { q: 'Why does it look for WhatsApp?', a: 'In India many customers would rather send a WhatsApp message than call or fill a form. A one-tap WhatsApp button is one of the cheapest ways to get more enquiries.' },
   { q: 'Can you fix the problems for me?', a: 'Yes. Send me your report on WhatsApp and I’ll reply with exactly how I’d fix your top 3 issues, free. If you want me to do the work, I’ll quote a fixed price first.' },

@@ -38,7 +38,7 @@ To friends in general (ask them to forward):
 >
 > The owners rarely know, because nobody tells them.
 >
-> So I built a free checker. Paste a website and in ~20 seconds it tells you, in plain language:
+> So I built a free checker. Paste a website and in 30+ seconds it tells you, in plain language:
 > → Can Google find you?
 > → Does it work on a phone?
 > → Can customers reach you in one tap?
@@ -62,7 +62,7 @@ Read each subreddit’s rules first. Lead with value, and don’t post the same 
 
 **r/webdev: Showoff Saturday only (Sat 29 Nov)**
 Title: `[Showoff Saturday] A free website checker written for small-business owners, not developers`
-> Most SEO/audit tools speak developer (“LCP 4.2s, missing hreflang”). I wanted one a bakery owner could read: “customers can’t call you in one tap”, “your link shows up bare on WhatsApp”. It fetches the page (with SSRF guards, since it takes arbitrary URLs), runs ~20 weighted checks, merges Google’s PageSpeed mobile score, and ranks the top 3 fixes. Next.js 15, no AI in the loop. Would love feedback on the checks it gets wrong: https://virajdomadia.com/tools/website-checkup?utm_source=reddit
+> Most SEO/audit tools speak developer (“LCP 4.2s, missing hreflang”). I wanted one a bakery owner could read: “customers can’t call you in one tap”, “your link shows up bare on WhatsApp”. It fetches the page (with SSRF guards, since it takes arbitrary URLs), runs around 30 weighted checks, merges Google’s PageSpeed mobile score, and ranks the top 3 fixes. Next.js 15, no AI in the loop. Would love feedback on the checks it gets wrong: https://virajdomadia.com/tools/website-checkup?utm_source=reddit
 
 **r/SideProject** (self-promo allowed): same idea, shorter, add “what I learned building it”.
 
@@ -73,7 +73,7 @@ Title: `[Showoff Saturday] A free website checker written for small-business own
 Title: `Show HN: A website checker for small businesses that speaks plain language`
 > I build websites for small businesses in India. The common failures aren't exotic: no tap-to-call link, no WhatsApp button (a big deal here), "Home" as the page title, no Open Graph image so WhatsApp shares look dead. Existing audit tools report these in jargon owners can't act on, so I wrote one that doesn't.
 >
-> It fetches the page server-side (DNS-pinned IP checks against private ranges, redirects re-validated), runs ~20 weighted checks, adds Google's PageSpeed mobile score asynchronously, and ranks the top 3 fixes. No sign-up, nothing stored beyond a 10-minute cache.
+> It fetches the page server-side (DNS-pinned IP checks against private ranges, redirects re-validated), runs around 30 weighted checks, adds Google's PageSpeed mobile score asynchronously, and ranks the top 3 fixes. No sign-up, nothing stored beyond a 10-minute cache.
 >
 > Happy to hear which checks are wrong or missing.
 

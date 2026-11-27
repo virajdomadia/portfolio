@@ -32,18 +32,20 @@ describe('robotsBlocksAll', () => {
   })
 })
 
-const base: Omit<PageInput, 'html'> = { url: 'https://sugarco.in/', status: 200, headers: {}, ms: 400, bytes: 20_000, robotsTxt: null, sitemapFound: true, now: new Date('2026-11-27') }
+const base: Omit<PageInput, 'html'> = { url: 'https://sugarco.in/', status: 200, headers: { 'content-encoding': 'br' }, ms: 400, bytes: 20_000, robotsTxt: null, sitemapFound: true, now: new Date('2026-11-27') }
 const good = `<!doctype html><html lang="en"><head>
 <title>Wedding cakes in Andheri, Mumbai | Sugar &amp; Co</title>
 <meta name="description" content="Custom wedding and birthday cakes baked fresh in Andheri West. Order on WhatsApp, delivered across Mumbai the same day.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://sugarco.in/"><link rel="icon" href="/favicon.ico">
 <meta property="og:title" content="Sugar & Co"><meta property="og:image" content="/og.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Bakery","address":{"@type":"PostalAddress"}}</script>
 </head><body><h1>Wedding cakes, baked fresh</h1>
 <a href="tel:+919999999999">Call us</a> <a href="https://wa.me/919999999999">Order on WhatsApp</a>
 <a href="https://maps.app.goo.gl/abc">Get directions</a> <a href="https://instagram.com/sugarco">Instagram</a>
 <section>What our customers say ★★★★★</section><form><input name="n"><textarea name="m"></textarea><button>Send enquiry</button></form>
-<img src="a.jpg" alt="cake"><img src="b.jpg" alt="cake 2"><img src="c.jpg" alt="cake 3"><footer>© 2026 Sugar & Co</footer></body></html>`
+<img src="a.jpg" alt="cake"><img src="b.jpg" alt="cake 2"><img src="c.jpg" alt="cake 3"><p>${'We bake custom wedding, birthday and anniversary cakes by hand in our Andheri West kitchen and deliver them fresh across Mumbai. '.repeat(16)}</p>
+<p>Cakes from ₹1,200 per kg. Open daily 10 am – 9 pm.</p><footer>© 2026 Sugar & Co · <a href="/privacy">Privacy policy</a></footer></body></html>`
 
 const byId = (html: string, extra: Partial<PageInput> = {}) => Object.fromEntries(analyze({ ...base, ...extra, html }).map((c) => [c.id, c]))
 
@@ -77,6 +79,46 @@ describe('analyze', () => {
   it('slow server responses warn, then fail', () => {
     expect(byId(good, { ms: 2000 }).response.status).toBe('warn')
     expect(byId(good, { ms: 5000 }).response.status).toBe('fail')
+  })
+})
+
+describe('detailed checks', () => {
+  it('spots a phone number that is shown but not tappable', () => {
+    const c = byId(good.replace('<a href="tel:+919999999999">Call us</a>', '<p>Call 98765 43210</p>'))
+    expect(c.call.status).toBe('fail'); expect(c.call.found).toMatch(/98765 43210.*isn’t tappable/)
+  })
+  it('flags a canonical tag pointing at another site, and a missing one', () => {
+    expect(byId(good.replace('https://sugarco.in/', 'https://templatesite.com/')).canonical.status).toBe('fail')
+    expect(byId(good.replace(/<link rel="canonical"[^>]+>/, '')).canonical.status).toBe('warn')
+  })
+  it('counts readable words, ignoring script contents', () => {
+    const thin = '<html><head><title>x</title><script>' + 'word '.repeat(2000) + '</script></head><body><p>Just a few words here.</p></body></html>'
+    expect(byId(thin).content.status).toBe('fail')
+  })
+  it('a price or hours inside a script does not count', () => {
+    const c = byId('<html><body><script>var p = "₹500 open daily 10 am - 9 pm"</script><p>Hello</p></body></html>')
+    expect(c.prices.status).toBe('warn'); expect(c.hours.status).toBe('warn')
+  })
+  it('flags insecure files on a secure page and a missing http→https redirect', () => {
+    expect(byId(good.replace('src="a.jpg"', 'src="http://cdn.example.com/a.jpg"')).mixed.status).toBe('fail')
+    expect(byId(good, { httpRedirectsToHttps: false })['https-redirect'].status).toBe('fail')
+    expect(byId(good, { httpRedirectsToHttps: true })['https-redirect'].status).toBe('pass')
+    expect(byId(good)['https-redirect']).toBeUndefined()
+  })
+  it('too many scripts warn, then fail', () => {
+    const withScripts = (n: number) => good.replace('</head>', `${'<script src="x.js"></script>'.repeat(n)}</head>`)
+    expect(byId(withScripts(16)).scripts.status).toBe('warn'); expect(byId(withScripts(30)).scripts.status).toBe('fail')
+  })
+  it('decorative images (alt="") are not counted as missing descriptions; missing alt is', () => {
+    const imgs = (alts: string[]) => `<html><body>${alts.map((a) => `<img src="x.jpg"${a}>`).join('')}</body></html>`
+    expect(byId(imgs([' alt=""', ' alt=""', ' alt="cake"'])).alt.status).toBe('pass')
+    const bad = byId(imgs(['', '', ' alt="cake"']))
+    expect(bad.alt.status).toBe('fail'); expect(bad.alt.found).toMatch(/2 have none at all/)
+  })
+  it('privacy policy weighs more when the page collects details', () => {
+    const noPrivacy = good.replace('<a href="/privacy">Privacy policy</a>', '')
+    expect(byId(noPrivacy).privacy.weight).toBe(4)
+    expect(byId(noPrivacy.replace(/<form>[\s\S]*<\/form>/, '')).privacy.weight).toBe(2)
   })
 })
 

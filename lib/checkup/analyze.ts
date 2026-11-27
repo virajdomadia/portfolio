@@ -2,7 +2,8 @@ import { parse, type HTMLElement } from 'node-html-parser'
 import type { Check } from './report'
 export * from './report'
 
-export type PageInput = { url: string; status: number; html: string; headers: Record<string, string>; ms: number; bytes: number; robotsTxt: string | null; sitemapFound: boolean; now?: Date }
+/** httpRedirectsToHttps / faviconFound come from extra requests the route makes; undefined = not checked, so that check is skipped. */
+export type PageInput = { url: string; status: number; html: string; headers: Record<string, string>; ms: number; bytes: number; robotsTxt: string | null; sitemapFound: boolean; httpRedirectsToHttps?: boolean; faviconFound?: boolean; now?: Date }
 
 // Pure: a fetched page in, a list of plain-language checks out. No network here, so every rule is unit-tested.
 
@@ -10,6 +11,9 @@ const BUSINESS_TYPES = /Business|Organi[sz]ation|Corporation|Restaurant|Store|Sh
 const ACTION_WORDS = /\b(book|order|enquir|inquir|contact|call|quote|appointment|reserve|buy|shop|whatsapp|get started|schedule|visit us|get in touch|request|subscribe|sign up|apply)\b/i
 const MAPS = /google\.[a-z.]+\/maps|maps\.google\.|maps\.app\.goo\.gl|goo\.gl\/maps|g\.page\//i
 const WHATSAPP = /wa\.me\/|api\.whatsapp\.com|web\.whatsapp\.com|^whatsapp:|wa\.link\/|whatsapp\.com\/(send|message)/i
+const MOBILE = /(?:\+?91[\s-]?)?(?<!\d)[6-9]\d{4}[\s-]?\d{5}(?!\d)/
+const PRICE = /₹|\brs\.?\s?\d|\binr\b|\d\s?\/-|\bprice|\bpricing\b|\bstarting (?:at|from)\b|\bper (?:person|night|month|session|plate)\b/i
+const HOURS = /\b(?:open(?:ing)? hours|timings?|business hours|working hours|we(?:'|’)re open|open (?:daily|today|7 days)|mon(?:day)?\s*(?:-|–|to)\s*(?:fri|sat|sun))|\b\d{1,2}(?::\d{2})?\s?(?:am|pm)\s*(?:-|–|to)\s*\d{1,2}(?::\d{2})?\s?(?:am|pm)\b/i
 const SOCIAL = /instagram\.com|facebook\.com|fb\.com|linkedin\.com|youtube\.com|youtu\.be|x\.com\/|twitter\.com/i
 
 const text = (el: HTMLElement | null | undefined) => (el?.textContent ?? '').replace(/\s+/g, ' ').trim()
@@ -50,8 +54,16 @@ export function analyze(p: PageInput): Check[] {
   const links = root.querySelectorAll('a[href]').map((a) => ({ href: a.getAttribute('href') ?? '', label: `${text(a)} ${a.getAttribute('aria-label') ?? ''} ${a.getAttribute('title') ?? ''}`.trim() }))
   const hrefs = links.map((l) => l.href)
   const iframes = root.querySelectorAll('iframe[src]').map((f) => f.getAttribute('src') ?? '')
-  const bodyText = text(root.querySelector('body') ?? root)
   const types = jsonLdTypes(root)
+  const ldRaw = root.querySelectorAll('script[type="application/ld+json" i]').map((x) => x.textContent).join(' ')
+  const scriptSrcs = root.querySelectorAll('script[src]').map((x) => x.getAttribute('src') ?? '')
+  const isHttps = p.url.startsWith('https:')
+  // insecure (http://) files on a secure page: browsers block or flag them
+  const insecure = isHttps ? root.querySelectorAll('script[src], img[src], iframe[src], link[rel~="stylesheet" i][href], source[src], video[src], audio[src]').map((x) => x.getAttribute('src') ?? x.getAttribute('href') ?? '').filter((u) => /^http:\/\//i.test(u)) : []
+  // the words a visitor reads: script/style contents removed, so code can't fake a match
+  for (const x of root.querySelectorAll('script, style, noscript, template')) x.remove()
+  const bodyText = text(root.querySelector('body') ?? root)
+  const words = bodyText.split(' ').filter((w) => /\p{L}{2,}/u.test(w)).length
   const year = (p.now ?? new Date()).getFullYear()
 
   // ── google ──
@@ -101,14 +113,40 @@ export function analyze(p: PageInput): Check[] {
 
   const imgs = root.querySelectorAll('img')
   if (imgs.length >= 3) {
-    const withAlt = imgs.filter((i) => (i.getAttribute('alt') ?? '').trim() !== '' || i.getAttribute('role') === 'presentation').length
-    const pct = Math.round((withAlt / imgs.length) * 100)
+    // alt="" is a deliberate "decorative" mark (often a card photo next to its own title); only a missing alt is a gap
+    const described = imgs.filter((i) => (i.getAttribute('alt') ?? '').trim() !== '').length
+    const decorative = imgs.filter((i) => i.hasAttribute('alt') && (i.getAttribute('alt') ?? '').trim() === '' || i.getAttribute('role') === 'presentation').length
+    const missing = imgs.length - described - decorative
+    const pct = Math.round(((imgs.length - missing) / imgs.length) * 100)
     add({ id: 'alt', group: 'google', weight: 3, title: 'Photos are described for Google',
       status: pct >= 80 ? 'pass' : pct >= 40 ? 'warn' : 'fail',
-      found: `${withAlt} of ${imgs.length} images have a description (${pct}%).`,
+      found: `${described} of ${imgs.length} images have a description${decorative ? `, ${decorative} ${decorative === 1 ? 'is' : 'are'} marked decorative` : ''}${missing ? `, ${missing} ${missing === 1 ? 'has' : 'have'} none at all` : ''}.${decorative > described ? ' If the decorative ones are photos of what you sell, describing them helps them appear in Google Images.' : ''}`,
       why: 'Google can’t see photos; the description (alt text) is how your dishes, products or work show up in image search.',
       fix: 'Add a short description to each photo, e.g. “chocolate truffle cake with gold leaf”.' })
   }
+
+  const canonical = root.querySelector('link[rel="canonical" i]')?.getAttribute('href')?.trim() ?? ''
+  let canonHost = ''
+  try { canonHost = canonical ? new URL(canonical, p.url).hostname.replace(/^www\./, '') : '' } catch { canonHost = '?' }
+  const canonOff = Boolean(canonical) && canonHost !== host
+  add({ id: 'canonical', group: 'google', weight: 4, title: 'Tells Google which address is the real one',
+    status: !canonical ? 'warn' : canonOff ? 'fail' : 'pass',
+    found: !canonical ? 'No canonical tag, so Google has to guess between versions like www and non-www.' : canonOff ? `The canonical tag points to a different site: ${clip(canonical, 60)}. Google may list that site instead of this one.` : `Yes: ${clip(canonical, 60)}`,
+    why: 'Most sites can be reached at several addresses (with or without www, with tracking codes). The canonical tag tells Google which one to show, so your ranking isn’t split.',
+    fix: canonOff ? 'Point the canonical tag at this site’s own address. This often happens when a template or old site was copied.' : 'Add <link rel="canonical" href="https://yoursite.in/"> to each page (SEO plugins do this automatically).' })
+
+  add({ id: 'content', group: 'google', weight: 5, title: 'Enough words for Google to understand the page',
+    status: words >= 300 ? 'pass' : words >= 120 ? 'warn' : 'fail',
+    found: `About ${words.toLocaleString('en-IN')} words of readable text on the page.`,
+    why: 'Google ranks pages by what they say. A page that is mostly images or a few lines gives it almost nothing to match against people’s searches.',
+    fix: 'Describe what you offer, who it’s for, where you work, prices and common questions, in normal sentences (aim for 300+ words on the home page).' })
+
+  const lang = root.querySelector('html')?.getAttribute('lang')?.trim()
+  add({ id: 'lang', group: 'google', weight: 2, title: 'Page language is declared',
+    status: lang ? 'pass' : 'warn',
+    found: lang ? `Language set to “${lang}”.` : 'No language set on the page.',
+    why: 'Declaring the language helps Google show the page to the right people, and helps screen readers and translation tools.',
+    fix: 'Add lang="en" (or hi, mr, ta…) to the <html> tag.' })
 
   // ── phone ──
   const vp = meta(root, 'viewport')
@@ -118,7 +156,6 @@ export function analyze(p: PageInput): Check[] {
     why: 'Without this, phone visitors have to pinch and zoom. Most leave, and Google ranks the page lower on phones.',
     fix: 'Add <meta name="viewport" content="width=device-width, initial-scale=1"> and check the layout on a phone.' })
 
-  const isHttps = p.url.startsWith('https:')
   add({ id: 'https', group: 'phone', weight: 10, title: 'Secure connection (the padlock)',
     status: isHttps ? 'pass' : 'fail',
     found: isHttps ? 'Yes, the site loads over HTTPS.' : 'No, browsers show “Not secure” next to your address.',
@@ -132,11 +169,48 @@ export function analyze(p: PageInput): Check[] {
     why: 'Before anything shows, the server has to answer. Slow hosting makes every page slow.',
     fix: 'Better hosting or a CDN, and caching pages instead of building them on every visit.' })
 
+  if (isHttps && p.httpRedirectsToHttps !== undefined) add({ id: 'https-redirect', group: 'phone', weight: 5, title: 'Old http:// links go to the secure version',
+    status: p.httpRedirectsToHttps ? 'pass' : 'fail',
+    found: p.httpRedirectsToHttps ? 'Yes, http:// addresses forward to https://.' : 'No. Opening http:// (no s) shows an insecure version instead of forwarding.',
+    why: 'Old links, printed cards and people typing the address can land on the http version, where browsers show “Not secure”.',
+    fix: 'Turn on “Force HTTPS” in your hosting panel or website builder, or add a 301 redirect from http to https.' })
+
+  if (isHttps) add({ id: 'mixed', group: 'phone', weight: 6, title: 'Everything on the page loads securely',
+    status: insecure.length ? 'fail' : 'pass',
+    found: insecure.length ? `${insecure.length} file${insecure.length > 1 ? 's' : ''} still load over insecure http://, e.g. ${clip(insecure[0], 60)}` : 'Yes, all images, scripts and styles load over https.',
+    why: 'Insecure files on a secure page get blocked by browsers (broken images, missing features) or remove the padlock.',
+    fix: 'Change those file addresses from http:// to https:// (on WordPress, a plugin like Really Simple SSL fixes most of them).' })
+
+  const enc = (p.headers['content-encoding'] ?? '').toLowerCase()
+  const compressed = /gzip|br|zstd|deflate/.test(enc)
+  add({ id: 'compression', group: 'phone', weight: 3, title: 'Page is compressed for mobile data',
+    status: compressed || p.bytes < 15_000 ? 'pass' : 'warn',
+    found: compressed ? `Yes (${enc}).` : p.bytes < 15_000 ? 'The page is small enough that it doesn’t matter.' : 'No compression, so the page downloads at full size.',
+    why: 'Compression typically shrinks a page’s code to a fraction of its size, which matters on slow mobile data.',
+    fix: 'Turn on gzip or Brotli compression in your hosting or CDN (Cloudflare does it automatically).' })
+
+  add({ id: 'scripts', group: 'phone', weight: 5, title: 'Not overloaded with scripts and plugins',
+    status: scriptSrcs.length > 25 ? 'fail' : scriptSrcs.length > 14 ? 'warn' : 'pass',
+    found: `${scriptSrcs.length} script file${scriptSrcs.length === 1 ? '' : 's'} load on this page.`,
+    why: 'Every chat widget, tracker, slider and plugin adds code the phone must download and run before the page responds smoothly.',
+    fix: 'Remove widgets, trackers and plugins you don’t actually use. Keep one analytics tool and one chat option.' })
+
+  const allImgs = root.querySelectorAll('img')
+  if (allImgs.length >= 8) {
+    const lazy = allImgs.filter((i) => (i.getAttribute('loading') ?? '').toLowerCase() === 'lazy' || i.hasAttribute('data-src') || i.hasAttribute('data-lazy-src')).length
+    add({ id: 'lazy', group: 'phone', weight: 3, title: 'Photos below the screen load later',
+      status: lazy >= allImgs.length / 3 ? 'pass' : 'warn',
+      found: `${lazy} of ${allImgs.length} images wait until they’re scrolled to.`,
+      why: 'Loading every photo at once makes the first screen slow. Photos further down can wait until the visitor scrolls.',
+      fix: 'Add loading="lazy" to images below the first screen (most modern themes and builders have a setting for this).' })
+  }
+
   // ── contact ──
   const tel = hrefs.find((h) => /^tel:/i.test(h))
+  const shownNumber = tel ? undefined : bodyText.match(MOBILE)?.[0]
   add({ id: 'call', group: 'contact', weight: 12, title: 'Tap-to-call phone number',
     status: tel ? 'pass' : 'fail',
-    found: tel ? `Yes: ${clip(decodeURIComponent(tel.replace(/^tel:/i, '')), 30)}` : 'No tap-to-call link. Visitors have to copy your number by hand, if it’s there at all.',
+    found: tel ? `Yes: ${clip(decodeURIComponent(tel.replace(/^tel:/i, '')), 30)}` : shownNumber ? `Your number (${shownNumber.trim()}) is on the page, but it isn’t tappable, so phone visitors have to copy it by hand.` : 'No tap-to-call link, and no phone number found on the page.',
     why: 'On a phone, one tap to call is the shortest path from “interested” to a real enquiry.',
     fix: 'Make your number a link: <a href="tel:+91XXXXXXXXXX">. Put it at the top and bottom of the page.' })
 
@@ -170,6 +244,20 @@ export function analyze(p: PageInput): Check[] {
     why: 'For a local business, “how do I get there?” is the question right before a visit.',
     fix: 'Add a “Get directions” button linking to your Google Maps listing (and keep that listing up to date).' })
 
+  const hasPrice = PRICE.test(bodyText)
+  add({ id: 'prices', group: 'contact', weight: 5, title: 'Prices or price ranges shown',
+    status: hasPrice ? 'pass' : 'warn',
+    found: hasPrice ? 'Yes, the page mentions prices.' : 'No prices or price ranges found on the page.',
+    why: 'When there’s no price, many visitors assume you’re expensive and leave without asking. Even “from ₹…” keeps them interested.',
+    fix: 'Show prices, or at least “starting from” prices, for your main products or services.' })
+
+  const hours = HOURS.test(bodyText) || /openingHours/i.test(ldRaw)
+  add({ id: 'hours', group: 'contact', weight: 4, title: 'Opening hours or timings',
+    status: hours ? 'pass' : 'warn',
+    found: hours ? 'Yes, the page shows timings.' : 'No opening hours or timings found on the page.',
+    why: '“Are you open now?” is one of the most common questions before someone calls or visits.',
+    fix: 'Show your hours on the home page (and keep them matching your Google listing, including holidays).' })
+
   // ── trust ──
   const ogImage = meta(root, 'og:image'), ogTitle = meta(root, 'og:title')
   add({ id: 'preview', group: 'trust', weight: 7, title: 'Preview when shared on WhatsApp',
@@ -191,6 +279,20 @@ export function analyze(p: PageInput): Check[] {
     found: reviews ? 'Mentions reviews or testimonials.' : 'No reviews or testimonials found on the page.',
     why: 'People trust other customers more than anything you say about yourself.',
     fix: 'Show 3–5 real Google reviews with names, and link to your Google review page.' })
+
+  const privacy = links.some((l) => /privacy/i.test(`${l.href} ${l.label}`))
+  add({ id: 'privacy', group: 'trust', weight: hasForm ? 4 : 2, title: 'Privacy policy',
+    status: privacy ? 'pass' : 'warn',
+    found: privacy ? 'Links to a privacy policy.' : hasForm ? 'You collect details through a form, but there’s no privacy policy link.' : 'No privacy policy link found.',
+    why: 'If you collect names, phone numbers or payments, people (and payment gateways) expect to see how you handle their data.',
+    fix: 'Add a short, honest privacy policy page and link it in the footer.' })
+
+  const iconTag = Boolean(root.querySelector('link[rel~="icon" i]'))
+  if (p.faviconFound !== undefined || iconTag) add({ id: 'favicon', group: 'trust', weight: 2, title: 'Icon in the browser tab',
+    status: p.faviconFound || iconTag ? 'pass' : 'warn',
+    found: p.faviconFound || iconTag ? 'Yes, the site has a tab icon.' : 'No tab icon, so browsers show a blank page icon.',
+    why: 'A small detail, but it shows up in browser tabs, bookmarks and some Google results, and its absence looks unfinished.',
+    fix: 'Upload your logo as a site icon (WordPress: Appearance → Customise → Site Identity).' })
 
   const years = [...bodyText.matchAll(/(?:©|&copy;|copyright)\s*(?:\d{4}\s*[-–]\s*)?(\d{4})/gi)].map((m) => Number(m[1])).filter((y) => y > 1995 && y <= year + 1)
   if (years.length) {

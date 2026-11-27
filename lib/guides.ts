@@ -121,7 +121,7 @@ const moreGuides: Guide[] = [
       ] },
       { h: 'Test it', body: [
         { p: 'Open your site on your phone and tap the number. It should open the dialler with your number already typed. On a computer, tapping it may offer to call through your phone or Skype; that’s normal.' },
-        { p: 'Or run the free website check: it looks for a tap-to-call link along with 20 other things that affect enquiries.' },
+        { p: 'Or run the free website check: it looks for a tap-to-call link along with 25 other things that affect enquiries.' },
       ] },
     ],
   },
@@ -184,7 +184,7 @@ const moreGuides: Guide[] = [
         { p: 'If the padlock is missing even on https://, your page is probably loading an image or script over http (called “mixed content”). Open the page, right-click → Inspect → Console, and look for “Mixed Content” messages; each one names the file to fix. Change those links to https://.' },
       ] },
       { h: 'Check your site', body: [
-        { p: 'The free website check confirms whether your site loads securely, and checks 20 other things that affect whether visitors turn into enquiries.' },
+        { p: 'The free website check confirms whether your site loads securely, and checks 25 other things that affect whether visitors turn into enquiries.' },
       ] },
     ],
   },
@@ -400,7 +400,7 @@ const thirdGuides: Guide[] = [
         { tip: 'Use a different pre-filled message for each place (“Hi, I saw your Instagram”, “Hi, I found you on Google”) and you’ll learn which one brings the most enquiries.' },
       ] },
       { h: 'Connect it to your website', body: [
-        { p: 'A WhatsApp button on your website is one of the cheapest ways to get more enquiries; see the guide to adding a WhatsApp button. The free website check tells you whether your site has one, along with tap-to-call and 18 other basics.' },
+        { p: 'A WhatsApp button on your website is one of the cheapest ways to get more enquiries; see the guide to adding a WhatsApp button. The free website check tells you whether your site has one, along with tap-to-call and 25 other basics.' },
       ] },
     ],
   },
@@ -703,7 +703,7 @@ const fourthGuides: Guide[] = [
         { p: 'Changes appear on Google after it next visits your page, often within days. Requesting indexing in Google Search Console can speed it up.' },
       ] },
       { h: 'Check your home page now', body: [
-        { p: 'The free website check shows your current title and description, tells you whether they’re missing, too long or too generic, and checks 18 other basics.' },
+        { p: 'The free website check shows your current title and description, tells you whether they’re missing, too long or too generic, and checks 25 other basics.' },
       ] },
     ],
   },

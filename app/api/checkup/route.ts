@@ -19,6 +19,17 @@ const ERRORS: Record<FetchError['code'], [number, string]> = {
   network: [502, 'We couldn’t connect to that website. It may be down or blocking automated checks.'],
 }
 
+/** Does http://host/ end up on https? undefined when port 80 doesn't answer at all (nothing to judge). */
+async function httpGoesSecure(final: URL): Promise<boolean | undefined> {
+  const http = new URL('/', final.origin); http.protocol = 'http:'
+  try { return (await safeFetch(http, { timeoutMs: 4000, maxBytes: 200_000 })).url.startsWith('https:') }
+  catch (e) { return e instanceof FetchError && e.code === 'too_big' ? false : undefined } // too_big: it served a whole page over http
+}
+
+async function hasFavicon(final: URL) {
+  try { const r = await safeFetch(new URL('/favicon.ico', final.origin), { timeoutMs: 3000, maxBytes: 200_000 }); return r.status === 200 && !/html/i.test(r.headers['content-type'] ?? '') } catch { return false }
+}
+
 async function optional(url: URL, path: string) {
   try { const r = await safeFetch(new URL(path, url.origin), { timeoutMs: 4000, maxBytes: 300_000 }); return r.status === 200 ? r.body : null } catch { return null }
 }
@@ -44,9 +55,12 @@ export async function POST(req: Request) {
     if (page.status >= 400) return NextResponse.json({ error: `The website answered with an error (HTTP ${page.status}), so visitors see an error page too.` }, { status: 422 })
     if (type && !/html/i.test(type)) return NextResponse.json({ error: 'That address isn’t a web page (it returned a file). Enter your home page address.' }, { status: 422 })
     const final = new URL(page.url)
-    const [robotsTxt, sitemap] = await Promise.all([optional(final, '/robots.txt'), optional(final, '/sitemap.xml')])
+    const [robotsTxt, sitemap, httpRedirectsToHttps, faviconFound] = await Promise.all([
+      optional(final, '/robots.txt'), optional(final, '/sitemap.xml'),
+      final.protocol === 'https:' ? httpGoesSecure(final) : Promise.resolve(undefined), hasFavicon(final),
+    ])
     const sitemapFound = Boolean(sitemap && /<(urlset|sitemapindex)/i.test(sitemap)) || /^\s*sitemap:/im.test(robotsTxt ?? '')
-    const checks = analyze({ url: page.url, status: page.status, html: page.body, headers: page.headers, ms: page.ms, bytes: page.bytes, robotsTxt, sitemapFound })
+    const checks = analyze({ url: page.url, status: page.status, html: page.body, headers: page.headers, ms: page.ms, bytes: page.bytes, robotsTxt, sitemapFound, httpRedirectsToHttps, faviconFound })
     const result = { url: final.toString(), checks }
     cache.set(key, result)
     console.log(JSON.stringify({ evt: 'checkup', host: final.hostname, n: checks.length }))
