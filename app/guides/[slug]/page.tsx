@@ -30,6 +30,7 @@ function Render({ b }: { b: Block }) {
   if ('list' in b) return <ul>{b.list.map((x) => <li key={x}>{x}</li>)}</ul>
   if ('steps' in b) return <ol>{b.steps.map((x) => <li key={x}>{x}</li>)}</ol>
   if ('code' in b) return <pre className={s.code}><code>{b.code}</code></pre>
+  if ('example' in b) return <p className={s.tip}><b>Example:</b> {b.example} <a href={b.href} target="_blank" rel="noopener">{b.label} ↗</a></p>
   return <p className={s.tip}><b>Tip:</b> {b.tip}</p>
 }
 
