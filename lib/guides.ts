@@ -1,6 +1,6 @@
 // Plain-language guides for small-business owners. Each one ends at the free website check.
-export type Block = { p: string } | { list: string[] } | { steps: string[] } | { code: string } | { tip: string }
-export type Guide = { slug: string; title: string; description: string; updated: string; minutes: number; intro: string; sections: { h: string; body: Block[] }[] }
+export type Block = { p: string } | { list: string[] } | { steps: string[] } | { code: string } | { tip: string } | { example: string; href: string; label: string }
+export type Guide = { kind?: 'industry'; slug: string; title: string; description: string; updated: string; minutes: number; intro: string; sections: { h: string; body: Block[] }[] }
 
 const firstGuides: Guide[] = [
   {
@@ -946,6 +946,329 @@ const fourthGuides: Guide[] = [
   },
 ]
 
-export const guides: Guide[] = [...firstGuides, ...moreGuides, ...thirdGuides, ...fourthGuides]
+// Fifth batch: what a website needs in a specific industry.
+const industryGuides: Guide[] = [
+  {
+    slug: 'restaurant-website-checklist',
+    title: 'Restaurant and café website checklist: what customers look for',
+    description: 'What a restaurant, café or cloud kitchen website needs so hungry people choose you: menu, prices, hours, location, ordering and reservations, plus the mistakes that send customers to Zomato or Swiggy instead.',
+    updated: '2026-11-28', minutes: 7,
+    intro: 'People looking at a restaurant website are usually deciding right now: where to eat tonight, what to order, whether you’re open. They’re on a phone and they’re hungry. Your website’s job is to answer four questions in seconds: What’s on the menu? What does it cost? Are you open? How do I get there or order?',
+    sections: [
+      { h: 'The must-haves', body: [
+        { list: [
+          'The menu as real text on the page, with prices, not only a PDF or photo of the printed menu. Text loads faster, reads better on phones and can be found by Google (“paneer tikka Koramangala”).',
+          'Opening hours on the home page, kept up to date for holidays and festivals.',
+          'A tap-to-call number and a WhatsApp button for orders and table enquiries.',
+          'Address with a “Get directions” button to Google Maps.',
+          'Mouth-watering photos of your real dishes and space. Not stock photos.',
+          'How to order: your own ordering, WhatsApp, or links to Zomato and Swiggy.',
+        ] },
+      ] },
+      { h: 'Worth adding', body: [
+        { list: [
+          'Table reservations: a simple booking form or tool, or “Reserve on WhatsApp”.',
+          'Veg / non-veg / Jain / vegan markers and spice levels on the menu.',
+          'Party, catering and bulk-order information with a separate enquiry button. These are high-value orders.',
+          'Reviews from Google shown on the page.',
+          'Parking, seating capacity, outdoor seating, private dining.',
+        ] },
+      ] },
+      { h: 'Direct orders vs delivery apps', body: [
+        { p: 'Delivery apps bring new customers but take a commission on every order. Many restaurants use apps for discovery and encourage repeat customers to order directly, through WhatsApp or their own ordering page, often with a small incentive like free delivery nearby. Your website and a card in every delivery bag (“Order direct on WhatsApp: scan here”) make that easy.' },
+      ] },
+      { h: 'Common mistakes', body: [
+        { list: [
+          'A menu that’s a 5 MB PDF that takes ages to open on mobile data.',
+          'Old prices or dishes you no longer serve.',
+          'Hours that are wrong on the website and Google.',
+          'Autoplaying music or video.',
+          'No way to contact you without scrolling to the bottom.',
+        ] },
+      ] },
+      { h: 'Don’t forget Google', body: [
+        { p: 'For restaurants, the Google Business Profile is often seen more than the website. Keep its hours, menu link, photos and reviews current, and link it to your site. Then run your website through the free website check to see what’s missing.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'clinic-doctor-website-checklist',
+    title: 'Clinic and doctor website checklist: what patients look for',
+    description: 'What a clinic, dentist, physiotherapist or doctor’s website needs so patients trust you and book: doctor profiles, treatments, timings, appointment booking, location and the things to avoid.',
+    updated: '2026-11-28', minutes: 7,
+    intro: 'Patients choosing a clinic are often worried, in pain, or choosing for a family member. They want to know: is this the right doctor for my problem, can I trust them, when can I be seen, and how do I get there? A clinic website that answers these clearly wins the appointment.',
+    sections: [
+      { h: 'The must-haves', body: [
+        { list: [
+          'Doctor profiles: photo, qualifications, registration, years of experience, specialities, and languages spoken.',
+          'Treatments and services, each with a short plain-language explanation of what it is and who it’s for.',
+          'Clinic timings, including which doctor is available when.',
+          'Easy booking: online appointment booking, a WhatsApp button, and a tap-to-call number.',
+          'Address, landmark and a “Get directions” button; parking information.',
+          'Real photos of the clinic: reception, treatment rooms, equipment. A clean, real space builds trust.',
+        ] },
+      ] },
+      { h: 'Builds trust', body: [
+        { list: [
+          'Patient reviews from Google (with consent where you feature someone by name).',
+          'Answers to common questions: consultation fee, insurance and cashless options, what to bring, how long a procedure takes.',
+          'Emergency information: whether you handle emergencies, and what to do out of hours.',
+          'A few helpful articles answering what patients search for (“Is a root canal painful?”), written or reviewed by the doctor.',
+        ] },
+      ] },
+      { h: 'Things to be careful with', body: [
+        { list: [
+          'Medical advertising has rules in India. Avoid claims like “guaranteed cure” or “best doctor in the city”, and check the current guidelines that apply to your profession.',
+          'Don’t publish identifiable patient photos (including before/after photos) without written consent.',
+          'Keep forms short and don’t collect detailed medical history through a basic website form.',
+          'Make sure the site is on https before collecting any patient details.',
+        ] },
+      ] },
+      { h: 'Booking that reduces no-shows', body: [
+        { p: 'An online booking tool with automatic reminders (SMS, WhatsApp or email) saves reception time and cuts no-shows. Even a WhatsApp booking button with a pre-filled message (“Hi, I’d like an appointment with Dr. … for …”) is a big step up from phone-only booking.' },
+      ] },
+      { h: 'Check your clinic’s site', body: [
+        { p: 'The free website check tells you whether patients can call, WhatsApp and find directions in one tap, and whether Google can read your clinic’s details. It takes about 20 seconds.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'salon-spa-website-checklist',
+    title: 'Salon and spa website checklist: turning visitors into bookings',
+    description: 'What a salon, spa or beauty studio website needs to fill appointment slots: a clear service menu with prices, online booking, stylist profiles, a portfolio of real work, offers and reviews.',
+    updated: '2026-11-28', minutes: 6,
+    intro: 'People choose a salon on three things: the look of the work, the price, and how easy it is to book. Most discover you on Instagram or Google Maps, then check your website or profile to decide. Make that decision easy.',
+    sections: [
+      { h: 'The must-haves', body: [
+        { list: [
+          'A service menu with prices (or “from ₹…”) and how long each service takes.',
+          'Online booking or a “Book on WhatsApp” button at the top of every page.',
+          'A gallery of your real work: haircuts, colour, nails, makeup. Before/after only with the client’s permission.',
+          'Opening hours, address, “Get directions”, and a tap-to-call number.',
+          'Hygiene and products: what brands you use, how tools are sterilised.',
+        ] },
+      ] },
+      { h: 'What fills the quiet days', body: [
+        { list: [
+          'Packages and memberships (bridal, monthly grooming, spa packages) with clear prices.',
+          'Weekday offers for slower times, promoted on the site and Instagram.',
+          'Stylist profiles with their specialities, so clients can book their favourite.',
+          'Gift vouchers, especially around festivals.',
+        ] },
+      ] },
+      { h: 'Connect Instagram and the website', body: [
+        { p: 'Your Instagram shows the work; your website should make booking easy. Put your booking link in your Instagram bio, show your latest posts on the site, and add a “Book now” button to your Google Business Profile.' },
+      ] },
+      { h: 'Common mistakes', body: [
+        { list: [
+          'No prices, so people assume you’re expensive and leave.',
+          'A booking system that shows wrong availability.',
+          'Heavy, uncompressed gallery photos that make the site slow on phones.',
+          'Only a contact form, no WhatsApp or phone.',
+        ] },
+      ] },
+      { h: 'Check your salon’s site', body: [
+        { p: 'Run your website through the free website check to see if clients can book, call or WhatsApp you in one tap, and whether your page looks good when shared on WhatsApp.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'coaching-classes-tutor-website-checklist',
+    title: 'Coaching classes and tutors: what your website needs to get admissions',
+    description: 'What parents and students look for on a coaching institute or tutor’s website: courses, batches, fees, results, faculty, demo classes and enquiries, plus how to show up in local searches.',
+    updated: '2026-11-28', minutes: 7,
+    intro: 'Choosing coaching is a big decision for parents and students. They compare several institutes, often over weeks, and talk it over at home. Your website has to answer their questions clearly and make it easy to take the next step: a demo class or a visit.',
+    sections: [
+      { h: 'The must-haves', body: [
+        { list: [
+          'Courses and batches: subjects, classes or exams covered, batch timings, start dates and duration.',
+          'Fees, or at least a fee range, and the payment options (instalments are a big deal for parents).',
+          'Faculty profiles: qualifications and experience, with photos.',
+          'Results, shown honestly: real student results with permission, not vague claims.',
+          'A “Book a free demo class” button, a WhatsApp button and tap-to-call.',
+          'Location with “Get directions”, and whether online classes are available.',
+        ] },
+      ] },
+      { h: 'Builds trust with parents', body: [
+        { list: [
+          'Batch size and how you track progress (tests, parent meetings, reports).',
+          'Testimonials from parents and students, with names and permission.',
+          'Photos of the classrooms and facilities.',
+          'Clear policies: missed classes, refunds, changing batches.',
+        ] },
+      ] },
+      { h: 'Get found by local searches', body: [
+        { list: [
+          'A page for each course (“Class 10 maths tuition in Pune”, “JEE coaching in Kota”), each with its own title and description.',
+          'A complete Google Business Profile with photos and reviews.',
+          'Helpful articles students search for (exam timetables, study plans) that link to your courses.',
+        ] },
+      ] },
+      { h: 'Make enquiries easy to follow up', body: [
+        { p: 'Admissions are won in the follow-up. Send every enquiry to one place (WhatsApp Business with labels, or a simple sheet), reply the same day, and follow up before the batch starts. A short enquiry form (name, class, phone) plus WhatsApp works better than a long one.' },
+      ] },
+      { h: 'Check your institute’s site', body: [
+        { p: 'The free website check tells you whether parents can reach you in one tap, whether Google can find your pages, and what your link looks like when shared in WhatsApp groups.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'travel-agency-website-checklist',
+    title: 'Travel agency and tour operator website checklist',
+    description: 'What a travel agency or tour operator website needs to turn browsers into bookings: package pages with itineraries and prices, departure dates, enquiry and booking, trust signals, and WhatsApp follow-up.',
+    updated: '2026-11-28', minutes: 7,
+    intro: 'Travellers browse for weeks before booking, comparing packages, prices and reviews across many sites. Most small travel agencies still run on WhatsApp, calls and spreadsheets, with a website that’s little more than a brochure. A good one does the explaining for you and makes booking feel safe.',
+    sections: [
+      { h: 'The must-haves', body: [
+        { list: [
+          'A page for every package: day-by-day itinerary, what’s included and excluded, hotel category, photos and the price per person.',
+          'Departure dates and seats left for fixed group tours.',
+          'A clear enquiry or booking button on every package, plus WhatsApp and tap-to-call.',
+          'Payment and cancellation terms in plain language: deposit, balance due date, refunds.',
+          'Trust signals: years in business, registrations or memberships, real reviews and trip photos from past customers.',
+        ] },
+      ] },
+      { h: 'What turns browsers into bookings', body: [
+        { list: [
+          'Letting people pay a deposit online to hold seats.',
+          'A downloadable itinerary PDF they can share with family.',
+          'Quick answers on WhatsApp, with the package link pre-filled in the message.',
+          'Early-bird prices and group discounts shown clearly.',
+          'Automatic confirmation emails with booking details and invoices.',
+        ] },
+        { example: 'Tripsmith is a travel agency booking site I built that does all of this: package pages, live seats per departure, deposits, GST invoices and an AI trip planner that only quotes real packages.', href: 'https://tripsmith.virajdomadia.com', label: 'Try Tripsmith' },
+      ] },
+      { h: 'Get found on Google', body: [
+        { list: [
+          'Destination pages (“Kerala tour packages from Mumbai”) linking to the matching packages.',
+          'A unique title and description for every package page.',
+          'Reviews on your Google Business Profile, with replies.',
+          'Helpful travel guides (best time to visit, what to pack) that link to your tours.',
+        ] },
+      ] },
+      { h: 'Common mistakes', body: [
+        { list: [
+          '“Call for price” on every package. Many travellers move on to an agency that shows a price.',
+          'Old packages and past dates still listed.',
+          'Itineraries only as images or PDFs, so Google can’t read them.',
+          'No cancellation policy until after payment.',
+        ] },
+      ] },
+      { h: 'Check your agency’s site', body: [
+        { p: 'Run your website through the free website check: it shows whether travellers can reach you in one tap, whether your package links look good when shared on WhatsApp, and how Google sees you.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'real-estate-agent-website-checklist',
+    title: 'Real estate agent and broker website checklist',
+    description: 'What a real estate agent, broker or builder’s website needs to generate genuine leads: property listings with full details, enquiry and site-visit booking, WhatsApp, area pages and trust signals.',
+    updated: '2026-11-28', minutes: 6,
+    intro: 'Property buyers and renters research heavily online before calling anyone. Big portals bring traffic, but leads there are shared with many competitors. Your own website builds your name, collects leads only you receive, and makes you look more established than brokers who only exist on portals.',
+    sections: [
+      { h: 'The must-haves', body: [
+        { list: [
+          'Property listings with price, size (carpet area), configuration, floor, facing, amenities, location on a map, and many real photos.',
+          'Registration details shown where they apply (such as RERA numbers for projects and agents).',
+          'An enquiry button and “Book a site visit” on every listing, plus WhatsApp with the property name pre-filled.',
+          'Filters that work on phones: area, budget, BHK, buy or rent.',
+          'Your photo, experience and areas you specialise in.',
+        ] },
+      ] },
+      { h: 'What generates better leads', body: [
+        { list: [
+          'Area guides (“Living in Whitefield: schools, commute, prices”) that answer what buyers search for and link to your listings there.',
+          'Short video walkthroughs of properties.',
+          'An EMI or budget calculator.',
+          'Fast replies: WhatsApp quick replies with brochure, floor plan and location ready to send.',
+        ] },
+      ] },
+      { h: 'Keep listings honest and current', body: [
+        { p: 'Remove sold or rented properties quickly, or mark them clearly. Nothing loses a lead faster than “sorry, that one’s gone” for the third time. Use accurate photos and sizes; inflated listings damage trust and can create legal problems.' },
+      ] },
+      { h: 'Follow up every lead', body: [
+        { p: 'Send all website, WhatsApp and portal leads to one place (even a simple CRM or a shared sheet), label them by budget and area, and follow up on a schedule. Automating the first reply (brochure plus available site-visit slots) means no lead waits overnight.' },
+      ] },
+      { h: 'Check your site', body: [
+        { p: 'The free website check shows whether buyers can call or WhatsApp you in one tap, whether listings look good when shared, and whether Google can read your business details.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'event-organiser-website-checklist',
+    title: 'Event organiser website checklist: selling tickets and registrations',
+    description: 'What an event organiser, workshop host or venue needs on their website to sell tickets: event pages, clear pricing tiers, online registration and payment, confirmations, check-in and updates.',
+    updated: '2026-11-28', minutes: 6,
+    intro: 'Whether it’s a concert, a workshop, a marathon or a conference, people decide quickly and buy on impulse, or forget. An event website’s job is to get them from “that looks fun” to “ticket booked” in as few taps as possible, then make the day itself run smoothly.',
+    sections: [
+      { h: 'The must-haves', body: [
+        { list: [
+          'One page per event: name, date and time, venue with a map, what to expect, who it’s for, and good photos or video.',
+          'Ticket types and prices shown clearly (early bird, regular, group, VIP), with how many are left if it’s limited.',
+          'A “Book tickets” button above the fold, working smoothly on phones.',
+          'Online payment with UPI, and an instant confirmation with a ticket (ideally with a QR code).',
+          'Refund, transfer and cancellation policy in plain words.',
+          'A WhatsApp or phone contact for questions.',
+        ] },
+      ] },
+      { h: 'Selling more tickets', body: [
+        { list: [
+          'Early-bird pricing with a real deadline.',
+          'Group tickets and referral codes so attendees bring friends.',
+          'A share image for each event so WhatsApp shares look great.',
+          'Past event photos and testimonials.',
+          'Reminder messages before the event (and a calendar invite).',
+        ] },
+      ] },
+      { h: 'On the day', body: [
+        { p: 'QR tickets scanned at the entry cut queues and stop duplicates. For seated events, a seat map where seats are held while someone pays prevents two people buying the same seat. Have a plan for people whose phone died: a lookup by name or phone number.' },
+        { example: 'Frontrow is a ticketing project I built with a live seat map where each seat is held for ten minutes while someone pays, plus QR tickets.', href: 'https://frontrow.virajdomadia.com', label: 'See Frontrow' },
+      ] },
+      { h: 'Ticketing platforms vs your own site', body: [
+        { p: 'Ticketing platforms are quick to start but take a fee per ticket and own the customer relationship. For regular events, your own event pages (even if checkout runs through a platform at first) build an audience you can contact for the next event.' },
+      ] },
+      { h: 'Check your event site', body: [
+        { p: 'Run it through the free website check to see whether it works well on phones, loads fast and looks good when shared, which is where most ticket sales start.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'gym-fitness-studio-website-checklist',
+    title: 'Gym and fitness studio website checklist: from visitor to member',
+    description: 'What a gym, yoga studio or fitness centre website needs to convert visitors into members: membership plans and prices, class schedules, trainer profiles, a free trial booking, location and reviews.',
+    updated: '2026-11-28', minutes: 6,
+    intro: 'Someone looking for a gym is usually ready to start, with motivation that may not last the week. Your website should answer their questions fast and get them through the door for a trial while the motivation is high.',
+    sections: [
+      { h: 'The must-haves', body: [
+        { list: [
+          'Membership plans with prices (monthly, quarterly, yearly) and what each includes.',
+          'Class schedule (yoga, Zumba, CrossFit, strength) that’s easy to read on a phone and kept current.',
+          'A “Book a free trial” button, plus WhatsApp and tap-to-call.',
+          'Real photos of the space and equipment, the changing rooms and the busiest times.',
+          'Timings, address, parking, and “Get directions”.',
+        ] },
+      ] },
+      { h: 'Builds trust', body: [
+        { list: [
+          'Trainer profiles with certifications and specialities.',
+          'Member transformations and testimonials (with permission, and realistic).',
+          'Hygiene and safety: cleaning routines, women-only batches or areas if you offer them.',
+          'Policies on freezing a membership, refunds and personal training.',
+        ] },
+      ] },
+      { h: 'Turning trials into members', body: [
+        { p: 'The trial is where you win or lose. Confirm the booking instantly on WhatsApp, send a reminder the day before, have a trainer meet them, and follow up the next day with an offer that ends soon. Track trials → memberships every month.' },
+      ] },
+      { h: 'Get found locally', body: [
+        { p: '“Gym near me” is a Google Maps search. Keep your Google Business Profile complete with photos, hours and reviews, and make your website’s title say what and where (“Strength & CrossFit Gym in HSR Layout”).' },
+      ] },
+      { h: 'Check your gym’s site', body: [
+        { p: 'Run your website through the free website check to see whether people can book, call or WhatsApp in one tap, and how it looks to Google.' },
+      ] },
+    ],
+  },
+]
+
+export const guides: Guide[] = [...firstGuides, ...moreGuides, ...thirdGuides, ...fourthGuides, ...industryGuides.map((g) => ({ ...g, kind: 'industry' as const }))]
 
 export const getGuide = (slug: string) => guides.find((g) => g.slug === slug)
