@@ -618,6 +618,334 @@ const thirdGuides: Guide[] = [
   },
 ]
 
-export const guides: Guide[] = [...firstGuides, ...moreGuides, ...thirdGuides]
+// Fourth batch: running and improving a site once it exists.
+const fourthGuides: Guide[] = [
+  {
+    slug: 'web-developer-disappeared-get-website-access',
+    title: 'Your web developer disappeared? How to get control of your website back',
+    description: 'What to do when the person who built your website stops replying: find out who controls your domain and hosting, recover access step by step, and make sure it never happens again.',
+    updated: '2026-11-28', minutes: 8,
+    intro: 'It happens a lot: a freelancer or small agency builds the site, then changes numbers, shuts down, or just stops replying. Meanwhile you can’t change your prices, your domain is about to expire, or the site is down. Don’t panic. In most cases you can get control back, because the domain and website are legally yours.',
+    sections: [
+      { h: 'Step 1: work out what you need access to', body: [
+        { p: 'A website is usually three separate things, often in three different accounts:' },
+        { list: [
+          'The domain (yourbusiness.in), registered with a company like GoDaddy, Hostinger, BigRock or Namecheap. The most important one: whoever controls it controls your web address and email.',
+          'The hosting, where the website files live.',
+          'The website admin, such as the WordPress, Wix or Shopify login used to edit pages.',
+        ] },
+      ] },
+      { h: 'Step 2: find out who holds the domain', body: [
+        { list: [
+          'Search your email (and old WhatsApp chats) for invoices or renewal emails mentioning your domain. They name the registrar and sometimes the account.',
+          'Use a WHOIS lookup (search “whois yourbusiness.in”). Owner details are often hidden for privacy, but it shows the registrar and the expiry date.',
+          'Note the expiry date now. If it’s close, recovery is urgent: an expired domain can be bought by someone else.',
+        ] },
+      ] },
+      { h: 'Step 3: recover each account', body: [
+        { list: [
+          'Domain: contact the registrar’s support, explain the situation, and ask for their ownership-recovery process. Expect to prove you are the business: business registration or GST certificate, ID, and invoices showing you paid for the domain.',
+          'Hosting: same approach with the hosting company. If you can’t recover it but you control the domain, you can rebuild the site elsewhere and point the domain to it.',
+          'WordPress admin: whoever controls the hosting can reset the admin password from the hosting control panel or database.',
+          'Wix, Shopify, Squarespace: contact the platform’s support about transferring the site to an account in your name.',
+        ] },
+        { tip: 'Keep your messages to support short and factual: your business name, the domain, what you paid for, and the documents you can send. Ask for a ticket or reference number.' },
+      ] },
+      { h: 'Step 4: if you can’t recover the site', body: [
+        { p: 'If you control the domain but not the old site, it’s often faster to rebuild: copy your text and images from the live site (or from web.archive.org if it’s down), build a new site on hosting in your name, and point the domain to it. Your Google ranking for your business name usually recovers quickly as long as the domain stays the same.' },
+      ] },
+      { h: 'Never again: own everything yourself', body: [
+        { list: [
+          'Register the domain and hosting in your own name and email, paid with your card. A developer can be added as a user, not the owner.',
+          'Turn on auto-renew for the domain.',
+          'Keep a private document with every login: registrar, hosting, website admin, email, Google Business Profile, Search Console.',
+          'Ask for admin access to the website on launch day, and a backup.',
+        ] },
+        { p: 'Once you have access again, run the free website check to see what needs fixing first.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'write-page-title-and-meta-description',
+    title: 'How to write a page title and description that get clicks on Google',
+    description: 'The headline and two lines Google shows for your website decide whether people click. Simple formulas, real examples for small businesses, and where to change them in WordPress, Wix and Shopify.',
+    updated: '2026-11-28', minutes: 6,
+    intro: 'When your website appears on Google, people see three things: a blue headline (your page title), your web address, and a short description. That’s your free ad. Most small-business sites waste it with “Home” or just the business name. Fixing it takes ten minutes per page.',
+    sections: [
+      { h: 'The page title formula', body: [
+        { p: 'What you do + where + your name. Around 50–60 characters, so it isn’t cut off.' },
+        { list: [
+          'Bakery: “Wedding & Birthday Cakes in Andheri | Sugar & Co”',
+          'Clinic: “Dental Clinic in Indiranagar, Bengaluru | Smile Care”',
+          'Tutor: “Maths & Science Tuition for Class 8–12 in Pune | Rao Classes”',
+          'Travel agency: “Kerala & Goa Group Tours from Mumbai | Wanderly”',
+        ] },
+        { tip: 'Put the most important words first. People scan the start of the headline.' },
+      ] },
+      { h: 'The description formula', body: [
+        { p: 'What you offer + why choose you + what to do next. Around 140–160 characters.' },
+        { list: [
+          '“Custom wedding and birthday cakes baked fresh daily in Andheri West. Same-day delivery across Mumbai. Order on WhatsApp or call now.”',
+          '“Painless dental treatment in Indiranagar: cleaning, fillings, braces and implants. Open 7 days, evening slots. Book your appointment online.”',
+        ] },
+        { p: 'Google sometimes shows different text if it thinks another part of your page matches the search better, but a good description is used most of the time.' },
+      ] },
+      { h: 'One for every important page', body: [
+        { p: 'Each page needs its own title and description: home, each service, each product category, contact. If every page says the same thing, Google doesn’t know which to show.' },
+      ] },
+      { h: 'Where to change them', body: [
+        { list: [
+          'WordPress: install Yoast SEO or Rank Math, then edit the “SEO title” and “Meta description” boxes under each page.',
+          'Wix: page menu → SEO basics.',
+          'Shopify: at the bottom of each page or product → “Edit website SEO”.',
+          'Squarespace: page settings → SEO.',
+        ] },
+        { p: 'Changes appear on Google after it next visits your page, often within days. Requesting indexing in Google Search Console can speed it up.' },
+      ] },
+      { h: 'Check your home page now', body: [
+        { p: 'The free website check shows your current title and description, tells you whether they’re missing, too long or too generic, and checks 18 other basics.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'how-many-people-visit-my-website',
+    title: 'How to see how many people visit your website (free)',
+    description: 'Simple, free ways to find out how many people visit your website, where they come from and what they do: website-builder stats, Google Analytics, lighter alternatives, and Google Search Console.',
+    updated: '2026-11-28', minutes: 6,
+    intro: 'If you don’t know how many people visit your website, you can’t tell whether anything you do is working. The good news is that seeing your visitors is free, and you only need to look at a few numbers.',
+    sections: [
+      { h: 'If you use a website builder', body: [
+        { p: 'Wix, Squarespace and Shopify all have built-in statistics in their dashboard showing visitors, pages viewed and where people came from. Start there before installing anything.' },
+      ] },
+      { h: 'Google Analytics (free, most detailed)', body: [
+        { steps: [
+          'Go to analytics.google.com and create an account and a “property” for your website.',
+          'Add the tracking code to your site. On WordPress the easiest way is Google’s Site Kit plugin; most builders have a field to paste your Measurement ID (it starts with G-).',
+          'Wait a day, then look at Reports → Acquisition to see where visitors come from.',
+        ] },
+        { p: 'It’s powerful but can feel overwhelming. Lighter options include Cloudflare Web Analytics (free) and paid privacy-friendly tools like Plausible, which show just the essentials on one screen.' },
+      ] },
+      { h: 'Google Search Console (how people find you on Google)', body: [
+        { p: 'Analytics shows what visitors do on your site. Search Console shows what happens before they arrive: which Google searches showed your site, how often, and how many people clicked. It’s free at search.google.com/search-console, and the most useful tool for growing visits from Google.' },
+      ] },
+      { h: 'The only numbers that matter at first', body: [
+        { list: [
+          'Visitors per week: is it going up?',
+          'Where they come from: Google, Instagram, WhatsApp shares, direct.',
+          'Top pages: what people actually look at.',
+          'Enquiries: calls, WhatsApp chats and form messages. Ask new customers “how did you find us?” and write it down.',
+        ] },
+        { tip: 'Add ?utm_source=instagram to the link in your Instagram bio (and similar for other places) and Analytics will show exactly how many visitors each one sends.' },
+      ] },
+      { h: 'More visitors start with the basics', body: [
+        { p: 'If your numbers are low, check that Google can find your site and that visitors can contact you easily. The free website check covers both in 20 seconds.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'choose-domain-name-for-business-india',
+    title: 'How to choose a domain name for your business in India (.in or .com?)',
+    description: 'Pick a website address customers can remember and type: .in vs .com vs .co.in, rules of thumb for a good name, what to check before buying, and the mistakes that cost businesses later.',
+    updated: '2026-11-28', minutes: 6,
+    intro: 'Your domain name is your address on the internet, and it’s hard to change later because it’s printed on visiting cards, signboards and Google listings. A few minutes of thinking now saves a lot of trouble.',
+    sections: [
+      { h: '.in, .co.in or .com?', body: [
+        { list: [
+          '.in: India’s own domain. Tells customers you’re Indian and local; a great choice for businesses serving India.',
+          '.com: the global default. Good if you serve customers abroad or the .com is available and short.',
+          '.co.in: fine, but longer to type and less familiar to many people.',
+          'Avoid unusual endings (.xyz, .online, .shop) for a main business site unless they genuinely fit; customers often type .com by habit.',
+        ] },
+        { tip: 'If you can, register both yourname.in and yourname.com and point one to the other, so nobody else can take it.' },
+      ] },
+      { h: 'What makes a good domain', body: [
+        { list: [
+          'Short and easy to say aloud: you’ll spell it out on the phone.',
+          'Your business name, or name plus what you do or where (sugarcocakes.in, smilecarebangalore.in).',
+          'No hyphens or numbers; people forget them or type them wrong.',
+          'No spellings that need explaining (“it’s k-w-i-c-k”).',
+          'Not too similar to a competitor or a big brand, which can create legal problems.',
+        ] },
+      ] },
+      { h: 'Before you buy', body: [
+        { list: [
+          'Say it to a friend and ask them to type it. Did they get it right?',
+          'Search the name on Google and Instagram to check nobody similar is using it.',
+          'Check whether the matching Instagram handle is free.',
+          'Check the renewal price, not just the first-year offer.',
+        ] },
+      ] },
+      { h: 'Buy it the right way', body: [
+        { list: [
+          'Register it in your own name and email, not your developer’s.',
+          'Pay for 2–3 years if you can, and turn on auto-renew.',
+          'Keep the registrar login somewhere safe.',
+        ] },
+      ] },
+      { h: 'Then build the basics', body: [
+        { p: 'Once your site is live on its new domain, the free website check tells you whether Google can find it and whether customers can reach you in one tap.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'qr-code-for-business-website-whatsapp-reviews',
+    title: 'How to make QR codes for your business (website, WhatsApp, reviews, UPI)',
+    description: 'Create free QR codes that take customers to your website, WhatsApp chat, Google review page or UPI payment, plus where to put them, how big to print them, and the “free QR” trap that breaks codes later.',
+    updated: '2026-11-28', minutes: 5,
+    intro: 'A QR code on your counter, menu, bill or visiting card turns a customer’s phone camera into a shortcut: one scan and they’re on your website, in a WhatsApp chat with you, or on your Google review page. They’re free to make, if you avoid one common trap.',
+    sections: [
+      { h: 'The four QR codes most businesses need', body: [
+        { list: [
+          'Website or menu: links to your website (or your menu page).',
+          'WhatsApp chat: links to https://wa.me/91XXXXXXXXXX?text=Hi. WhatsApp Business also gives you a ready QR code under Business tools → Short link.',
+          'Google reviews: links to the review link from your Google Business Profile (“Ask for reviews”).',
+          'UPI payments: use the QR code from your bank or payment app’s merchant section, not a homemade one.',
+        ] },
+      ] },
+      { h: 'How to make one', body: [
+        { steps: ['Copy the link you want people to open.', 'Use a QR generator that makes a static code, or the one built into Chrome (Share → QR code) or Canva.', 'Download it as a high-resolution PNG or SVG.', 'Test it with two or three different phones before printing.'] },
+      ] },
+      { h: 'The “free QR code” trap', body: [
+        { p: 'Many QR websites create “dynamic” codes that send people through their own link first. They work for a free trial, then stop working (or show ads) unless you pay a subscription, after you’ve printed 500 menus. Make sure the code points directly to your own link (a static code), or that you’re happy to pay for the service.' },
+      ] },
+      { h: 'Printing tips', body: [
+        { list: [
+          'Print it at least about 2–3 cm wide on cards, and bigger on posters people scan from a distance.',
+          'Dark code on a light background, with a white border around it.',
+          'Always add a line saying what happens: “Scan to order on WhatsApp”, “Scan to leave us a review”.',
+          'Laminate codes on tables and counters so they survive spills.',
+        ] },
+      ] },
+      { h: 'Make sure the destination is ready', body: [
+        { p: 'A QR code that opens a slow or confusing page wastes the scan. Run your website through the free website check to make sure it works well on phones.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'stop-contact-form-spam',
+    title: 'How to stop spam from your website contact form (without losing real enquiries)',
+    description: 'Getting junk messages through your website form, or real enquiries going missing? How to block spam with honeypots, Turnstile or reCAPTCHA and Akismet, and how to make sure genuine messages reach you.',
+    updated: '2026-11-28', minutes: 6,
+    intro: 'A contact form is meant to bring enquiries, not 40 messages a day about SEO services and crypto. Spam is also dangerous: when the inbox is full of junk, real customers get missed. Here’s how to cut the spam while making sure real messages always arrive.',
+    sections: [
+      { h: 'Why forms get spam', body: [
+        { p: 'Automated bots scan the internet for forms and fill them in. Some spam comes from people paid to send it by hand. You can’t stop all of it, but you can block nearly all of the automated kind.' },
+      ] },
+      { h: 'Layer 1: a honeypot (invisible, free)', body: [
+        { p: 'A honeypot is an extra form field hidden from humans. Bots fill in every field they see; if that hidden field has something in it, the form quietly discards the message. Real customers never notice. Many form plugins (Contact Form 7 add-ons, WPForms, Gravity Forms) have a honeypot option; turn it on.' },
+      ] },
+      { h: 'Layer 2: a bot check', body: [
+        { list: [
+          'Cloudflare Turnstile: free and usually invisible; most people never see a puzzle.',
+          'Google reCAPTCHA v3: also invisible; scores how human a visitor looks.',
+          'Avoid “click all the traffic lights” puzzles where you can; they annoy real customers on phones.',
+        ] },
+        { p: 'On WordPress, Akismet (free for personal sites; paid plans for businesses) or a similar anti-spam plugin also filters messages by content.' },
+      ] },
+      { h: 'Make sure real messages arrive', body: [
+        { list: [
+          'Send yourself a test enquiry every month. Forms break silently after updates.',
+          'On WordPress, use an SMTP plugin (like WP Mail SMTP) so form emails don’t land in spam folders.',
+          'Check your email spam folder for missed enquiries.',
+          'Show a clear “Thanks, we’ll reply within X hours” after sending, so customers know it worked.',
+        ] },
+      ] },
+      { h: 'Keep the form short', body: [
+        { p: 'Name, phone or email, and “what do you need?” is enough. Every extra field loses real customers. Many people in India would rather message on WhatsApp, so put a WhatsApp button next to the form too.' },
+        { p: 'The free website check tells you whether your site has an enquiry form, WhatsApp and tap-to-call, the three main ways customers reach you.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'website-maintenance-checklist-small-business',
+    title: 'A simple monthly website maintenance checklist for small businesses',
+    description: 'Thirty minutes a month keeps your website safe, fast and bringing enquiries: updates, backups, testing your contact form, checking Google, renewals and keeping prices and hours current.',
+    updated: '2026-11-28', minutes: 6,
+    intro: 'Websites don’t break all at once; they decay quietly. A plugin goes out of date, the contact form stops sending, the hours are wrong since Diwali, and nobody notices until a customer complains, or doesn’t. A simple monthly routine prevents most of it.',
+    sections: [
+      { h: 'Every month (about 30 minutes)', body: [
+        { list: [
+          'Send a test enquiry through your form, WhatsApp button and phone link. Did all three reach you?',
+          'Check that prices, hours, offers and phone numbers are still correct.',
+          'Open the site on your phone over mobile data. Does anything look broken or slow?',
+          'WordPress: take a backup, then update plugins, theme and WordPress itself (in that order).',
+          'Look at Google Search Console for new errors and at your visitor numbers.',
+        ] },
+      ] },
+      { h: 'Every three months', body: [
+        { list: [
+          'Remove plugins, pages and old offers you no longer use.',
+          'Add a few new photos and one or two fresh reviews.',
+          'Run a speed test (pagespeed.web.dev) and compare it with last time.',
+          'Check that all your social links and the Google Maps link still work.',
+        ] },
+      ] },
+      { h: 'Every year', body: [
+        { list: [
+          'Check the renewal dates for your domain and hosting, and keep auto-renew on with a card that won’t expire.',
+          'Update the © year in the footer.',
+          'Review your home page: does it still describe what you sell today?',
+          'Change important passwords and check who still has admin access.',
+        ] },
+      ] },
+      { h: 'Set it and forget it', body: [
+        { list: [
+          'A free uptime monitor (such as UptimeRobot) emails you if your site goes down.',
+          'Automatic daily backups from your host or a backup plugin, stored somewhere other than the website’s own server.',
+          'Calendar reminders for this checklist.',
+        ] },
+      ] },
+      { h: 'Start with a check-up', body: [
+        { p: 'Run the free website check once a month as part of the routine. It catches missing basics like tap-to-call, page titles and share images in 20 seconds.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'product-photos-with-phone-for-website',
+    title: 'How to take good product photos for your website with just a phone',
+    description: 'Simple techniques to take clear, professional-looking product and shop photos with your phone: light, background, angles, editing and sizing for the web, with no studio or expensive camera.',
+    updated: '2026-11-28', minutes: 6,
+    intro: 'On a website, photos do most of the selling. You don’t need a professional photographer to get good ones. A recent phone, daylight and a little care give you photos that look far better than most small-business sites.',
+    sections: [
+      { h: 'Light is everything', body: [
+        { list: [
+          'Shoot next to a large window in daylight, without direct harsh sun on the product.',
+          'Turn off the room lights and flash; mixed lighting gives odd colours.',
+          'If one side is dark, hold a white sheet of paper or card on that side to bounce light back.',
+          'For the same look every time, shoot at the same time of day in the same spot.',
+        ] },
+      ] },
+      { h: 'Background and setup', body: [
+        { list: [
+          'Plain backgrounds work best: a white or light chart paper sheet curved up a wall (so there’s no visible corner).',
+          'For food or handmade items, a clean wooden table or cloth can add warmth. Keep it uncluttered.',
+          'Clean the product and wipe your phone’s lens. A smudged lens is the most common cause of hazy photos.',
+        ] },
+      ] },
+      { h: 'Taking the shot', body: [
+        { list: [
+          'Turn on the camera grid and keep the product centred or on the thirds.',
+          'Move closer instead of zooming; digital zoom loses quality.',
+          'Take several angles: front, side, top-down, a close-up of detail, and one showing size (in a hand, or next to a common object).',
+          'Tap the product on screen to focus, and slide exposure down slightly if white areas look washed out.',
+          'Add a few photos of your shop, team and work in progress. People like seeing real people.',
+        ] },
+      ] },
+      { h: 'Edit lightly, then resize', body: [
+        { list: [
+          'Use a free editor (your phone’s built-in editor or Snapseed): straighten, crop, slightly brighten. Avoid heavy filters; customers want the real colour.',
+          'Use the same crop shape for all product photos (square works well).',
+          'Resize and compress before uploading: around 1200–1600 pixels wide and 100–300 KB. Huge photos make your site slow on phones.',
+          'Give each photo a short description (alt text) when uploading so it can appear in Google Images.',
+        ] },
+      ] },
+      { h: 'Check how your site handles them', body: [
+        { p: 'The free website check looks at whether your photos have descriptions Google can read and includes Google’s phone speed score, which heavy photos pull down.' },
+      ] },
+    ],
+  },
+]
+
+export const guides: Guide[] = [...firstGuides, ...moreGuides, ...thirdGuides, ...fourthGuides]
 
 export const getGuide = (slug: string) => guides.find((g) => g.slug === slug)
