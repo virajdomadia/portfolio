@@ -331,6 +331,293 @@ const moreGuides: Guide[] = [
   },
 ]
 
-export const guides: Guide[] = [...firstGuides, ...moreGuides]
+// Third batch: setting up the basics around a website (WhatsApp Business, Google listing, bookings, payments, email).
+const thirdGuides: Guide[] = [
+  {
+    slug: 'add-business-to-google-maps',
+    title: 'How to add your business to Google Maps (Google Business Profile, step by step)',
+    description: 'Get your shop, clinic or service listed on Google Maps and in “near me” searches for free: creating a Google Business Profile, verifying it, and filling it in so customers actually choose you.',
+    updated: '2026-11-27', minutes: 7,
+    intro: 'When someone searches “bakery near me” or your business name, the box with your photos, hours, reviews and a Directions button comes from your Google Business Profile, not your website. It’s free, and for local businesses it’s often the single biggest source of new customers.',
+    sections: [
+      { h: 'Step 1: check whether you’re already listed', body: [
+        { p: 'Search your business name and area on Google Maps. Customers or Google may already have created a listing for you. If you find it, click “Own this business?” or “Claim this business” instead of creating a new one; duplicates confuse Google and split your reviews.' },
+      ] },
+      { h: 'Step 2: create or claim the profile', body: [
+        { steps: [
+          'Go to business.google.com and sign in with a Google account you’ll keep long term (ideally a business account, not a staff member’s personal one).',
+          'Enter your business name exactly as it appears on your signboard. Don’t add keywords like “Best Cake Shop Mumbai”; that’s against Google’s rules.',
+          'Choose the most specific category you can (“Bakery”, “Dental clinic”, “Travel agency”). You can add more later.',
+          'Add your address if customers visit you. If you go to them (plumber, home tutor, caterer), choose service areas instead and hide the address.',
+          'Add your phone number and website.',
+        ] },
+      ] },
+      { h: 'Step 3: verify it', body: [
+        { p: 'Google needs to confirm the business is real before your listing appears fully. Depending on your business, it may ask you to record a short video showing your signboard, workplace and proof you manage it, or offer a phone, email or postcard option. Follow the option it shows you; verification can take from a few minutes to a couple of weeks.' },
+        { tip: 'Have your signboard, the inside of your shop or tools, and something like a business document or bill ready before you start the video, so you can record it in one go.' },
+      ] },
+      { h: 'Step 4: fill in everything', body: [
+        { list: [
+          'Hours, including special hours for festivals and holidays.',
+          'At least 10 real photos: outside (so people recognise it), inside, products, team.',
+          'Products or services with prices or price ranges.',
+          'A short description of what you do and who for.',
+          'Attributes such as wheelchair access, UPI accepted, home delivery.',
+        ] },
+      ] },
+      { h: 'Step 5: keep it alive', body: [
+        { list: ['Ask every happy customer for a review, and reply to every review.', 'Post an update, offer or new photo every couple of weeks.', 'Answer questions people ask on your listing.', 'Keep your name, address and phone exactly the same on your website, Instagram, Justdial and everywhere else.'] },
+        { p: 'Then make sure your website backs it up: the free website check tells you whether Google can read your business details and whether visitors can call, WhatsApp or get directions in one tap.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'whatsapp-business-setup-guide',
+    title: 'How to set up WhatsApp Business for your shop (a practical guide)',
+    description: 'Set up the free WhatsApp Business app properly: business profile, catalogue, greeting and away messages, quick replies, labels and your short link, so customers get answers faster and fewer enquiries slip away.',
+    updated: '2026-11-27', minutes: 7,
+    intro: 'For many Indian small businesses, WhatsApp is the real shop counter: enquiries, orders, payments and follow-ups all happen there. The free WhatsApp Business app has tools most owners never switch on. Twenty minutes of setup can save hours a week and stop enquiries getting lost.',
+    sections: [
+      { h: 'Use a separate business number', body: [
+        { p: 'Install WhatsApp Business (a separate app from regular WhatsApp) on a number used only for the business. Mixing customers with family chats is how enquiries get missed. A second SIM or a dual-SIM phone is enough. Moving an existing number from regular WhatsApp to WhatsApp Business keeps your chat history.' },
+      ] },
+      { h: 'Fill in the business profile', body: [
+        { p: 'In Settings → Business tools → Business profile, add your logo, category, description, address, hours, email and website. Customers see this when they tap your name, and it makes you look established.' },
+      ] },
+      { h: 'Switch on the time-savers', body: [
+        { list: [
+          'Greeting message: sent automatically to new customers. Say thanks, what you can help with, and when you’ll reply.',
+          'Away message: for outside working hours, with your hours and a promise to reply in the morning.',
+          'Quick replies: saved answers you insert by typing “/”. Make ones for your price list (/prices), location (/location), timings (/hours), payment details (/pay) and review link (/review).',
+          'Labels: tag chats as New enquiry, Pending payment, Order complete, so nothing falls through the cracks.',
+        ] },
+      ] },
+      { h: 'Add a catalogue', body: [
+        { p: 'Under Business tools → Catalogue, add your main products or services with a photo, price and short description. Customers can browse and send you an item directly, which saves the “send price list” back-and-forth. You can share the whole catalogue or one item as a link.' },
+      ] },
+      { h: 'Share your link everywhere', body: [
+        { p: 'Business tools → Short link gives you a link that opens a chat with you, optionally with a pre-filled message. You can also build one yourself (https://wa.me/91XXXXXXXXXX?text=Hi). Put it on your website, Instagram bio, Google listing and visiting card QR code.' },
+        { tip: 'Use a different pre-filled message for each place (“Hi, I saw your Instagram”, “Hi, I found you on Google”) and you’ll learn which one brings the most enquiries.' },
+      ] },
+      { h: 'Connect it to your website', body: [
+        { p: 'A WhatsApp button on your website is one of the cheapest ways to get more enquiries; see the guide to adding a WhatsApp button. The free website check tells you whether your site has one, along with tap-to-call and 18 other basics.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'do-i-need-a-website-if-i-have-instagram',
+    title: 'Do you need a website if your business has an Instagram page?',
+    description: 'Instagram is great for showing your work, but it isn’t a website. Where each one wins, what you lose by relying only on Instagram, and the simplest website that covers the gap.',
+    updated: '2026-11-27', minutes: 6,
+    intro: 'Many small businesses in India run entirely on Instagram and WhatsApp, and do well. So is a website worth it? Short answer: Instagram is where people discover and fall for your work; a website is where people who are already searching find you and decide. They do different jobs.',
+    sections: [
+      { h: 'Where Instagram wins', body: [
+        { list: ['Showing your work visually, every day.', 'Reaching new people through Reels, hashtags and shares.', 'Building a relationship with followers through stories and DMs.', 'It’s free and fast to start.'] },
+      ] },
+      { h: 'What you miss with only Instagram', body: [
+        { list: [
+          'Google searches. Someone typing “cake shop in Andheri” or “dentist near me” mostly sees Google results and Maps, not Instagram posts.',
+          'People who don’t use Instagram, or won’t DM a business they don’t know.',
+          'Clear basic information. Prices, hours, location and services get buried in old posts and highlights.',
+          'Control. If your account is hacked, restricted or the algorithm changes, your reach can disappear overnight. A website and domain are yours.',
+          'Trust for bigger purchases. For weddings, corporate orders or expensive services, people often check for a proper website before paying.',
+        ] },
+      ] },
+      { h: 'The simplest website that fills the gap', body: [
+        { p: 'You don’t need a big website. A single, well-made page often does the job:' },
+        { list: ['What you do and where, in one line at the top.', 'Your best 6–12 photos (reuse your Instagram work).', 'Prices or price ranges.', 'A tap-to-call button, a WhatsApp button, and directions.', 'Hours, address, and 3–5 real reviews.', 'A link to your Instagram, and your website link in your Instagram bio.'] },
+      ] },
+      { h: 'Make them work together', body: [
+        { list: ['Put your website link in your Instagram bio and Google listing.', 'Embed or link your Instagram on the website so visitors see you’re active.', 'Send people from Instagram to a page with prices and a booking or WhatsApp button.'] },
+      ] },
+      { h: 'Already have a website?', body: [
+        { p: 'Run it through the free website check to see whether it does the basics well: whether Google can find it, whether it works on phones, and whether customers can reach you in one tap.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'add-online-booking-to-website',
+    title: 'How to add online booking or appointments to your website',
+    description: 'Let customers book appointments, tables or slots from your website without calling. Simple options from free scheduling tools to WhatsApp booking to a custom booking system, and how to choose.',
+    updated: '2026-11-27', minutes: 7,
+    intro: 'Every “what time are you free?” call or chat is time you’re not working, and every enquiry that comes after hours may book with someone else. Online booking lets customers pick a slot themselves, day or night. You can start for free and upgrade only if you need to.',
+    sections: [
+      { h: 'Option 1: a free scheduling tool', body: [
+        { p: 'Tools such as Google Calendar’s appointment schedules, Calendly, Zoho Bookings or Setmore give you a booking page with your available slots. Customers pick a time; it goes into your calendar and both of you get reminders. Most have a free plan, with paid plans for things like multiple staff or taking payments.' },
+        { list: ['Good for: consultants, tutors, clinics, salons, photographers, anyone selling time.', 'Add it to your site with a “Book an appointment” button linking to your booking page, or embed the booking widget on a page.'] },
+      ] },
+      { h: 'Option 2: WhatsApp booking', body: [
+        { p: 'For many local businesses, a “Book on WhatsApp” button with a pre-filled message works well:' },
+        { code: 'https://wa.me/919876543210?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20for%20' },
+        { p: 'You still confirm by hand, but the customer has told you what they want in their first message. Pair it with WhatsApp Business quick replies for available times.' },
+      ] },
+      { h: 'Option 3: booking built into the website', body: [
+        { p: 'When booking is your core business (tours, events, classes, rentals, restaurants with deposits), a booking system built into your site lets customers see live availability, pay a deposit, get confirmation emails and manage their booking, while you manage everything from one dashboard. It costs more to build, but stops double bookings and no-shows.' },
+      ] },
+      { h: 'Make sure it actually gets used', body: [
+        { list: [
+          'Put the “Book” button at the top of the home page and on every service page.',
+          'Show prices and duration before people book.',
+          'Turn on reminders (email or WhatsApp) to cut no-shows.',
+          'Ask for a small deposit for longer or high-demand slots.',
+          'Keep your available times up to date. A booking tool showing wrong availability is worse than none.',
+        ] },
+      ] },
+      { h: 'Check the basics first', body: [
+        { p: 'Booking only helps if people reach the button. The free website check tells you whether your site has a clear action button, works on phones and loads quickly.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'accept-upi-payments-on-website',
+    title: 'How to accept UPI and online payments on your website',
+    description: 'The simple ways for a small business in India to take UPI, card and net-banking payments online: payment links, payment pages, a full checkout, or a UPI QR, with what each needs and costs.',
+    updated: '2026-11-27', minutes: 7,
+    intro: 'Taking payment upfront secures bookings and orders, and saves “I’ll pay when I come” no-shows. You don’t need a developer for most of it. Here are the options, from simplest to most complete.',
+    sections: [
+      { h: 'Option 1: show your UPI QR or UPI ID', body: [
+        { p: 'Put your business UPI QR code or ID on your site or send it on WhatsApp. It’s free and instant to set up.' },
+        { list: ['Downside: you have to match payments to orders by hand and ask for screenshots.', 'Use a business account (or your bank’s merchant QR), not a personal one, so your accounts stay clean.'] },
+      ] },
+      { h: 'Option 2: payment links and payment pages', body: [
+        { p: 'Payment gateways such as Razorpay, Cashfree and PayU let you create a payment link (send it on WhatsApp or email) or a simple payment page (“Pay ₹500 booking deposit”) without any code. Customers can pay by UPI, card, net banking or wallets, and you get a record of every payment.' },
+        { list: ['You’ll need to complete KYC: typically PAN, bank account details, and business proof.', 'Gateways charge a fee per transaction; check their current pricing, as it differs by payment method.', 'Add a “Pay now” button on your website that links to the payment page.'] },
+      ] },
+      { h: 'Option 3: a full checkout on your website', body: [
+        { list: [
+          'Online store builders (Shopify, WooCommerce for WordPress, and others) connect to Indian gateways with a plugin.',
+          'Custom websites can integrate the gateway directly, so payment is part of booking or ordering, with automatic confirmations, invoices and refunds.',
+        ] },
+      ] },
+      { h: 'Things to get right', body: [
+        { list: [
+          'Your site must be on https (the padlock). Gateways require it, and customers won’t pay on a “Not secure” page.',
+          'Publish clear refund, cancellation, terms and privacy pages; gateways usually ask for them during approval.',
+          'Send a confirmation (email or WhatsApp) the moment payment succeeds.',
+          'If you’re GST-registered, issue proper invoices.',
+        ] },
+      ] },
+      { h: 'Is your site ready to take payments?', body: [
+        { p: 'Run the free website check: it confirms your site is secure, works well on phones, and makes the next step clear to visitors.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'business-email-with-your-domain',
+    title: 'How to set up a business email with your own domain (you@yourbusiness.in)',
+    description: 'Why an email like orders@yourbusiness.in looks more trustworthy than a Gmail address, your options from hosting email to Google Workspace and Zoho, and the setup steps in plain language.',
+    updated: '2026-11-27', minutes: 6,
+    intro: 'An email like hello@sugarco.in tells customers and suppliers you’re an established business; sugarco2019@gmail.com doesn’t. If you own a domain for your website, you can use it for email too, sometimes at no extra cost.',
+    sections: [
+      { h: 'What you need', body: [
+        { list: ['A domain name you own (the yourbusiness.in part).', 'An email provider that hosts mailboxes for your domain.', 'Access to your domain’s DNS settings (wherever you bought the domain) to connect the two.'] },
+      ] },
+      { h: 'Your options', body: [
+        { list: [
+          'Email included with your web hosting: many cPanel hosting plans include mailboxes. Cheapest, but storage, spam filtering and apps can be basic.',
+          'Google Workspace: Gmail with your own domain, plus Google Drive, Meet and Calendar. Paid per user per month; the most familiar option.',
+          'Microsoft 365: Outlook with your domain plus Office apps. Paid per user.',
+          'Zoho Mail: popular with Indian small businesses, with low-cost plans and a limited free option for a few users (check their current plans).',
+        ] },
+      ] },
+      { h: 'The setup, in plain steps', body: [
+        { steps: [
+          'Sign up with the provider and add your domain.',
+          'Prove you own the domain: the provider gives you a TXT record to add in your domain’s DNS settings.',
+          'Add the provider’s MX records in DNS. These tell the internet where to deliver your email.',
+          'Add the SPF and DKIM records the provider gives you, so your emails don’t land in spam.',
+          'Create your mailboxes (hello@, orders@, your name@) and set up the app on your phone.',
+        ] },
+        { tip: 'Before changing MX records, check whether you already receive email on the domain. Changing them moves all email delivery to the new provider.' },
+      ] },
+      { h: 'Good habits', body: [
+        { list: ['Use role addresses (orders@, support@) for things customers write to, so they survive staff changes.', 'Put the address on your website, Google listing and invoices.', 'Turn on two-step verification; business email is a common target for scams.'] },
+      ] },
+      { h: 'Check the rest of your site', body: [
+        { p: 'An email link on your website is one of the ways customers can reach you. The free website check looks at all of them (call, WhatsApp, form, email) plus how your site looks to Google.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'what-to-put-on-small-business-homepage',
+    title: 'What to put on your small business homepage (a checklist)',
+    description: 'A practical checklist for a homepage that turns visitors into calls and enquiries: what goes at the top, what builds trust, what to leave out, with examples for local businesses.',
+    updated: '2026-11-27', minutes: 6,
+    intro: 'Most visitors decide within a few seconds whether to stay, and most see your homepage on a phone. A good small-business homepage answers four questions fast: What do you do? Is it for me? Can I trust you? How do I get it? Here’s what to put on it, top to bottom.',
+    sections: [
+      { h: 'The first screen (before scrolling)', body: [
+        { list: [
+          'A headline saying what you do and where: “Wedding cakes, baked fresh in Andheri”, not “Welcome”.',
+          'One line on who it’s for or why you: “Custom designs, delivered same day across Mumbai.”',
+          'One main action button: Book, Order on WhatsApp, Get a quote, or Call.',
+          'A real photo of your work, shop or team, not stock images.',
+          'Your phone number as a tap-to-call link.',
+        ] },
+      ] },
+      { h: 'Further down', body: [
+        { list: [
+          'Your main services or products, each with a photo and a price or “from ₹…”.',
+          '3–5 real reviews with names, and a link to your Google reviews.',
+          'How it works, in 3 steps (for services): enquire → confirm → done.',
+          'Location, hours and a “Get directions” button.',
+          'A short “about us” with a face: people buy from people.',
+          'Answers to the 4–5 questions you get asked most.',
+          'The action button again at the bottom.',
+        ] },
+      ] },
+      { h: 'Leave out', body: [
+        { list: [
+          'Sliders and carousels: slow, and most people never see slide 2.',
+          'Long paragraphs about your history before saying what you do.',
+          'Autoplaying music or video.',
+          'Popups the moment someone arrives.',
+          'Too many choices. One main action beats six equal buttons.',
+        ] },
+      ] },
+      { h: 'Behind the scenes', body: [
+        { list: ['A clear page title and description for Google.', 'A share image so links look good on WhatsApp.', 'A fast, phone-friendly page with compressed photos.', 'Your business details in a format Google can read.'] },
+      ] },
+      { h: 'See how your homepage scores', body: [
+        { p: 'Paste your website into the free website check: it tests most of this list in about 20 seconds and tells you the top 3 fixes.' },
+      ] },
+    ],
+  },
+  {
+    slug: 'check-if-website-is-on-google',
+    title: 'How to check if your website is on Google (and what to do if it isn’t)',
+    description: 'Three quick ways to see whether Google has your website, why pages sometimes don’t show up, and the free steps to get them listed, with no technical knowledge needed.',
+    updated: '2026-11-27', minutes: 5,
+    intro: 'Your website is live, but is Google showing it to anyone? It’s easy to check in under a minute, and if the answer is no, the fix is usually simple.',
+    sections: [
+      { h: 'Method 1: the site: search', body: [
+        { p: 'Type this into Google, with your own domain:' },
+        { code: 'site:yourbusiness.in' },
+        { list: ['If you see your pages listed, Google has them.', 'If you see “Your search did not match any documents”, Google hasn’t added your site yet.', 'If only some pages appear, the missing ones haven’t been added (yet).'] },
+      ] },
+      { h: 'Method 2: search like a customer', body: [
+        { p: 'Search your business name, then what you sell plus your area (“cake shop Andheri”). Being found for your name is the minimum. Being found for what you sell takes good page titles, content, reviews and time.' },
+        { tip: 'Use a private/incognito window so your own browsing history doesn’t affect the results.' },
+      ] },
+      { h: 'Method 3: Google Search Console (the reliable way)', body: [
+        { steps: ['Go to search.google.com/search-console and add your website.', 'Verify ownership (your host or website builder usually has a simple option).', 'Use URL inspection on your home page: it says whether the page is on Google and, if not, why.', 'Submit your sitemap (usually yourbusiness.in/sitemap.xml) and click “Request indexing” for important pages.'] },
+        { p: 'Search Console also shows what people searched for when they saw you, and how many clicked. It’s free and worth checking monthly.' },
+      ] },
+      { h: 'If you’re not on Google', body: [
+        { list: [
+          'The site tells Google not to list it (a “noindex” setting, often left on after building the site).',
+          'robots.txt blocks search engines.',
+          'The site is very new; it can take days to weeks without Search Console.',
+          'Nothing links to it. Add your website to your Google Business Profile, Instagram and directories.',
+          'Very thin pages, such as a single page with just a logo.',
+        ] },
+      ] },
+      { h: 'Check for blockers in 20 seconds', body: [
+        { p: 'The free website check tells you instantly whether your page is blocking Google, plus whether it has a proper title, description, sitemap and business details.' },
+      ] },
+    ],
+  },
+]
+
+export const guides: Guide[] = [...firstGuides, ...moreGuides, ...thirdGuides]
 
 export const getGuide = (slug: string) => guides.find((g) => g.slug === slug)

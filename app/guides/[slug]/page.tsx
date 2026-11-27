@@ -10,6 +10,8 @@ import s from '../guides.module.css'
 
 type Props = { params: Promise<{ slug: string }> }
 export const dynamicParams = false
+// the next five guides, wrapping round: every guide is linked from five others, and lists stay short
+const related = (slug: string) => { const i = guides.findIndex((x) => x.slug === slug); return Array.from({ length: Math.min(5, guides.length - 1) }, (_, k) => guides[(i + k + 1) % guides.length]) }
 export function generateStaticParams() { return guides.map((g) => ({ slug: g.slug })) }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -62,7 +64,8 @@ export default async function Page({ params }: Props) {
           </aside>
           <nav className={s.more} aria-labelledby="more-h">
             <h2 id="more-h">More guides</h2>
-            <ul>{guides.filter((o) => o.slug !== g.slug).map((o) => <li key={o.slug}><Link href={`/guides/${o.slug}`}>{o.title}</Link></li>)}</ul>
+            <ul>{related(g.slug).map((o) => <li key={o.slug}><Link href={`/guides/${o.slug}`}>{o.title}</Link></li>)}</ul>
+            <p><Link href="/guides">All {guides.length} guides →</Link></p>
           </nav>
           <p className={s.by}>Written by <Link href="/">{content.person.name}</Link>, a full-stack developer in {content.person.city} who builds websites, booking systems and automation for small businesses.</p>
         </article>
